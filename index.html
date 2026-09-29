@@ -42,15 +42,15 @@
         body {
             background-color: var(--ios-bg);
             color: var(--ios-label);
-            /* Generous top margin to prevent notch / Dynamic Island overlapping */
-            padding-top: max(56px, calc(env(safe-area-inset-top, 0px) + 24px));
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-bottom: max(34px, calc(env(safe-area-inset-bottom, 0px) + 28px));
+            padding-top: max(54px, calc(env(safe-area-inset-top, 0px) + 20px));
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: max(30px, calc(env(safe-area-inset-bottom, 0px) + 24px));
             min-height: 100vh;
             user-select: none;
             -webkit-user-select: none;
             letter-spacing: -0.01em;
+            overflow-x: hidden;
         }
 
         /* iOS Navigation Bar */
@@ -58,12 +58,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
-            padding-top: 4px;
+            margin-bottom: 12px;
+            padding: 0 4px;
         }
 
         .nav-title {
-            font-size: 1.75rem;
+            font-size: 1.65rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             color: var(--ios-label);
@@ -73,7 +73,7 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         /* Native iOS Buttons */
@@ -81,10 +81,10 @@
             background: none;
             border: none;
             color: var(--ios-blue);
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 500;
             cursor: pointer;
-            padding: 6px 8px;
+            padding: 4px 6px;
         }
 
         .btn-link:active {
@@ -95,9 +95,9 @@
             background: var(--ios-blue);
             color: #FFFFFF;
             border: none;
-            padding: 7px 16px;
+            padding: 6px 14px;
             border-radius: 18px;
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
@@ -129,9 +129,9 @@
             background: rgba(255, 59, 48, 0.12);
             color: var(--ios-red);
             border: none;
-            padding: 5px 12px;
-            border-radius: 14px;
-            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
         }
@@ -142,16 +142,16 @@
 
         .btn-full {
             width: 100%;
-            padding: 14px;
-            border-radius: 14px;
-            font-size: 1.05rem;
+            padding: 13px;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: 600;
             background: var(--ios-blue);
             color: #FFFFFF;
             border: none;
             cursor: pointer;
             text-align: center;
-            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.18);
         }
 
         .btn-full:active {
@@ -165,7 +165,7 @@
             padding: 3px;
             border-radius: 9px;
             display: flex;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
             position: relative;
         }
 
@@ -173,8 +173,8 @@
             flex: 1;
             background: transparent;
             border: none;
-            padding: 7px 0;
-            font-size: 0.85rem;
+            padding: 6px 0;
+            font-size: 0.82rem;
             font-weight: 500;
             color: var(--ios-label);
             border-radius: 7px;
@@ -189,16 +189,16 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.1);
         }
 
-        /* Native iOS Inset Header Summary */
+        /* Summary Header */
         .summary-card {
             background: var(--ios-card);
-            border-radius: 12px;
-            padding: 10px 16px;
+            border-radius: 10px;
+            padding: 8px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
-            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-size: 0.75rem;
             color: var(--ios-secondary-label);
         }
 
@@ -216,72 +216,81 @@
             display: block;
         }
 
-        /* Classroom Card */
+        /* 100% SINGLE-SCREEN RESPONSIVE CLASSROOM PLAN (ZERO HORIZONTAL SCROLL) */
         .classroom-card {
             background: var(--ios-card);
-            border-radius: 16px;
-            padding: 14px 10px;
+            border-radius: 14px;
+            padding: 8px 6px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-            margin-bottom: 14px;
-        }
-
-        .classroom-scroll {
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 4px;
+            margin-bottom: 12px;
+            width: 100%;
         }
 
         .classroom-plan {
-            min-width: 590px;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 7px;
             background: var(--ios-card-secondary);
-            padding: 14px 12px;
-            border-radius: 12px;
+            padding: 6px 4px;
+            border-radius: 10px;
             border: 1px solid var(--ios-separator);
         }
 
         .plan-row {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            gap: 3px;
+            width: 100%;
         }
 
         .row-label {
-            width: 50px;
-            font-size: 0.72rem;
-            font-weight: 700;
+            font-size: 0.65rem;
+            font-weight: 800;
             color: var(--ios-secondary-label);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
+            width: 14px;
             text-align: center;
+            flex-shrink: 0;
+        }
+
+        .blocks-container {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
         }
 
         .desk-block {
             display: flex;
             background: #E5E5EA;
-            padding: 3px;
-            border-radius: 9px;
-            gap: 3px;
+            padding: 2px;
+            border-radius: 6px;
+            gap: 2px;
             border: 1px solid #D1D1D6;
+            min-width: 0;
         }
 
-        .aisle-divider {
-            width: 1px;
-            height: 40px;
-            background: var(--ios-separator);
-            margin: 0 4px;
+        .block-2 { flex: 2; }
+        .block-3 { flex: 3; }
+
+        .aisle-space {
+            font-size: 0.55rem;
+            color: #C7C7CC;
+            flex-shrink: 0;
+            padding: 0 1px;
+            font-weight: 800;
         }
 
-        /* Individual Desk Unit */
+        /* Individual Responsive Desk */
         .desk-unit {
+            flex: 1;
+            min-width: 0;
+            height: 52px;
             background: #FFFFFF;
-            width: 74px;
-            min-height: 74px;
-            border-radius: 7px;
-            padding: 6px;
+            border-radius: 4px;
+            padding: 2px 2px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -293,21 +302,22 @@
         }
 
         .desk-unit:active {
-            transform: scale(0.96);
+            transform: scale(0.95);
         }
 
         .desk-unit.selected {
             border-color: var(--ios-orange) !important;
             background: #FFF8EB !important;
-            box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.35);
+            box-shadow: 0 0 0 2px rgba(255, 149, 0, 0.35);
         }
 
         .desk-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.68rem;
+            font-size: 0.52rem;
             font-weight: 700;
+            line-height: 1;
         }
 
         .desk-code {
@@ -315,10 +325,11 @@
         }
 
         .desk-badge {
-            font-size: 0.62rem;
+            font-size: 0.5rem;
             font-weight: 700;
-            padding: 1px 4px;
-            border-radius: 4px;
+            padding: 0 2px;
+            border-radius: 2px;
+            line-height: 1.1;
         }
 
         .badge-10 { background: #D1FADF; color: #027A48; font-weight: 800; }
@@ -327,25 +338,27 @@
         .badge-low { background: #FEE2E2; color: #B91C1C; }
 
         .desk-name {
-            font-size: 0.78rem;
+            font-size: 0.68rem;
             font-weight: 700;
             color: var(--ios-label);
             text-align: center;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis;
-            line-height: 1.15;
-            margin: 3px 0;
+            text-overflow: clip;
+            line-height: 1.1;
+            margin: 1px 0;
+            letter-spacing: -0.02em;
         }
 
         .desk-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.6rem;
+            font-size: 0.48rem;
             color: var(--ios-secondary-label);
-            border-top: 0.5px solid var(--ios-separator);
-            padding-top: 3px;
+            border-top: 0.5px solid #F2F2F7;
+            padding-top: 1px;
+            line-height: 1;
         }
 
         .diff-text {
@@ -362,12 +375,12 @@
         }
 
         .section-header {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             color: var(--ios-secondary-label);
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            margin: 0 0 6px 12px;
+            margin: 0 0 6px 8px;
         }
 
         .inset-list {
@@ -381,7 +394,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 11px 16px;
+            padding: 10px 14px;
             position: relative;
         }
 
@@ -389,7 +402,7 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 48px;
+            left: 44px;
             right: 0;
             height: 0.5px;
             background: var(--ios-separator);
@@ -398,39 +411,45 @@
         .row-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            min-width: 0;
         }
 
         .row-rank {
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-weight: 700;
             color: var(--ios-secondary-label);
-            width: 20px;
+            width: 18px;
             text-align: center;
+            flex-shrink: 0;
         }
 
         .row-name {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--ios-label);
         }
 
         .row-sub {
-            font-size: 0.72rem;
+            font-size: 0.68rem;
             color: var(--ios-secondary-label);
             margin-top: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .mean-field {
-            width: 64px;
-            padding: 5px 6px;
+            width: 58px;
+            padding: 5px 4px;
             border-radius: 7px;
             border: 1px solid var(--ios-border);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--ios-blue);
             text-align: center;
             background: #F9F9FB;
+            flex-shrink: 0;
         }
 
         .mean-field:focus {
@@ -442,18 +461,18 @@
         /* History Chips */
         .history-chips {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             overflow-x: auto;
-            padding-bottom: 8px;
-            margin-bottom: 12px;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
         }
 
         .history-chip {
             background: var(--ios-card);
             border: 1px solid var(--ios-border);
-            padding: 6px 14px;
-            border-radius: 16px;
-            font-size: 0.8rem;
+            padding: 5px 12px;
+            border-radius: 14px;
+            font-size: 0.78rem;
             font-weight: 600;
             color: var(--ios-secondary-label);
             white-space: nowrap;
@@ -469,15 +488,15 @@
         /* Interactive Swap Floating Bar */
         .swap-alert {
             position: fixed;
-            bottom: calc(env(safe-area-inset-bottom, 20px) + 16px);
-            left: 16px;
-            right: 16px;
+            bottom: calc(env(safe-area-inset-bottom, 20px) + 12px);
+            left: 12px;
+            right: 12px;
             background: rgba(28, 28, 30, 0.96);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             color: #FFFFFF;
-            padding: 12px 16px;
-            border-radius: 14px;
+            padding: 10px 14px;
+            border-radius: 12px;
             display: none;
             justify-content: space-between;
             align-items: center;
@@ -508,8 +527,8 @@
         .sheet-container {
             background: var(--ios-card);
             width: 100%;
-            border-radius: 20px 20px 0 0;
-            padding: 12px 18px calc(env(safe-area-inset-bottom, 20px) + 18px);
+            border-radius: 18px 18px 0 0;
+            padding: 12px 16px calc(env(safe-area-inset-bottom, 20px) + 16px);
             max-height: 85vh;
             overflow-y: auto;
         }
@@ -526,33 +545,33 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .sheet-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
         }
 
         .vincoli-section-title {
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 700;
             color: var(--ios-secondary-label);
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .pair-tag {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: #F2F2F7;
-            padding: 6px 10px;
-            border-radius: 8px;
-            font-size: 0.82rem;
+            padding: 5px 8px;
+            border-radius: 7px;
+            font-size: 0.78rem;
             font-weight: 600;
-            margin: 3px;
+            margin: 2px;
             border: 1px solid var(--ios-border);
         }
 
@@ -577,12 +596,12 @@
 
         select.ios-select {
             width: 100%;
-            padding: 9px 12px;
-            border-radius: 10px;
+            padding: 8px 10px;
+            border-radius: 8px;
             border: 1px solid var(--ios-border);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             background: #F8F8FA;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
             color: var(--ios-label);
         }
@@ -597,9 +616,9 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             color: #FFFFFF;
-            padding: 8px 18px;
+            padding: 7px 16px;
             border-radius: 20px;
-            font-size: 0.82rem;
+            font-size: 0.78rem;
             font-weight: 600;
             opacity: 0;
             pointer-events: none;
@@ -641,91 +660,92 @@
         <span><span class="val" id="lbl-current-round">Turno 1</span></span>
     </div>
 
-    <!-- TAB 1: PIANTINA -->
+    <!-- TAB 1: PIANTINA IN UN'UNICA SCHERMATA -->
     <div id="tab-map" class="tab-pane active">
         
         <div class="classroom-card">
-            <div class="classroom-scroll">
-                <div class="classroom-plan">
-                    
-                    <!-- Fila C -->
-                    <div class="plan-row">
-                        <div class="row-label">Fila C</div>
-                        
-                        <div class="desk-block">
+            <div class="classroom-plan">
+                
+                <!-- Fila C -->
+                <div class="plan-row">
+                    <span class="row-label">C</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
                             <div id="seat-c1" class="desk-unit" onclick="tapDesk('c1')"></div>
                             <div id="seat-c2" class="desk-unit" onclick="tapDesk('c2')"></div>
                         </div>
 
-                        <div class="aisle-divider"></div>
+                        <span class="aisle-space">|</span>
 
-                        <div class="desk-block">
+                        <div class="desk-block block-2">
                             <div id="seat-c4" class="desk-unit" onclick="tapDesk('c4')"></div>
                             <div id="seat-c5" class="desk-unit" onclick="tapDesk('c5')"></div>
                         </div>
 
-                        <div class="aisle-divider"></div>
+                        <span class="aisle-space">|</span>
 
-                        <div class="desk-block">
+                        <div class="desk-block block-3">
                             <div id="seat-c6" class="desk-unit" onclick="tapDesk('c6')"></div>
                             <div id="seat-c7" class="desk-unit" onclick="tapDesk('c7')"></div>
                             <div id="seat-c8" class="desk-unit" onclick="tapDesk('c8')"></div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Fila B -->
-                    <div class="plan-row">
-                        <div class="row-label">Fila B</div>
-                        
-                        <div class="desk-block">
+                <!-- Fila B -->
+                <div class="plan-row">
+                    <span class="row-label">B</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
                             <div id="seat-b1" class="desk-unit" onclick="tapDesk('b1')"></div>
                             <div id="seat-b2" class="desk-unit" onclick="tapDesk('b2')"></div>
                         </div>
 
-                        <div class="aisle-divider"></div>
+                        <span class="aisle-space">|</span>
 
-                        <div class="desk-block">
+                        <div class="desk-block block-3">
                             <div id="seat-b3" class="desk-unit" onclick="tapDesk('b3')"></div>
                             <div id="seat-b4" class="desk-unit" onclick="tapDesk('b4')"></div>
                             <div id="seat-b5" class="desk-unit" onclick="tapDesk('b5')"></div>
                         </div>
 
-                        <div class="aisle-divider"></div>
+                        <span class="aisle-space">|</span>
 
-                        <div class="desk-block">
+                        <div class="desk-block block-3">
                             <div id="seat-b6" class="desk-unit" onclick="tapDesk('b6')"></div>
                             <div id="seat-b7" class="desk-unit" onclick="tapDesk('b7')"></div>
                             <div id="seat-b8" class="desk-unit" onclick="tapDesk('b8')"></div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Fila A -->
-                    <div class="plan-row">
-                        <div class="row-label">Fila A</div>
-                        
-                        <div class="desk-block">
+                <!-- Fila A -->
+                <div class="plan-row">
+                    <span class="row-label">A</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
                             <div id="seat-a1" class="desk-unit" onclick="tapDesk('a1')"></div>
                             <div id="seat-a2" class="desk-unit" onclick="tapDesk('a2')"></div>
                         </div>
 
-                        <div class="aisle-divider"></div>
+                        <span class="aisle-space">|</span>
 
-                        <div class="desk-block">
+                        <div class="desk-block block-3">
                             <div id="seat-a3" class="desk-unit" onclick="tapDesk('a3')"></div>
                             <div id="seat-a4" class="desk-unit" onclick="tapDesk('a4')"></div>
                             <div id="seat-a5" class="desk-unit" onclick="tapDesk('a5')"></div>
                         </div>
 
-                        <div class="aisle-divider"></div>
+                        <span class="aisle-space">|</span>
 
-                        <div class="desk-block">
+                        <div class="desk-block block-3">
                             <div id="seat-a6" class="desk-unit" onclick="tapDesk('a6')"></div>
                             <div id="seat-a7" class="desk-unit" onclick="tapDesk('a7')"></div>
                             <div id="seat-a8" class="desk-unit" onclick="tapDesk('a8')"></div>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
 
@@ -751,29 +771,28 @@
             <!-- Chips populated by JS -->
         </div>
 
-        <div id="history-empty-message" style="display:none; background:var(--ios-card); border-radius:14px; padding:24px 16px; text-align:center; color:var(--ios-secondary-label); font-size:0.88rem;">
+        <div id="history-empty-message" style="display:none; background:var(--ios-card); border-radius:14px; padding:20px 14px; text-align:center; color:var(--ios-secondary-label); font-size:0.85rem;">
             Nessun turno archiviato nello storico.<br>Tocca "Salva" nella piantina per archiviare il primo turno.
         </div>
 
         <div id="history-view-card" class="classroom-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; padding:0 2px;">
                 <div>
-                    <span id="history-map-title" style="font-size:0.95rem; font-weight:700;">Turno 1</span>
-                    <span style="font-size:0.75rem; color:var(--ios-secondary-label); display:block; margin-top:1px;">Tocca due banchi per scambiarli in questo turno</span>
+                    <span id="history-map-title" style="font-size:0.88rem; font-weight:700;">Turno 1</span>
+                    <span style="font-size:0.68rem; color:var(--ios-secondary-label); display:block;">Tocca due banchi per scambiarli</span>
                 </div>
                 <button class="btn-destructive" onclick="deleteSelectedHistoryRound()">Elimina Turno</button>
             </div>
-            <div class="classroom-scroll">
-                <div class="classroom-plan" id="history-plan-container">
-                    <!-- History Plan Populated by JS -->
-                </div>
+            
+            <div class="classroom-plan" id="history-plan-container">
+                <!-- History Plan Populated by JS -->
             </div>
         </div>
     </div>
 
     <!-- Floating Interactive Swap Alert (Live Plan) -->
     <div id="swap-banner" class="swap-alert">
-        <span style="font-size:0.82rem;">
+        <span style="font-size:0.78rem;">
             <strong id="swap-name-1">Valentina</strong> (<span id="swap-code-1">C4</span>) selezionato.<br>
             Tocca un secondo posto per scambiare.
         </span>
@@ -782,7 +801,7 @@
 
     <!-- Floating Interactive Swap Alert (History Plan) -->
     <div id="history-swap-banner" class="swap-alert">
-        <span style="font-size:0.82rem;">
+        <span style="font-size:0.78rem;">
             Modifica Storico: <strong id="hist-swap-name-1">Valentina</strong> selezionato.<br>
             Tocca un secondo posto per scambiare in questo turno.
         </span>
@@ -800,25 +819,25 @@
             </div>
 
             <!-- Coppie Fisse -->
-            <div style="margin-bottom:20px;">
+            <div style="margin-bottom:16px;">
                 <div class="vincoli-section-title">Coppie Fisse (Sempre vicini di banco)</div>
-                <div id="fixed-pairs-list" style="margin-bottom:10px;"></div>
-                <div style="display:flex; gap:8px;">
+                <div id="fixed-pairs-list" style="margin-bottom:8px;"></div>
+                <div style="display:flex; gap:6px;">
                     <select id="sel-fixed-1" class="ios-select"></select>
                     <select id="sel-fixed-2" class="ios-select"></select>
                 </div>
-                <button class="btn-secondary" style="width:100%; padding:9px; border-radius:10px;" onclick="addFixedPair()">Aggiungi Coppia Fissa</button>
+                <button class="btn-secondary" style="width:100%; padding:8px; border-radius:8px;" onclick="addFixedPair()">Aggiungi Coppia Fissa</button>
             </div>
 
             <!-- Coppie Separate -->
-            <div style="margin-bottom:14px;">
+            <div style="margin-bottom:12px;">
                 <div class="vincoli-section-title">Coppie Separate (Mai vicini di banco)</div>
-                <div id="forbidden-pairs-list" style="margin-bottom:10px;"></div>
-                <div style="display:flex; gap:8px;">
+                <div id="forbidden-pairs-list" style="margin-bottom:8px;"></div>
+                <div style="display:flex; gap:6px;">
                     <select id="sel-forbid-1" class="ios-select"></select>
                     <select id="sel-forbid-2" class="ios-select"></select>
                 </div>
-                <button class="btn-secondary" style="width:100%; padding:9px; border-radius:10px;" onclick="addForbiddenPair()">Aggiungi Coppia Separata</button>
+                <button class="btn-secondary" style="width:100%; padding:8px; border-radius:8px;" onclick="addForbiddenPair()">Aggiungi Coppia Separata</button>
             </div>
         </div>
     </div>
@@ -861,6 +880,22 @@
             "Sofia", "Giada", "Camilla", "Diego", "Elena", "Margot", 
             "Lina", "Gloria", "Alice", "Betta", "Sara"
         ];
+
+        // Clean natural abbreviations so names fit without any ellipsis dots
+        const SHORT_NAMES = {
+            "Valentina": "Vale",
+            "Leonardo": "Leo",
+            "Gianluca": "Gian",
+            "Riccardo": "Ricky",
+            "Camilla": "Cami",
+            "Diletta": "Dile",
+            "Claudia": "Clau"
+        };
+
+        function getDeskDisplayName(fullName) {
+            if (!fullName) return "";
+            return SHORT_NAMES[fullName] || fullName;
+        }
 
         const CLASS_AVG = 6.46;
         const STORAGE_KEY = "banchi_ios_state_v4";
@@ -1130,14 +1165,16 @@
                     diff = newMean - CLASS_AVG;
                 }
 
+                const displayName = st ? getDeskDisplayName(st.name) : '<span style="color:#8E8E93">Libero</span>';
+
                 el.innerHTML = `
                     <div class="desk-header">
                         <span class="desk-code">${seat.code.toUpperCase()}</span>
                         <span class="desk-badge ${getScoreBadgeClass(seat.score)}">${seat.score.toFixed(1)}</span>
                     </div>
-                    <div class="desk-name">${st ? st.name : '<span style="color:#8E8E93">Libero</span>'}</div>
+                    <div class="desk-name">${displayName}</div>
                     <div class="desk-footer">
-                        <span>M: <strong>${newMean.toFixed(1)}</strong></span>
+                        <span>M:<strong>${newMean.toFixed(1)}</strong></span>
                         <span class="diff-text ${diff > 0.1 ? 'diff-pos' : (diff < -0.1 ? 'diff-neg' : 'diff-zero')}">
                             ${diff > 0 ? '+' : ''}${diff.toFixed(1)}
                         </span>
@@ -1344,61 +1381,67 @@
             const planContainer = document.getElementById('history-plan-container');
             planContainer.innerHTML = `
                 <div class="plan-row">
-                    <div class="row-label">Fila C</div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('c1', assignToDisplay)}
-                        ${renderHistoryDeskHTML('c2', assignToDisplay)}
-                    </div>
-                    <div class="aisle-divider"></div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('c4', assignToDisplay)}
-                        ${renderHistoryDeskHTML('c5', assignToDisplay)}
-                    </div>
-                    <div class="aisle-divider"></div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('c6', assignToDisplay)}
-                        ${renderHistoryDeskHTML('c7', assignToDisplay)}
-                        ${renderHistoryDeskHTML('c8', assignToDisplay)}
-                    </div>
-                </div>
-
-                <div class="plan-row">
-                    <div class="row-label">Fila B</div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('b1', assignToDisplay)}
-                        ${renderHistoryDeskHTML('b2', assignToDisplay)}
-                    </div>
-                    <div class="aisle-divider"></div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('b3', assignToDisplay)}
-                        ${renderHistoryDeskHTML('b4', assignToDisplay)}
-                        ${renderHistoryDeskHTML('b5', assignToDisplay)}
-                    </div>
-                    <div class="aisle-divider"></div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('b6', assignToDisplay)}
-                        ${renderHistoryDeskHTML('b7', assignToDisplay)}
-                        ${renderHistoryDeskHTML('b8', assignToDisplay)}
+                    <span class="row-label">C</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('c1', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c2', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('c4', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c5', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('c6', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c7', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c8', assignToDisplay)}
+                        </div>
                     </div>
                 </div>
 
                 <div class="plan-row">
-                    <div class="row-label">Fila A</div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('a1', assignToDisplay)}
-                        ${renderHistoryDeskHTML('a2', assignToDisplay)}
+                    <span class="row-label">B</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('b1', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b2', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('b3', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b4', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b5', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('b6', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b7', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b8', assignToDisplay)}
+                        </div>
                     </div>
-                    <div class="aisle-divider"></div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('a3', assignToDisplay)}
-                        ${renderHistoryDeskHTML('a4', assignToDisplay)}
-                        ${renderHistoryDeskHTML('a5', assignToDisplay)}
-                    </div>
-                    <div class="aisle-divider"></div>
-                    <div class="desk-block">
-                        ${renderHistoryDeskHTML('a6', assignToDisplay)}
-                        ${renderHistoryDeskHTML('a7', assignToDisplay)}
-                        ${renderHistoryDeskHTML('a8', assignToDisplay)}
+                </div>
+
+                <div class="plan-row">
+                    <span class="row-label">A</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('a1', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a2', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('a3', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a4', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a5', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('a6', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a7', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a8', assignToDisplay)}
+                        </div>
                     </div>
                 </div>
             `;
@@ -1409,6 +1452,7 @@
             const stId = Object.keys(assignMap).find(id => assignMap[id] === code);
             const st = stId ? AppState.students.find(s => s.id == stId) : null;
             const isSelected = AppState.historySelectedSeatCode === code;
+            const displayName = st ? getDeskDisplayName(st.name) : '<span style="color:#8E8E93">Libero</span>';
 
             return `
                 <div class="desk-unit ${isSelected ? 'selected' : ''}" onclick="tapHistoryDesk('${code}')">
@@ -1416,9 +1460,9 @@
                         <span class="desk-code">${code.toUpperCase()}</span>
                         <span class="desk-badge ${getScoreBadgeClass(seat.score)}">${seat.score.toFixed(1)}</span>
                     </div>
-                    <div class="desk-name">${st ? st.name : '<span style="color:#8E8E93">Libero</span>'}</div>
+                    <div class="desk-name">${displayName}</div>
                     <div class="desk-footer">
-                        <span>Punteggio: ${seat.score}</span>
+                        <span>P:${seat.score}</span>
                         <span style="color:var(--ios-blue);">T${AppState.viewingHistoryRound}</span>
                     </div>
                 </div>
@@ -1569,5 +1613,5 @@
         }
         renderAll();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c44285b275a1f',t:'MTc5MDY5ODMxMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c59460b2a4bef',t:'MTc5MDY5OTE3Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
