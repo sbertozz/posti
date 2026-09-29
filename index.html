@@ -59,11 +59,11 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 12px;
-            padding: 0 4px;
+            padding: 0 2px;
         }
 
         .nav-title {
-            font-size: 1.65rem;
+            font-size: 1.6rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             color: var(--ios-label);
@@ -73,7 +73,7 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 2px;
         }
 
         /* Native iOS Buttons */
@@ -81,10 +81,10 @@
             background: none;
             border: none;
             color: var(--ios-blue);
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 500;
             cursor: pointer;
-            padding: 4px 6px;
+            padding: 4px 5px;
         }
 
         .btn-link:active {
@@ -95,9 +95,9 @@
             background: var(--ios-blue);
             color: #FFFFFF;
             border: none;
-            padding: 6px 13px;
+            padding: 6px 12px;
             border-radius: 18px;
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
@@ -568,7 +568,7 @@
             width: 100%;
             border-radius: 18px 18px 0 0;
             padding: 12px 16px calc(env(safe-area-inset-bottom, 20px) + 16px);
-            max-height: 85vh;
+            max-height: 88vh;
             overflow-y: auto;
         }
 
@@ -696,6 +696,87 @@
             background: #FFFFFF;
         }
 
+        /* AI Assistant Chat Stream */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 48vh;
+            overflow-y: auto;
+            padding: 4px 2px 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .chat-msg {
+            display: flex;
+            flex-direction: column;
+            max-width: 88%;
+            font-size: 0.85rem;
+            line-height: 1.35;
+        }
+
+        .chat-msg.assistant {
+            align-self: flex-start;
+            background: #E5E5EA;
+            color: #000000;
+            padding: 10px 14px;
+            border-radius: 16px 16px 16px 4px;
+        }
+
+        .chat-msg.user {
+            align-self: flex-end;
+            background: var(--ios-blue);
+            color: #FFFFFF;
+            padding: 10px 14px;
+            border-radius: 16px 16px 4px 16px;
+        }
+
+        .chat-suggestion-chips {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 6px 0 10px;
+            margin-top: 6px;
+        }
+
+        .suggestion-chip {
+            background: #F2F2F7;
+            border: 1px solid var(--ios-border);
+            padding: 6px 12px;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ios-blue);
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .suggestion-chip:active {
+            background: #E5E5EA;
+        }
+
+        .chat-input-bar {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--ios-border);
+            font-size: 0.88rem;
+            background: #F8F8FA;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--ios-blue);
+            background: #FFFFFF;
+        }
+
         /* Image Save Sheet Modal */
         #img-preview-container {
             text-align: center;
@@ -745,6 +826,7 @@
     <div class="navbar">
         <h1 class="nav-title">Banchi</h1>
         <div class="nav-actions">
+            <button class="btn-link" onclick="openAssistantSheet()">Consulente</button>
             <button class="btn-link" onclick="openVotiSheet()">Voti</button>
             <button class="btn-link" onclick="openVincoliSheet()">Vincoli</button>
             <button class="btn-primary" onclick="calcolaDisposizione()">Calcola</button>
@@ -921,6 +1003,42 @@
         <button class="btn-link" style="color:#FFFFFF; font-weight:600;" onclick="cancelHistorySwap()">Annulla</button>
     </div>
 
+    <!-- iOS Native Modal Sheet: Consulente AI Integrato -->
+    <div id="sheet-assistant" class="sheet-overlay">
+        <div class="sheet-container">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div>
+                    <div class="sheet-title">Consulente Banchi</div>
+                    <span style="font-size:0.75rem; color:var(--ios-secondary-label);">Analisi e consigli intelligenti per l'aula</span>
+                </div>
+                <button class="btn-link" onclick="closeAssistantSheet()">Fine</button>
+            </div>
+
+            <!-- Chat Stream -->
+            <div class="chat-container" id="chat-stream">
+                <div class="chat-msg assistant">
+                    Ciao! Sono il consulente integrato della classe. Puoi chiedermi dove posizionare qualsiasi compagno per massimizzare l'equità (es. <em>"Dove posso mettere Claudia?"</em>), chi deve recuperare punti o chiedermi consigli per i prossimi turni!
+                </div>
+            </div>
+
+            <!-- Quick Suggestion Chips -->
+            <div class="chat-suggestion-chips">
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Dove posso mettere Claudia per rendere la mappa più equa?')">Dove mettere Claudia?</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Chi deve recuperare punti in questo turno?')">Chi deve recuperare?</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Qual è la situazione generale di equità dell aula?')">Analisi aula</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Chi ha la media più alta al momento?')">Chi è in testa?</button>
+            </div>
+
+            <!-- Chat Input Bar -->
+            <div class="chat-input-bar">
+                <input type="text" id="chat-input-text" class="chat-input" placeholder="Chiedi un consiglio o un nome..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+                <button class="btn-primary" style="padding:8px 14px;" onclick="sendChatMessage()">Invia</button>
+            </div>
+        </div>
+    </div>
+
     <!-- iOS Native Modal Sheet: Modifica Voti dei Banchi -->
     <div id="sheet-voti" class="sheet-overlay">
         <div class="sheet-container">
@@ -1016,7 +1134,6 @@
     </div>
 
     <script>
-        // Exact 23 Seats with user's revised scores: b2=5.0, b3=5.5, b4=5.5, b5=5.5
         const DEFAULT_SEATS = [
             // Fila C (Davanti)
             { code: "c1", row: "c", block: "c_l", score: 6.5 },
@@ -1077,7 +1194,7 @@
             return sum / SEATS.length;
         }
 
-        const STORAGE_KEY = "banchi_ios_state_v7";
+        const STORAGE_KEY = "banchi_ios_state_v8";
 
         let AppState = {
             currentRound: 1,
@@ -1091,7 +1208,7 @@
             historyRounds: [],
             forbiddenPairs: [],
             fixedPairs: [],
-            customSeatScores: {}, // seatCode -> score
+            customSeatScores: {},
             selectedSeatCode: null,
             historySelectedSeatCode: null,
             viewingHistoryRound: null
@@ -1114,7 +1231,6 @@
                     const parsed = JSON.parse(saved);
                     if (parsed && parsed.students && parsed.students.length === 23) {
                         AppState = parsed;
-                        // Restore custom seat scores if any
                         if (AppState.customSeatScores) {
                             SEATS.forEach(s => {
                                 if (AppState.customSeatScores[s.code] !== undefined) {
@@ -1404,7 +1520,6 @@
 
                 const displayName = st ? getDeskDisplayName(st.name) : '<span style="color:#8E8E93">Libero</span>';
 
-                // 100% Readable Bonus / Malus tag
                 let diffClass = "diff-zero";
                 let diffSign = "";
                 if (diff > 0.05) { diffClass = "diff-pos"; diffSign = "+"; }
@@ -1529,7 +1644,7 @@
             showToast(`Turno ${AppState.currentRound - 1} archiviato`);
         }
 
-        // DESK SCORES EDITING SHEET (ORGANIZED & MOBILE OPTIMIZED)
+        // DESK SCORES EDITING SHEET
         function openVotiSheet() {
             renderVotiGrids();
             document.getElementById('sheet-voti').classList.add('active');
@@ -1585,6 +1700,163 @@
             saveStateToStorage();
             renderAll();
             showToast("Voti dei banchi ripristinati");
+        }
+
+        // EMBEDDED AI ADVISOR (CONSULENTE BANCHI)
+        function openAssistantSheet() {
+            document.getElementById('sheet-assistant').classList.add('active');
+        }
+
+        function closeAssistantSheet() {
+            document.getElementById('sheet-assistant').classList.remove('active');
+        }
+
+        function askPredefinedQuery(text) {
+            document.getElementById('chat-input-text').value = text;
+            sendChatMessage();
+        }
+
+        function sendChatMessage() {
+            const inputEl = document.getElementById('chat-input-text');
+            const userText = inputEl.value.trim();
+            if (!userText) return;
+
+            const chatStream = document.getElementById('chat-stream');
+
+            // Add user message bubble
+            const userMsgEl = document.createElement('div');
+            userMsgEl.className = 'chat-msg user';
+            userMsgEl.textContent = userText;
+            chatStream.appendChild(userMsgEl);
+            inputEl.value = '';
+
+            // Compute AI Advice
+            const responseData = computeAdvisorResponse(userText);
+
+            setTimeout(() => {
+                const aiMsgEl = document.createElement('div');
+                aiMsgEl.className = 'chat-msg assistant';
+                aiMsgEl.innerHTML = responseData.html;
+                chatStream.appendChild(aiMsgEl);
+                chatStream.scrollTop = chatStream.scrollHeight;
+            }, 180);
+
+            chatStream.scrollTop = chatStream.scrollHeight;
+        }
+
+        function computeAdvisorResponse(query) {
+            const q = query.toLowerCase();
+            const classAvg = getClassAvg();
+
+            // 1. Specific Student Query
+            const matchedSt = AppState.students.find(s => q.includes(s.name.toLowerCase()));
+            if (matchedSt) {
+                const curSeatCode = AppState.currentAssign[matchedSt.id];
+                const curSeat = SEATS.find(s => s.code === curSeatCode);
+                const curMean = getStudentEffectiveMean(matchedSt);
+                const len = (matchedSt.history && matchedSt.history.length > 0) ? matchedSt.history.length : 1;
+
+                // Target score to hit classAvg
+                const targetScore = classAvg * (len + 1) - curMean * len;
+
+                // Rank candidate desks
+                const candidates = SEATS.map(s => {
+                    const projectedMean = (curMean * len + s.score) / (len + 1);
+                    const delta = Math.abs(projectedMean - classAvg);
+                    const occupantId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === s.code);
+                    const occupant = occupantId ? AppState.students.find(x => x.id == occupantId) : null;
+                    return { seat: s, projectedMean, delta, occupant };
+                }).sort((a, b) => a.delta - b.delta);
+
+                const best = candidates[0];
+                const second = candidates[1];
+
+                let advice = `<strong>Consiglio per ${matchedSt.name}:</strong><br>`;
+                advice += `• Media attuale: <strong>${curMean.toFixed(1)}</strong> (Banco attuale: <strong>${curSeat ? curSeat.code.toUpperCase() + ' da ' + curSeat.score.toFixed(1) : '-'}</strong>)<br>`;
+                advice += `• Punteggio ideale per l'equità: <strong>${targetScore.toFixed(1)}</strong><br><br>`;
+                advice += `Il posto ideale è <strong>${best.seat.code.toUpperCase()}</strong> (${best.seat.score.toFixed(1)} punti, Fila ${best.seat.row.toUpperCase()}). Con questo banco la sua media diventa <strong>${best.projectedMean.toFixed(2)}</strong> (vicinissima a ${classAvg.toFixed(2)}).`;
+
+                if (best.occupant && best.occupant.id !== matchedSt.id) {
+                    advice += `<br><br>👉 Puoi scambiarlo con <strong>${best.occupant.name}</strong> che si trova attualmente lì:`;
+                    advice += `<br><button class="btn-primary" style="margin-top:6px; font-size:0.78rem; padding:5px 10px;" onclick="applyAdvisorSwap(${matchedSt.id}, ${best.occupant.id})">Applica Scambio con ${best.occupant.name}</button>`;
+                }
+
+                return { html: advice };
+            }
+
+            // 2. Who needs points / who is lowest?
+            if (q.includes('recuperare') || q.includes('bassa') || q.includes('peggio') || q.includes('svantaggiat')) {
+                const sortedLowest = [...AppState.students].sort((a, b) => getStudentEffectiveMean(a) - getStudentEffectiveMean(b));
+                const top3 = sortedLowest.slice(0, 3);
+
+                let advice = `<strong>Studenti che devono recuperare punteggio:</strong><br>`;
+                top3.forEach((st, idx) => {
+                    const curSeatCode = AppState.currentAssign[st.id];
+                    const curSeat = SEATS.find(s => s.code === curSeatCode);
+                    advice += `${idx + 1}. <strong>${st.name}</strong> (Media: <strong>${getStudentEffectiveMean(st).toFixed(2)}</strong>, Banco attuale: ${curSeat ? curSeat.code.toUpperCase() : '-' })<br>`;
+                });
+                advice += `<br>💡 Consiglio di assegnare a loro i banchi di Fila A (es. A1, A3, A5, A8 da 9.0 - 10.0) per farli riallineare alla media di ${classAvg.toFixed(2)}.`;
+                return { html: advice };
+            }
+
+            // 3. Who has highest average?
+            if (q.includes('alta') || q.includes('testa') || q.includes('meglio') || q.includes('vantaggio')) {
+                const sortedHighest = [...AppState.students].sort((a, b) => getStudentEffectiveMean(b) - getStudentEffectiveMean(a));
+                const top3 = sortedHighest.slice(0, 3);
+
+                let advice = `<strong>Studenti con la media più alta:</strong><br>`;
+                top3.forEach((st, idx) => {
+                    advice += `${idx + 1}. <strong>${st.name}</strong> (Media: <strong>${getStudentEffectiveMean(st).toFixed(2)}</strong>)<br>`;
+                });
+                advice += `<br>💡 Nel prossimo turno andranno verso Fila C (Davanti) per riequilibrare la classe.`;
+                return { html: advice };
+            }
+
+            // 4. Overall Class Fairness Analysis
+            if (q.includes('equità') || q.includes('analisi') || q.includes('situazione') || q.includes('generale') || q.includes('come sta')) {
+                const means = AppState.students.map(s => getStudentEffectiveMean(s));
+                const minM = Math.min(...means);
+                const maxM = Math.max(...means);
+                const spread = maxM - minM;
+
+                let advice = `<strong>Analisi Generale di Equità Aula:</strong><br>`;
+                advice += `• Media Aula Obiettivo: <strong>${classAvg.toFixed(2)}</strong><br>`;
+                advice += `• Media più bassa: <strong>${minM.toFixed(2)}</strong><br>`;
+                advice += `• Media più alta: <strong>${maxM.toFixed(2)}</strong><br>`;
+                advice += `• Discrepanza attuale: <strong>${spread.toFixed(2)} punti</strong><br><br>`;
+
+                if (spread <= 1.0) {
+                    advice += `🟢 <strong>Ottimo bilanciamento:</strong> la classe è perfettamente allineata intorno alla media aula!`;
+                } else if (spread <= 2.5) {
+                    advice += `🟡 <strong>Buon bilanciamento:</strong> le differenze rientreranno automaticamente con il prossimo turno.`;
+                } else {
+                    advice += `🟠 <strong>Fase iniziale di assestamento:</strong> l'algoritmo compenserà con precisione al prossimo turno inviando i punteggi alti dietro.`;
+                }
+                return { html: advice };
+            }
+
+            // Default fallback response
+            return {
+                html: `Posso darti consigli precisi su qualsiasi aspetto dell'aula:<br>` +
+                      `• Chiedimi di uno studente specifico (es. <em>"Dove posso mettere Manuel?"</em>)<br>` +
+                      `• Chiedimi <em>"Chi deve recuperare?"</em> o <em>"Analisi equità"</em><br>` +
+                      `• Chiedimi informazioni sui banchi migliori di Fila A o Fila B!`
+            };
+        }
+
+        function applyAdvisorSwap(st1Id, st2Id) {
+            const code1 = AppState.currentAssign[st1Id];
+            const code2 = AppState.currentAssign[st2Id];
+            const st1 = AppState.students.find(s => s.id === st1Id);
+            const st2 = AppState.students.find(s => s.id === st2Id);
+
+            AppState.currentAssign[st1Id] = code2;
+            AppState.currentAssign[st2Id] = code1;
+
+            saveStateToStorage();
+            renderAll();
+            closeAssistantSheet();
+            showToast(`Scambiati ${st1.name} e ${st2.name} come suggerito!`);
         }
 
         // HIGH RESOLUTION CANVAS PHOTO EXPORT
@@ -2121,5 +2393,5 @@
         }
         renderAll();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42cbcebdb87cd75',t:'MTc5MDcwMzI1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
