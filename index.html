@@ -3,154 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Banchi">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <!-- Apple Touch Icon & Favicon (Embedded Base64 for 100% Reliable iOS Home Screen Icon) -->
+    <link rel="apple-touch-icon" href="data:image/png;base64,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HRutNfUcxgbgMXeze609VRtdwUZrDT6ByQF4jF7uFlecp43WstFas999eAAe0/fb6bqTtNEqNlpr/FvPD8AjsOIGV5+hjV5no7UK75sIwKOx5XX2nJ6NXmGjtSJvWgnAI7PocjvPzUbfY6O1Cu/44e3x4/3uZ9jt/dfdT/AfceOXgY2eZKO1Ov/0fygG4F8jb/DrjvoasNEf2Wito85zp3QAAMpC3wMA4HcCABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAEPV/+UpFVfhKkYQAAAAASUVORK5CYII=">
+    <link rel="apple-touch-icon-precomposed" href="data:image/png;base64,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HRutNfUcxgbgMXeze609VRtdwUZrDT6ByQF4jF7uFlecp43WstFas999eAAe0/fb6bqTtNEqNlpr/FvPD8AjsOIGV5+hjV5no7UK75sIwKOx5XX2nJ6NXmGjtSJvWgnAI7PocjvPzUbfY6O1Cu/44e3x4/3uZ9jt/dfdT/AfceOXgY2eZKO1Ov/0fygG4F8jb/DrjvoasNEf2Wito85zp3QAAMpC3wMA4HcCABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAEPV/+UpFVfhKkYQAAAAASUVORK5CYII=">
+    <link rel="icon" type="image/png" href="data:image/png;base64,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HRutNfUcxgbgMXeze609VRtdwUZrDT6ByQF4jF7uFlecp43WstFas999eAAe0/fb6bqTtNEqNlpr/FvPD8AjsOIGV5+hjV5no7UK75sIwKOx5XX2nJ6NXmGjtSJvWgnAI7PocjvPzUbfY6O1Cu/44e3x4/3uZ9jt/dfdT/AfceOXgY2eZKO1Ov/0fygG4F8jb/DrjvoasNEf2Wito85zp3QAAMpC3wMA4HcCABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAECUAAFECABAlAABRAgAQJQAAUQIAEPV/+UpFVfhKkYQAAAAASUVORK5CYII=">
     
-    <title>Disposizione Banchi</title>
+    <title>Banchi</title>
     <style>
         :root {
-            --bg: #f2f2f7;
-            --card: #ffffff;
-            --blue: #007aff;
-            --green: #34c759;
-            --orange: #ff9500;
-            --red: #ff3b30;
-            --text: #000000;
-            --subtext: #6c6c70;
-            --border: #d1d1d6;
+            --ios-bg: #F2F2F7;
+            --ios-card: #FFFFFF;
+            --ios-card-secondary: #F8F8FA;
+            --ios-blue: #007AFF;
+            --ios-green: #34C759;
+            --ios-orange: #FF9500;
+            --ios-red: #FF3B30;
+            --ios-label: #000000;
+            --ios-secondary-label: #8E8E93;
+            --ios-tertiary-label: #C7C7CC;
+            --ios-separator: #E5E5EA;
+            --ios-border: #D1D1D6;
+            --ios-segment-bg: #7676801F;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            padding: calc(env(safe-area-inset-top, 0px) + 10px) 12px calc(env(safe-area-inset-bottom, 20px) + 20px);
+            background-color: var(--ios-bg);
+            color: var(--ios-label);
+            padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px calc(env(safe-area-inset-bottom, 20px) + 24px);
             min-height: 100vh;
             user-select: none;
             -webkit-user-select: none;
+            letter-spacing: -0.01em;
         }
 
-        /* Header */
-        .top-header {
+        /* iOS Navigation Bar */
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
-        .title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-        }
-
-        .header-actions {
-            display: flex;
-            gap: 6px;
-        }
-
-        .btn {
-            background: var(--blue);
-            color: white;
-            border: none;
-            padding: 7px 12px;
-            border-radius: 16px;
-            font-size: 0.78rem;
+        .nav-title {
+            font-size: 1.7rem;
             font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ios-label);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Native iOS Buttons */
+        .btn-link {
+            background: none;
+            border: none;
+            color: var(--ios-blue);
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 4px 6px;
+        }
+
+        .btn-link:active {
+            opacity: 0.4;
+        }
+
+        .btn-primary {
+            background: var(--ios-blue);
+            color: #FFFFFF;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
+            transition: opacity 0.15s;
         }
 
-        .btn:active {
+        .btn-primary:active {
+            opacity: 0.7;
+        }
+
+        .btn-secondary {
+            background: #E5E5EA;
+            color: var(--ios-label);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-secondary:active {
+            background: #D1D1D6;
+        }
+
+        .btn-destructive {
+            background: rgba(255, 59, 48, 0.12);
+            color: var(--ios-red);
+            border: none;
+            padding: 5px 12px;
+            border-radius: 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-destructive:active {
+            background: rgba(255, 59, 48, 0.25);
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: var(--ios-blue);
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.2);
+        }
+
+        .btn-full:active {
             opacity: 0.8;
-            transform: scale(0.96);
+            transform: scale(0.99);
         }
 
-        .btn-gray {
-            background: #e5e5ea;
-            color: #000;
-        }
-
-        .btn-green {
-            background: var(--green);
-        }
-
-        .btn-red {
-            background: #fee2e2;
-            color: var(--red);
-        }
-
-        /* Segmented Tabs */
-        .segmented {
-            background: #e2e8f0;
+        /* Native iOS Segmented Control */
+        .segmented-control {
+            background: var(--ios-segment-bg);
             padding: 3px;
-            border-radius: 10px;
+            border-radius: 9px;
             display: flex;
-            margin-bottom: 10px;
+            margin-bottom: 14px;
+            position: relative;
         }
 
-        .seg-btn {
+        .segment-item {
             flex: 1;
             background: transparent;
             border: none;
-            padding: 7px 8px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            color: #64748b;
-            border-radius: 8px;
+            padding: 6px 0;
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--ios-label);
+            border-radius: 7px;
             cursor: pointer;
-            transition: all 0.15s;
             text-align: center;
+            transition: background 0.15s, box-shadow 0.15s;
         }
 
-        .seg-btn.active {
-            background: white;
-            color: var(--text);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        .segment-item.active {
+            background: #FFFFFF;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.1);
         }
 
-        /* Stats Bar */
-        .stats-bar {
-            background: var(--card);
+        /* Native iOS Inset Header Summary */
+        .summary-card {
+            background: var(--ios-card);
             border-radius: 12px;
-            padding: 8px 12px;
+            padding: 10px 16px;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--subtext);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            align-items: center;
+            margin-bottom: 14px;
+            font-size: 0.8rem;
+            color: var(--ios-secondary-label);
         }
 
-        .stats-bar strong {
-            color: var(--text);
+        .summary-card .val {
+            color: var(--ios-label);
+            font-weight: 600;
         }
 
         /* Tab Content */
-        .tab-content {
+        .tab-pane {
             display: none;
         }
 
-        .tab-content.active {
+        .tab-pane.active {
             display: block;
         }
 
-        /* Clean Classroom Grid Container (No doors/windows/blackboard) */
+        /* Classroom Card */
         .classroom-card {
-            background: var(--card);
+            background: var(--ios-card);
             border-radius: 16px;
-            padding: 12px 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            margin-bottom: 12px;
+            padding: 14px 10px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            margin-bottom: 14px;
         }
 
         .classroom-scroll {
@@ -160,254 +225,380 @@
         }
 
         .classroom-plan {
-            min-width: 580px;
+            min-width: 590px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            background: #f8fafc;
-            padding: 12px 10px;
+            background: var(--ios-card-secondary);
+            padding: 14px 12px;
             border-radius: 12px;
-            border: 1.5px dashed #cbd5e1;
+            border: 1px solid var(--ios-separator);
         }
 
         .plan-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .row-label {
-            width: 52px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            color: var(--subtext);
+            width: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
             text-transform: uppercase;
-            line-height: 1.15;
+            letter-spacing: 0.03em;
             text-align: center;
         }
 
-        /* Desk Blocks */
         .desk-block {
             display: flex;
-            background: #e2e8f0;
+            background: #E5E5EA;
             padding: 3px;
-            border-radius: 10px;
+            border-radius: 9px;
             gap: 3px;
-            border: 1.5px solid #cbd5e1;
+            border: 1px solid #D1D1D6;
         }
 
-        .aisle-space {
-            font-size: 0.65rem;
-            font-weight: 900;
-            color: #94a3b8;
-            padding: 0 4px;
-            letter-spacing: -1px;
+        .aisle-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--ios-separator);
+            margin: 0 4px;
         }
 
-        /* Individual Desk Box */
-        .desk-box {
-            background: #ffffff;
-            width: 72px;
-            min-height: 72px;
+        /* Individual Desk Unit */
+        .desk-unit {
+            background: #FFFFFF;
+            width: 74px;
+            min-height: 74px;
             border-radius: 7px;
-            padding: 5px;
+            padding: 6px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            border: 2px solid transparent;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.06);
-            transition: all 0.12s;
+            border: 1.5px solid transparent;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            transition: all 0.12s ease;
         }
 
-        .desk-box:active {
-            transform: scale(0.95);
+        .desk-unit:active {
+            transform: scale(0.96);
         }
 
-        .desk-box.selected {
-            border-color: var(--orange) !important;
-            background: #fffbeb !important;
-            box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.4);
-            animation: pulse 1s infinite alternate;
+        .desk-unit.selected {
+            border-color: var(--ios-orange) !important;
+            background: #FFF8EB !important;
+            box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.35);
         }
 
-        @keyframes pulse {
-            from { transform: scale(1); }
-            to { transform: scale(1.03); }
-        }
-
-        .desk-head {
+        .desk-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.65rem;
-            font-weight: 800;
+            font-size: 0.68rem;
+            font-weight: 700;
         }
 
         .desk-code {
-            color: #1e293b;
+            color: #3C3C43;
         }
 
-        .desk-score {
+        .desk-badge {
+            font-size: 0.62rem;
+            font-weight: 700;
             padding: 1px 4px;
             border-radius: 4px;
-            font-weight: 800;
-            font-size: 0.62rem;
         }
 
-        .sc-10 { background: #bbf7d0; color: #14532d; border: 1.5px solid #16a34a; font-weight: 900; }
-        .sc-top { background: #dcfce7; color: #166534; font-weight: 800; }
-        .sc-high { background: #e0f2fe; color: #0369a1; }
-        .sc-mid { background: #fef3c7; color: #b45309; }
-        .sc-low { background: #fee2e2; color: #b91c1c; }
+        .badge-10 { background: #D1FADF; color: #027A48; font-weight: 800; }
+        .badge-high { background: #E0F2FE; color: #0369A1; }
+        .badge-mid { background: #FEF3C7; color: #B45309; }
+        .badge-low { background: #FEE2E2; color: #B91C1C; }
 
         .desk-name {
-            font-size: 0.76rem;
-            font-weight: 800;
-            color: var(--text);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--ios-label);
             text-align: center;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
             line-height: 1.15;
-            margin: 2px 0;
+            margin: 3px 0;
         }
 
-        .desk-foot {
+        .desk-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.58rem;
-            color: var(--subtext);
-            border-top: 1px dashed #e2e8f0;
-            padding-top: 2px;
-            line-height: 1;
+            font-size: 0.6rem;
+            color: var(--ios-secondary-label);
+            border-top: 0.5px solid var(--ios-separator);
+            padding-top: 3px;
         }
 
-        .diff {
-            font-weight: 800;
-            padding: 0 2px;
-            border-radius: 2px;
+        .diff-text {
+            font-weight: 700;
         }
 
-        .diff-pos { color: var(--green); }
-        .diff-neg { color: var(--red); }
-        .diff-zero { color: var(--subtext); }
+        .diff-pos { color: var(--ios-green); }
+        .diff-neg { color: var(--ios-red); }
+        .diff-zero { color: var(--ios-secondary-label); }
 
-        /* Floating Swap Alert Bar */
-        .swap-bar {
-            position: fixed;
-            bottom: calc(env(safe-area-inset-bottom, 20px) + 12px);
-            left: 12px;
-            right: 12px;
-            background: #1c1c1e;
-            color: white;
-            padding: 12px 14px;
-            border-radius: 14px;
-            display: none;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-            z-index: 50;
+        /* iOS Inset Grouped List (Medie) */
+        .inset-list-section {
+            margin-bottom: 20px;
         }
 
-        .swap-bar.active {
-            display: flex;
+        .section-header {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ios-secondary-label);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0 0 6px 12px;
         }
 
-        /* Editable Student Medie List */
-        .student-item {
-            background: var(--card);
+        .inset-list {
+            background: var(--ios-card);
             border-radius: 12px;
-            padding: 10px 14px;
-            margin-bottom: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .list-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-            gap: 10px;
+            padding: 11px 16px;
+            position: relative;
         }
 
-        .st-name {
-            font-size: 0.88rem;
-            font-weight: 800;
+        .list-row:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 48px;
+            right: 0;
+            height: 0.5px;
+            background: var(--ios-separator);
         }
 
-        .st-history-trace {
-            font-size: 0.68rem;
-            color: var(--subtext);
-            margin-top: 2px;
-        }
-
-        .st-mean-input-box {
+        .row-left {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 12px;
         }
 
-        .mean-input {
-            width: 60px;
-            padding: 6px 4px;
-            border-radius: 8px;
-            border: 1.5px solid var(--border);
-            font-size: 0.95rem;
-            font-weight: 800;
-            color: var(--blue);
+        .row-rank {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
+            width: 20px;
             text-align: center;
-            background: #f8fafc;
         }
 
-        .mean-input:focus {
+        .row-name {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--ios-label);
+        }
+
+        .row-sub {
+            font-size: 0.72rem;
+            color: var(--ios-secondary-label);
+            margin-top: 1px;
+        }
+
+        .mean-field {
+            width: 64px;
+            padding: 5px 6px;
+            border-radius: 7px;
+            border: 1px solid var(--ios-border);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--ios-blue);
+            text-align: center;
+            background: #F9F9FB;
+        }
+
+        .mean-field:focus {
             outline: none;
-            border-color: var(--blue);
-            background: white;
+            border-color: var(--ios-blue);
+            background: #FFFFFF;
         }
 
-        /* History Round Chips */
-        .round-selector-bar {
+        /* History Chips */
+        .history-chips {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             overflow-x: auto;
             padding-bottom: 8px;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .round-chip {
-            background: white;
-            border: 1px solid var(--border);
-            padding: 6px 12px;
+        .history-chip {
+            background: var(--ios-card);
+            border: 1px solid var(--ios-border);
+            padding: 6px 14px;
             border-radius: 16px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--subtext);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--ios-secondary-label);
             white-space: nowrap;
             cursor: pointer;
         }
 
-        .round-chip.active {
-            background: var(--blue);
-            color: white;
-            border-color: var(--blue);
+        .history-chip.active {
+            background: var(--ios-blue);
+            color: #FFFFFF;
+            border-color: var(--ios-blue);
         }
 
-        /* Toast */
+        /* Interactive Swap Floating Bar */
+        .swap-alert {
+            position: fixed;
+            bottom: calc(env(safe-area-inset-bottom, 20px) + 16px);
+            left: 16px;
+            right: 16px;
+            background: rgba(28, 28, 30, 0.96);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #FFFFFF;
+            padding: 12px 16px;
+            border-radius: 14px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            z-index: 50;
+        }
+
+        .swap-alert.active {
+            display: flex;
+        }
+
+        /* iOS Modal Sheet */
+        .sheet-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            display: none;
+            align-items: flex-end;
+            z-index: 100;
+        }
+
+        .sheet-overlay.active {
+            display: flex;
+        }
+
+        .sheet-container {
+            background: var(--ios-card);
+            width: 100%;
+            border-radius: 20px 20px 0 0;
+            padding: 12px 18px calc(env(safe-area-inset-bottom, 20px) + 18px);
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .sheet-grabber {
+            width: 36px;
+            height: 5px;
+            background: #C7C7CC;
+            border-radius: 2.5px;
+            margin: 0 auto 12px;
+        }
+
+        .sheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .sheet-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .vincoli-section-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 8px;
+        }
+
+        .pair-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #F2F2F7;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin: 3px;
+            border: 1px solid var(--ios-border);
+        }
+
+        .pair-tag.fixed-tag {
+            border-color: #A7F3D0;
+            background: #ECFDF5;
+            color: #065F46;
+        }
+
+        .pair-tag.forbid-tag {
+            border-color: #FECACA;
+            background: #FEF2F2;
+            color: #991B1B;
+        }
+
+        .pair-delete {
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0 4px;
+            color: var(--ios-secondary-label);
+        }
+
+        select.ios-select {
+            width: 100%;
+            padding: 9px 12px;
+            border-radius: 10px;
+            border: 1px solid var(--ios-border);
+            font-size: 0.9rem;
+            background: #F8F8FA;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--ios-label);
+        }
+
+        /* Notification Banner */
         .toast {
             position: fixed;
-            top: 20px;
+            top: 16px;
             left: 50%;
             transform: translateX(-50%) translateY(-20px);
-            background: #1c1c1e;
-            color: white;
-            padding: 8px 16px;
+            background: rgba(28, 28, 30, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #FFFFFF;
+            padding: 8px 18px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.82rem;
             font-weight: 600;
             opacity: 0;
             pointer-events: none;
-            transition: all 0.2s;
-            z-index: 100;
+            transition: all 0.25s ease;
+            z-index: 200;
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
         }
 
         .toast.show {
@@ -420,118 +611,110 @@
 
     <div id="toast" class="toast">Notifica</div>
 
-    <!-- Header -->
-    <div class="top-header">
-        <h1 class="title">Banchi</h1>
-        <div class="header-actions">
-            <button class="btn" onclick="calcolaDisposizione()">⚡ Calcola</button>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <h1 class="nav-title">Banchi</h1>
+        <div class="nav-actions">
+            <button class="btn-link" onclick="openVincoliSheet()">Vincoli</button>
+            <button class="btn-primary" onclick="calcolaDisposizione()">Calcola</button>
         </div>
     </div>
 
-    <!-- Segmented Navigation -->
-    <div class="segmented">
-        <button id="btn-tab-map" class="seg-btn active" onclick="switchTab('tab-map')">🪑 Piantina</button>
-        <button id="btn-tab-medie" class="seg-btn" onclick="switchTab('tab-medie')">📊 Modifica Medie</button>
-        <button id="btn-tab-storico" class="seg-btn" onclick="switchTab('tab-storico')">📜 Storico</button>
+    <!-- iOS Native Segmented Control -->
+    <div class="segmented-control">
+        <button id="seg-map" class="segment-item active" onclick="switchTab('tab-map')">Piantina</button>
+        <button id="seg-medie" class="segment-item" onclick="switchTab('tab-medie')">Visualizza Medie</button>
+        <button id="seg-storico" class="segment-item" onclick="switchTab('tab-storico')">Storico</button>
     </div>
 
-    <!-- Stats Bar -->
-    <div class="stats-bar">
-        <span>Studenti: <strong>23</strong></span>
-        <span>Media Aula: <strong>6.46</strong></span>
-        <span><strong id="lbl-current-round">Turno 1</strong></span>
+    <!-- Stats Summary Header -->
+    <div class="summary-card">
+        <span>Studenti: <span class="val">23</span></span>
+        <span>Media Aula: <span class="val">6.46</span></span>
+        <span><span class="val" id="lbl-current-round">Turno 1</span></span>
     </div>
 
-    <!-- TAB 1: PIANTINA REALE PULITA -->
-    <div id="tab-map" class="tab-content active">
+    <!-- TAB 1: PIANTINA -->
+    <div id="tab-map" class="tab-pane active">
         
         <div class="classroom-card">
             <div class="classroom-scroll">
                 <div class="classroom-plan">
                     
-                    <!-- FILA C (Davanti) -->
+                    <!-- Fila C -->
                     <div class="plan-row">
                         <div class="row-label">Fila C</div>
                         
-                        <!-- Blocco Sinistra (c1, c2) -->
                         <div class="desk-block">
-                            <div id="seat-c1" class="desk-box" onclick="tapDesk('c1')"></div>
-                            <div id="seat-c2" class="desk-box" onclick="tapDesk('c2')"></div>
+                            <div id="seat-c1" class="desk-unit" onclick="tapDesk('c1')"></div>
+                            <div id="seat-c2" class="desk-unit" onclick="tapDesk('c2')"></div>
                         </div>
 
-                        <div class="aisle-space">||</div>
+                        <div class="aisle-divider"></div>
 
-                        <!-- Blocco Centro (c4, c5) -->
                         <div class="desk-block">
-                            <div id="seat-c4" class="desk-box" onclick="tapDesk('c4')"></div>
-                            <div id="seat-c5" class="desk-box" onclick="tapDesk('c5')"></div>
+                            <div id="seat-c4" class="desk-unit" onclick="tapDesk('c4')"></div>
+                            <div id="seat-c5" class="desk-unit" onclick="tapDesk('c5')"></div>
                         </div>
 
-                        <div class="aisle-space">||</div>
+                        <div class="aisle-divider"></div>
 
-                        <!-- Blocco Destra (c6, c7, c8) -->
                         <div class="desk-block">
-                            <div id="seat-c6" class="desk-box" onclick="tapDesk('c6')"></div>
-                            <div id="seat-c7" class="desk-box" onclick="tapDesk('c7')"></div>
-                            <div id="seat-c8" class="desk-box" onclick="tapDesk('c8')"></div>
+                            <div id="seat-c6" class="desk-unit" onclick="tapDesk('c6')"></div>
+                            <div id="seat-c7" class="desk-unit" onclick="tapDesk('c7')"></div>
+                            <div id="seat-c8" class="desk-unit" onclick="tapDesk('c8')"></div>
                         </div>
                     </div>
 
-                    <!-- FILA B (Centro) -->
+                    <!-- Fila B -->
                     <div class="plan-row">
                         <div class="row-label">Fila B</div>
                         
-                        <!-- Blocco Sinistra (b1, b2) -->
                         <div class="desk-block">
-                            <div id="seat-b1" class="desk-box" onclick="tapDesk('b1')"></div>
-                            <div id="seat-b2" class="desk-box" onclick="tapDesk('b2')"></div>
+                            <div id="seat-b1" class="desk-unit" onclick="tapDesk('b1')"></div>
+                            <div id="seat-b2" class="desk-unit" onclick="tapDesk('b2')"></div>
                         </div>
 
-                        <div class="aisle-space">||</div>
+                        <div class="aisle-divider"></div>
 
-                        <!-- Blocco Centro (b3, b4, b5) -->
                         <div class="desk-block">
-                            <div id="seat-b3" class="desk-box" onclick="tapDesk('b3')"></div>
-                            <div id="seat-b4" class="desk-box" onclick="tapDesk('b4')"></div>
-                            <div id="seat-b5" class="desk-box" onclick="tapDesk('b5')"></div>
+                            <div id="seat-b3" class="desk-unit" onclick="tapDesk('b3')"></div>
+                            <div id="seat-b4" class="desk-unit" onclick="tapDesk('b4')"></div>
+                            <div id="seat-b5" class="desk-unit" onclick="tapDesk('b5')"></div>
                         </div>
 
-                        <div class="aisle-space">||</div>
+                        <div class="aisle-divider"></div>
 
-                        <!-- Blocco Destra (b6, b7, b8) -->
                         <div class="desk-block">
-                            <div id="seat-b6" class="desk-box" onclick="tapDesk('b6')"></div>
-                            <div id="seat-b7" class="desk-box" onclick="tapDesk('b7')"></div>
-                            <div id="seat-b8" class="desk-box" onclick="tapDesk('b8')"></div>
+                            <div id="seat-b6" class="desk-unit" onclick="tapDesk('b6')"></div>
+                            <div id="seat-b7" class="desk-unit" onclick="tapDesk('b7')"></div>
+                            <div id="seat-b8" class="desk-unit" onclick="tapDesk('b8')"></div>
                         </div>
                     </div>
 
-                    <!-- FILA A (Fondo) -->
+                    <!-- Fila A -->
                     <div class="plan-row">
                         <div class="row-label">Fila A</div>
                         
-                        <!-- Blocco Sinistra (a1, a2) -->
                         <div class="desk-block">
-                            <div id="seat-a1" class="desk-box" onclick="tapDesk('a1')"></div>
-                            <div id="seat-a2" class="desk-box" onclick="tapDesk('a2')"></div>
+                            <div id="seat-a1" class="desk-unit" onclick="tapDesk('a1')"></div>
+                            <div id="seat-a2" class="desk-unit" onclick="tapDesk('a2')"></div>
                         </div>
 
-                        <div class="aisle-space">||</div>
+                        <div class="aisle-divider"></div>
 
-                        <!-- Blocco Centro (a3, a4, a5) -->
                         <div class="desk-block">
-                            <div id="seat-a3" class="desk-box" onclick="tapDesk('a3')"></div>
-                            <div id="seat-a4" class="desk-box" onclick="tapDesk('a4')"></div>
-                            <div id="seat-a5" class="desk-box" onclick="tapDesk('a5')"></div>
+                            <div id="seat-a3" class="desk-unit" onclick="tapDesk('a3')"></div>
+                            <div id="seat-a4" class="desk-unit" onclick="tapDesk('a4')"></div>
+                            <div id="seat-a5" class="desk-unit" onclick="tapDesk('a5')"></div>
                         </div>
 
-                        <div class="aisle-space">||</div>
+                        <div class="aisle-divider"></div>
 
-                        <!-- Blocco Destra (a6, a7, a8) -->
                         <div class="desk-block">
-                            <div id="seat-a6" class="desk-box" onclick="tapDesk('a6')"></div>
-                            <div id="seat-a7" class="desk-box" onclick="tapDesk('a7')"></div>
-                            <div id="seat-a8" class="desk-box" onclick="tapDesk('a8')"></div>
+                            <div id="seat-a6" class="desk-unit" onclick="tapDesk('a6')"></div>
+                            <div id="seat-a7" class="desk-unit" onclick="tapDesk('a7')"></div>
+                            <div id="seat-a8" class="desk-unit" onclick="tapDesk('a8')"></div>
                         </div>
                     </div>
 
@@ -539,36 +722,36 @@
             </div>
         </div>
 
-        <button class="btn btn-green" style="width:100%; padding:13px; border-radius:12px; font-size:0.9rem; font-weight:800; justify-content:center;" onclick="saveAndNextRound()">
-            💾 Salva Turno Corrente e Avanza
+        <button class="btn-full" onclick="saveAndNextRound()">
+            Salva Turno Corrente e Avanza
         </button>
 
     </div>
 
-    <!-- TAB 2: MEDIE TOTALI MODIFICABILI -->
-    <div id="tab-medie" class="tab-content">
-        <div style="font-size:0.78rem; color:var(--subtext); margin-bottom:10px;">
-            Puoi modificare direttamente la media di ogni alunno: il valore che inserisci diventa la sua media effettiva utilizzata dal calcolo.
-        </div>
-        <div id="students-medie-container">
-            <!-- Populated by JS -->
+    <!-- TAB 2: VISUALIZZA MEDIE (DECRESCENTE) -->
+    <div id="tab-medie" class="tab-pane">
+        <div class="inset-list-section">
+            <div class="section-header">Classifica Medie Studenti</div>
+            <div class="inset-list" id="students-medie-container">
+                <!-- Rows populated by JS -->
+            </div>
         </div>
     </div>
 
-    <!-- TAB 3: STORICO MODIFICABILE -->
-    <div id="tab-storico" class="tab-content">
-        <div class="round-selector-bar" id="history-round-chips">
+    <!-- TAB 3: STORICO -->
+    <div id="tab-storico" class="tab-pane">
+        <div class="history-chips" id="history-round-chips">
             <!-- Chips populated by JS -->
         </div>
 
-        <div id="history-empty-message" style="display:none; background:white; border-radius:12px; padding:20px; text-align:center; color:var(--subtext); font-size:0.85rem;">
-            Nessun turno precedente archiviato. Clicca su <strong>"Salva Turno Corrente e Avanza"</strong> nella piantina per archiviare il primo turno!
+        <div id="history-empty-message" style="display:none; background:var(--ios-card); border-radius:14px; padding:24px 16px; text-align:center; color:var(--ios-secondary-label); font-size:0.88rem;">
+            Nessun turno archiviato nello storico.<br>Tocca "Salva Turno Corrente e Avanza" nella piantina per archiviare il primo turno.
         </div>
 
         <div id="history-view-card" class="classroom-card">
-            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
-                <span id="history-map-title" style="font-size:0.85rem; font-weight:800;">Mappa Turno 1</span>
-                <button class="btn btn-red" style="padding:4px 8px; font-size:0.7rem;" onclick="deleteSelectedHistoryRound()">Elimina Turno</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 4px;">
+                <span id="history-map-title" style="font-size:0.9rem; font-weight:700;">Turno 1</span>
+                <button class="btn-destructive" onclick="deleteSelectedHistoryRound()">Elimina Turno</button>
             </div>
             <div class="classroom-scroll">
                 <div class="classroom-plan" id="history-plan-container">
@@ -578,49 +761,81 @@
         </div>
     </div>
 
-    <!-- Floating Interactive Swap Banner -->
-    <div id="swap-banner" class="swap-bar">
+    <!-- Floating Interactive Swap Alert -->
+    <div id="swap-banner" class="swap-alert">
         <span style="font-size:0.82rem;">
-            🔄 <strong><span id="swap-name-1">Valentina</span></strong> (<span id="swap-code-1">C4</span>) selezionato.<br>
-            Tocca un secondo compagno per scambiarli!
+            <strong id="swap-name-1">Valentina</strong> (<span id="swap-code-1">C4</span>) selezionato.<br>
+            Tocca un secondo posto per scambiare.
         </span>
-        <button class="btn btn-gray" style="padding:5px 10px; font-size:0.75rem;" onclick="cancelSwap()">Annulla</button>
+        <button class="btn-link" style="color:#FFFFFF; font-weight:600;" onclick="cancelSwap()">Annulla</button>
+    </div>
+
+    <!-- iOS Native Modal Sheet: Vincoli -->
+    <div id="sheet-vincoli" class="sheet-overlay">
+        <div class="sheet-container">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div class="sheet-title">Vincoli di Posizione</div>
+                <button class="btn-link" onclick="closeVincoliSheet()">Fine</button>
+            </div>
+
+            <!-- Coppie Fisse -->
+            <div style="margin-bottom:20px;">
+                <div class="vincoli-section-title">Coppie Fisse (Sempre vicini di banco)</div>
+                <div id="fixed-pairs-list" style="margin-bottom:10px;"></div>
+                <div style="display:flex; gap:8px;">
+                    <select id="sel-fixed-1" class="ios-select"></select>
+                    <select id="sel-fixed-2" class="ios-select"></select>
+                </div>
+                <button class="btn-secondary" style="width:100%; padding:9px; border-radius:10px;" onclick="addFixedPair()">Aggiungi Coppia Fissa</button>
+            </div>
+
+            <!-- Coppie Separate -->
+            <div style="margin-bottom:14px;">
+                <div class="vincoli-section-title">Coppie Separate (Mai vicini di banco)</div>
+                <div id="forbidden-pairs-list" style="margin-bottom:10px;"></div>
+                <div style="display:flex; gap:8px;">
+                    <select id="sel-forbid-1" class="ios-select"></select>
+                    <select id="sel-forbid-2" class="ios-select"></select>
+                </div>
+                <button class="btn-secondary" style="width:100%; padding:9px; border-radius:10px;" onclick="addForbiddenPair()">Aggiungi Coppia Separata</button>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Exact 23 Seats from photo
         const SEATS = [
-            // Row C (Davanti)
-            { code: "c1", row: "c", score: 6.5 },
-            { code: "c2", row: "c", score: 4.0 },
-            { code: "c4", row: "c", score: 3.0 },
-            { code: "c5", row: "c", score: 3.0 },
-            { code: "c6", row: "c", score: 3.5 },
-            { code: "c7", row: "c", score: 4.0 },
-            { code: "c8", row: "c", score: 6.0 },
+            // Fila C (Davanti)
+            { code: "c1", row: "c", block: "c_l", score: 6.5 },
+            { code: "c2", row: "c", block: "c_l", score: 4.0 },
+            { code: "c4", row: "c", block: "c_m", score: 3.0 },
+            { code: "c5", row: "c", block: "c_m", score: 3.0 },
+            { code: "c6", row: "c", block: "c_r", score: 3.5 },
+            { code: "c7", row: "c", block: "c_r", score: 4.0 },
+            { code: "c8", row: "c", block: "c_r", score: 6.0 },
 
-            // Row B (Centro)
-            { code: "b1", row: "b", score: 7.0 },
-            { code: "b2", row: "b", score: 5.5 },
-            { code: "b3", row: "b", score: 5.0 },
-            { code: "b4", row: "b", score: 5.0 },
-            { code: "b5", row: "b", score: 5.0 },
-            { code: "b6", row: "b", score: 5.0 },
-            { code: "b7", row: "b", score: 7.0 },
-            { code: "b8", row: "b", score: 9.0 },
+            // Fila B (Centro)
+            { code: "b1", row: "b", block: "b_l", score: 7.0 },
+            { code: "b2", row: "b", block: "b_l", score: 5.5 },
+            { code: "b3", row: "b", block: "b_m", score: 5.0 },
+            { code: "b4", row: "b", block: "b_m", score: 5.0 },
+            { code: "b5", row: "b", block: "b_m", score: 5.0 },
+            { code: "b6", row: "b", block: "b_r", score: 5.0 },
+            { code: "b7", row: "b", block: "b_r", score: 7.0 },
+            { code: "b8", row: "b", block: "b_r", score: 9.0 },
 
-            // Row A (Fondo)
-            { code: "a1", row: "a", score: 10.0 },
-            { code: "a2", row: "a", score: 6.5 },
-            { code: "a3", row: "a", score: 9.5 },
-            { code: "a4", row: "a", score: 8.5 },
-            { code: "a5", row: "a", score: 9.0 },
-            { code: "a6", row: "a", score: 7.0 },
-            { code: "a7", row: "a", score: 9.5 },
-            { code: "a8", row: "a", score: 10.0 }
+            // Fila A (Fondo)
+            { code: "a1", row: "a", block: "a_l", score: 10.0 },
+            { code: "a2", row: "a", block: "a_l", score: 6.5 },
+            { code: "a3", row: "a", block: "a_m", score: 9.5 },
+            { code: "a4", row: "a", block: "a_m", score: 8.5 },
+            { code: "a5", row: "a", block: "a_m", score: 9.0 },
+            { code: "a6", row: "a", block: "a_r", score: 7.0 },
+            { code: "a7", row: "a", block: "a_r", score: 9.5 },
+            { code: "a8", row: "a", block: "a_r", score: 10.0 }
         ];
 
-        // 23 FIXED REAL STUDENTS
         const FIXED_STUDENT_NAMES = [
             "Mario", "Valentina", "Gianluca", "Davide", "Leonardo", "Manuel", 
             "Diletta", "Potti", "Riccardo", "Virgi", "Giulia", "Claudia", 
@@ -629,27 +844,53 @@
         ];
 
         const CLASS_AVG = 6.46;
+        const STORAGE_KEY = "banchi_ios_state_v3";
 
-        // Clean initial state (Zero fake history)
         let AppState = {
             currentRound: 1,
             students: FIXED_STUDENT_NAMES.map((name, i) => ({
                 id: i + 1,
                 name: name,
-                customMean: 6.46, // Baseline neutral mean, editable by user
-                history: [] // Clean, empty history
+                customMean: 6.46,
+                history: []
             })),
-            currentAssign: {}, // stId -> seatCode
-            historyRounds: [], // Zero mock rounds: clean and real
+            currentAssign: {},
+            historyRounds: [],
+            forbiddenPairs: [],
+            fixedPairs: [],
             selectedSeatCode: null,
             viewingHistoryRound: null
         };
+
+        function saveStateToStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(AppState));
+            } catch (e) {
+                console.error("Storage save error:", e);
+            }
+        }
+
+        function loadStateFromStorage() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && parsed.students && parsed.students.length === 23) {
+                        AppState = parsed;
+                        return true;
+                    }
+                }
+            } catch (e) {
+                console.error("Storage load error:", e);
+            }
+            return false;
+        }
 
         function showToast(msg) {
             const el = document.getElementById('toast');
             el.textContent = msg;
             el.classList.add('show');
-            setTimeout(() => el.classList.remove('show'), 1800);
+            setTimeout(() => el.classList.remove('show'), 1600);
         }
 
         function getStudentEffectiveMean(st) {
@@ -659,15 +900,13 @@
             return st.customMean !== undefined ? st.customMean : CLASS_AVG;
         }
 
-        function getScoreClass(score) {
-            if (score >= 10) return "sc-10";
-            if (score >= 8.5) return "sc-top";
-            if (score >= 6.5) return "sc-high";
-            if (score >= 5.0) return "sc-mid";
-            return "sc-low";
+        function getScoreBadgeClass(score) {
+            if (score >= 10) return "badge-10";
+            if (score >= 7.0) return "badge-high";
+            if (score >= 5.0) return "badge-mid";
+            return "badge-low";
         }
 
-        // Kuhn-Munkres Hungarian Algorithm
         function hungarian(matrix) {
             const n = matrix.length;
             const m = matrix[0].length;
@@ -737,13 +976,16 @@
 
         function calculateOptimalMatching() {
             const costMatrix = [];
-            for (let i = 0; i < AppState.students.length; i++) {
+            const n = AppState.students.length;
+            const m = SEATS.length;
+
+            for (let i = 0; i < n; i++) {
                 const st = AppState.students[i];
                 const histMean = getStudentEffectiveMean(st);
                 const len = (st.history && st.history.length > 0) ? st.history.length : 1;
 
                 const row = [];
-                for (let j = 0; j < SEATS.length; j++) {
+                for (let j = 0; j < m; j++) {
                     const seat = SEATS[j];
                     const newMean = (histMean * len + seat.score) / (len + 1);
                     row.push(Math.pow(newMean - CLASS_AVG, 2) * 100);
@@ -751,20 +993,82 @@
                 costMatrix.push(row);
             }
 
-            const match = hungarian(costMatrix);
+            let rawAssign = hungarian(costMatrix);
+
+            function evaluateAssignmentCost(assign) {
+                let cost = 0;
+                for (let i = 0; i < n; i++) {
+                    cost += costMatrix[i][assign[i]];
+                }
+
+                if (AppState.forbiddenPairs) {
+                    for (const [p1, p2] of AppState.forbiddenPairs) {
+                        const idx1 = AppState.students.findIndex(s => s.name === p1);
+                        const idx2 = AppState.students.findIndex(s => s.name === p2);
+                        if (idx1 !== -1 && idx2 !== -1) {
+                            const seat1 = SEATS[assign[idx1]];
+                            const seat2 = SEATS[assign[idx2]];
+                            if (seat1.block === seat2.block) {
+                                cost += 100000;
+                            }
+                        }
+                    }
+                }
+
+                if (AppState.fixedPairs) {
+                    for (const [p1, p2] of AppState.fixedPairs) {
+                        const idx1 = AppState.students.findIndex(s => s.name === p1);
+                        const idx2 = AppState.students.findIndex(s => s.name === p2);
+                        if (idx1 !== -1 && idx2 !== -1) {
+                            const seat1 = SEATS[assign[idx1]];
+                            const seat2 = SEATS[assign[idx2]];
+                            if (seat1.block !== seat2.block) {
+                                cost += 100000;
+                            }
+                        }
+                    }
+                }
+
+                return cost;
+            }
+
+            let currentCost = evaluateAssignmentCost(rawAssign);
+            for (let iter = 0; iter < 500; iter++) {
+                let improved = false;
+                for (let i = 0; i < n; i++) {
+                    for (let j = i + 1; j < n; j++) {
+                        const temp = [...rawAssign];
+                        const tmp = temp[i];
+                        temp[i] = temp[j];
+                        temp[j] = tmp;
+
+                        const newCost = evaluateAssignmentCost(temp);
+                        if (newCost < currentCost - 1e-4) {
+                            rawAssign = temp;
+                            currentCost = newCost;
+                            improved = true;
+                        }
+                    }
+                }
+                if (!improved) break;
+            }
+
             AppState.currentAssign = {};
-            for (let i = 0; i < AppState.students.length; i++) {
-                const seatIdx = match[i];
-                if (seatIdx !== undefined && seatIdx < SEATS.length) {
+            for (let i = 0; i < n; i++) {
+                const seatIdx = rawAssign[i];
+                if (seatIdx !== undefined && seatIdx < m) {
                     AppState.currentAssign[AppState.students[i].id] = SEATS[seatIdx].code;
                 }
             }
+
+            saveStateToStorage();
         }
 
         function renderAll() {
             renderCurrentMap();
             renderMedieList();
             renderHistoryTab();
+            renderVincoliDropdowns();
         }
 
         function renderCurrentMap() {
@@ -790,14 +1094,14 @@
                 }
 
                 el.innerHTML = `
-                    <div class="desk-head">
+                    <div class="desk-header">
                         <span class="desk-code">${seat.code.toUpperCase()}</span>
-                        <span class="desk-score ${getScoreClass(seat.score)}">${seat.score.toFixed(1)}</span>
+                        <span class="desk-badge ${getScoreBadgeClass(seat.score)}">${seat.score.toFixed(1)}</span>
                     </div>
-                    <div class="desk-name">${st ? st.name : '<em style="color:#8e8e93">Libero</em>'}</div>
-                    <div class="desk-foot">
+                    <div class="desk-name">${st ? st.name : '<span style="color:#8E8E93">Libero</span>'}</div>
+                    <div class="desk-footer">
                         <span>M: <strong>${newMean.toFixed(1)}</strong></span>
-                        <span class="diff ${diff > 0.1 ? 'diff-pos' : (diff < -0.1 ? 'diff-neg' : 'diff-zero')}">
+                        <span class="diff-text ${diff > 0.1 ? 'diff-pos' : (diff < -0.1 ? 'diff-neg' : 'diff-zero')}">
                             ${diff > 0 ? '+' : ''}${diff.toFixed(1)}
                         </span>
                     </div>
@@ -805,7 +1109,6 @@
             });
         }
 
-        // Tap Desk to swap
         function tapDesk(code) {
             if (!AppState.selectedSeatCode) {
                 AppState.selectedSeatCode = code;
@@ -835,8 +1138,9 @@
                 else if (st2Id) AppState.currentAssign[st2Id] = code1;
 
                 cancelSwap();
+                saveStateToStorage();
                 renderAll();
-                showToast(`Scambiati ${st1 ? st1.name : code1.toUpperCase()} e ${st2 ? st2.name : code2.toUpperCase()}!`);
+                showToast(`Scambiati ${st1 ? st1.name : code1.toUpperCase()} e ${st2 ? st2.name : code2.toUpperCase()}`);
             }
         }
 
@@ -849,17 +1153,16 @@
         function calcolaDisposizione() {
             calculateOptimalMatching();
             renderAll();
-            showToast("Disposizione Equa Calcolata!");
+            showToast("Disposizione aggiornata");
         }
 
         function saveAndNextRound() {
-            // Save current assignment into history
+            if (!AppState.historyRounds) AppState.historyRounds = [];
             AppState.historyRounds.push({
                 roundNum: AppState.currentRound,
                 assign: JSON.parse(JSON.stringify(AppState.currentAssign))
             });
 
-            // Update student history scores
             AppState.students.forEach(st => {
                 const code = AppState.currentAssign[st.id];
                 const s = SEATS.find(x => x.code === code);
@@ -871,41 +1174,42 @@
 
             AppState.currentRound += 1;
             calculateOptimalMatching();
+            saveStateToStorage();
             renderAll();
-            showToast(`Turno ${AppState.currentRound - 1} archiviato! Ora sei al Turno ${AppState.currentRound}`);
+            showToast(`Turno ${AppState.currentRound - 1} archiviato`);
         }
 
-        // Render Editable Medie Tab
         function renderMedieList() {
             const container = document.getElementById('students-medie-container');
             container.innerHTML = '';
 
-            // Sorted by name
-            const sorted = [...AppState.students].sort((a, b) => a.name.localeCompare(b.name));
+            const sorted = [...AppState.students].sort((a, b) => getStudentEffectiveMean(b) - getStudentEffectiveMean(a));
 
-            sorted.forEach((st) => {
+            sorted.forEach((st, idx) => {
                 const currentSeatCode = AppState.currentAssign[st.id];
                 const currentSeat = SEATS.find(s => s.code === currentSeatCode);
                 const mean = getStudentEffectiveMean(st);
 
                 const item = document.createElement('div');
-                item.className = 'student-item';
+                item.className = 'list-row';
 
                 let historyTrace = "";
                 if (st.history && st.history.length > 0) {
-                    historyTrace = st.history.map((v, i) => `T${i+1}: ⭐${v}`).join(' ➔ ');
+                    historyTrace = st.history.map((v, i) => `T${i+1}: ${v}`).join(' → ');
                 } else {
-                    historyTrace = "Media iniziale impostata";
+                    historyTrace = "Nessun turno archiviato";
                 }
 
                 item.innerHTML = `
-                    <div>
-                        <div class="st-name">${st.name}</div>
-                        <div class="st-history-trace">Posto Attuale: <strong>${currentSeat ? currentSeat.code.toUpperCase() + ' (⭐' + currentSeat.score + ')' : '-'}</strong></div>
-                        <div class="st-history-trace" style="color:#007aff;">${historyTrace}</div>
+                    <div class="row-left">
+                        <span class="row-rank">${idx + 1}</span>
+                        <div>
+                            <div class="row-name">${st.name}</div>
+                            <div class="row-sub">Banco: <strong>${currentSeat ? currentSeat.code.toUpperCase() + ' (' + currentSeat.score + ')' : '-'}</strong> · ${historyTrace}</div>
+                        </div>
                     </div>
-                    <div class="st-mean-input-box">
-                        <input type="number" step="0.1" min="1" max="10" class="mean-input" value="${mean.toFixed(2)}" onchange="updateStudentMean(${st.id}, this.value)">
+                    <div>
+                        <input type="number" step="0.1" min="1" max="10" class="mean-field" value="${mean.toFixed(2)}" onchange="updateStudentMean(${st.id}, this.value)">
                     </div>
                 `;
                 container.appendChild(item);
@@ -918,16 +1222,15 @@
             const st = AppState.students.find(s => s.id === stId);
             if (st) {
                 st.customMean = parsed;
-                // If student has history, update base
                 if (st.history && st.history.length > 0) {
                     st.history = [parsed];
                 }
+                saveStateToStorage();
                 renderAll();
-                showToast(`Media di ${st.name} aggiornata a ${parsed.toFixed(2)}`);
+                showToast(`Media aggiornata a ${parsed.toFixed(2)}`);
             }
         }
 
-        // Render History Tab
         function renderHistoryTab() {
             const chipsContainer = document.getElementById('history-round-chips');
             chipsContainer.innerHTML = '';
@@ -935,7 +1238,7 @@
             const emptyMsg = document.getElementById('history-empty-message');
             const viewCard = document.getElementById('history-view-card');
 
-            if (AppState.historyRounds.length === 0) {
+            if (!AppState.historyRounds || AppState.historyRounds.length === 0) {
                 emptyMsg.style.display = 'block';
                 viewCard.style.display = 'none';
                 return;
@@ -950,7 +1253,7 @@
 
             AppState.historyRounds.forEach(h => {
                 const chip = document.createElement('button');
-                chip.className = `round-chip ${AppState.viewingHistoryRound === h.roundNum ? 'active' : ''}`;
+                chip.className = `history-chip ${AppState.viewingHistoryRound === h.roundNum ? 'active' : ''}`;
                 chip.textContent = `Turno ${h.roundNum}`;
                 chip.onclick = () => {
                     AppState.viewingHistoryRound = h.roundNum;
@@ -972,12 +1275,12 @@
                         ${renderHistoryDeskHTML('c1', assignToDisplay)}
                         ${renderHistoryDeskHTML('c2', assignToDisplay)}
                     </div>
-                    <div class="aisle-space">||</div>
+                    <div class="aisle-divider"></div>
                     <div class="desk-block">
                         ${renderHistoryDeskHTML('c4', assignToDisplay)}
                         ${renderHistoryDeskHTML('c5', assignToDisplay)}
                     </div>
-                    <div class="aisle-space">||</div>
+                    <div class="aisle-divider"></div>
                     <div class="desk-block">
                         ${renderHistoryDeskHTML('c6', assignToDisplay)}
                         ${renderHistoryDeskHTML('c7', assignToDisplay)}
@@ -991,13 +1294,13 @@
                         ${renderHistoryDeskHTML('b1', assignToDisplay)}
                         ${renderHistoryDeskHTML('b2', assignToDisplay)}
                     </div>
-                    <div class="aisle-space">||</div>
+                    <div class="aisle-divider"></div>
                     <div class="desk-block">
                         ${renderHistoryDeskHTML('b3', assignToDisplay)}
                         ${renderHistoryDeskHTML('b4', assignToDisplay)}
                         ${renderHistoryDeskHTML('b5', assignToDisplay)}
                     </div>
-                    <div class="aisle-space">||</div>
+                    <div class="aisle-divider"></div>
                     <div class="desk-block">
                         ${renderHistoryDeskHTML('b6', assignToDisplay)}
                         ${renderHistoryDeskHTML('b7', assignToDisplay)}
@@ -1011,13 +1314,13 @@
                         ${renderHistoryDeskHTML('a1', assignToDisplay)}
                         ${renderHistoryDeskHTML('a2', assignToDisplay)}
                     </div>
-                    <div class="aisle-space">||</div>
+                    <div class="aisle-divider"></div>
                     <div class="desk-block">
                         ${renderHistoryDeskHTML('a3', assignToDisplay)}
                         ${renderHistoryDeskHTML('a4', assignToDisplay)}
                         ${renderHistoryDeskHTML('a5', assignToDisplay)}
                     </div>
-                    <div class="aisle-space">||</div>
+                    <div class="aisle-divider"></div>
                     <div class="desk-block">
                         ${renderHistoryDeskHTML('a6', assignToDisplay)}
                         ${renderHistoryDeskHTML('a7', assignToDisplay)}
@@ -1032,15 +1335,15 @@
             const stId = Object.keys(assignMap).find(id => assignMap[id] === code);
             const st = stId ? AppState.students.find(s => s.id == stId) : null;
             return `
-                <div class="desk-box" style="cursor:default;">
-                    <div class="desk-head">
+                <div class="desk-unit" style="cursor:default;">
+                    <div class="desk-header">
                         <span class="desk-code">${code.toUpperCase()}</span>
-                        <span class="desk-score ${getScoreClass(seat.score)}">${seat.score.toFixed(1)}</span>
+                        <span class="desk-badge ${getScoreBadgeClass(seat.score)}">${seat.score.toFixed(1)}</span>
                     </div>
-                    <div class="desk-name">${st ? st.name : '<em style="color:#8e8e93">Libero</em>'}</div>
-                    <div class="desk-foot">
-                        <span>⭐ ${seat.score}</span>
-                        <span style="color:#007aff;">T${AppState.viewingHistoryRound}</span>
+                    <div class="desk-name">${st ? st.name : '<span style="color:#8E8E93">Libero</span>'}</div>
+                    <div class="desk-footer">
+                        <span>Punteggio: ${seat.score}</span>
+                        <span style="color:var(--ios-blue);">T${AppState.viewingHistoryRound}</span>
                     </div>
                 </div>
             `;
@@ -1050,25 +1353,144 @@
             if (!AppState.viewingHistoryRound) return;
             AppState.historyRounds = AppState.historyRounds.filter(h => h.roundNum !== AppState.viewingHistoryRound);
             AppState.viewingHistoryRound = AppState.historyRounds.length > 0 ? AppState.historyRounds[AppState.historyRounds.length - 1].roundNum : null;
+            saveStateToStorage();
             renderAll();
-            showToast("Turno eliminato dallo storico");
+            showToast("Turno eliminato");
+        }
+
+        function openVincoliSheet() {
+            renderVincoliDropdowns();
+            renderVincoliChips();
+            document.getElementById('sheet-vincoli').classList.add('active');
+        }
+
+        function closeVincoliSheet() {
+            document.getElementById('sheet-vincoli').classList.remove('active');
+        }
+
+        function renderVincoliDropdowns() {
+            const selects = ['sel-fixed-1', 'sel-fixed-2', 'sel-forbid-1', 'sel-forbid-2'];
+            selects.forEach(sId => {
+                const el = document.getElementById(sId);
+                if (!el) return;
+                const currentVal = el.value;
+                el.innerHTML = '';
+                FIXED_STUDENT_NAMES.forEach(name => {
+                    const opt = document.createElement('option');
+                    opt.value = name;
+                    opt.textContent = name;
+                    el.appendChild(opt);
+                });
+                if (currentVal) el.value = currentVal;
+            });
+            renderVincoliChips();
+        }
+
+        function renderVincoliChips() {
+            const fixedContainer = document.getElementById('fixed-pairs-list');
+            if (fixedContainer) {
+                fixedContainer.innerHTML = '';
+                if (!AppState.fixedPairs || AppState.fixedPairs.length === 0) {
+                    fixedContainer.innerHTML = '<span style="font-size:0.75rem; color:var(--ios-secondary-label);">Nessun vincolo impostato</span>';
+                } else {
+                    AppState.fixedPairs.forEach((pair, idx) => {
+                        const chip = document.createElement('span');
+                        chip.className = 'pair-tag fixed-tag';
+                        chip.innerHTML = `${pair[0]} & ${pair[1]} <span class="pair-delete" onclick="removeFixedPair(${idx})">&times;</span>`;
+                        fixedContainer.appendChild(chip);
+                    });
+                }
+            }
+
+            const forbidContainer = document.getElementById('forbidden-pairs-list');
+            if (forbidContainer) {
+                forbidContainer.innerHTML = '';
+                if (!AppState.forbiddenPairs || AppState.forbiddenPairs.length === 0) {
+                    forbidContainer.innerHTML = '<span style="font-size:0.75rem; color:var(--ios-secondary-label);">Nessun vincolo impostato</span>';
+                } else {
+                    AppState.forbiddenPairs.forEach((pair, idx) => {
+                        const chip = document.createElement('span');
+                        chip.className = 'pair-tag forbid-tag';
+                        chip.innerHTML = `${pair[0]} & ${pair[1]} <span class="pair-delete" onclick="removeForbiddenPair(${idx})">&times;</span>`;
+                        forbidContainer.appendChild(chip);
+                    });
+                }
+            }
+        }
+
+        function addFixedPair() {
+            const p1 = document.getElementById('sel-fixed-1').value;
+            const p2 = document.getElementById('sel-fixed-2').value;
+            if (p1 === p2) {
+                showToast("Seleziona due persone diverse");
+                return;
+            }
+            if (!AppState.fixedPairs) AppState.fixedPairs = [];
+            const exists = AppState.fixedPairs.some(p => (p[0] === p1 && p[1] === p2) || (p[0] === p2 && p[1] === p1));
+            if (!exists) {
+                AppState.fixedPairs.push([p1, p2]);
+                saveStateToStorage();
+                renderVincoliChips();
+                calculateOptimalMatching();
+                renderAll();
+                showToast("Coppia fissa aggiunta");
+            }
+        }
+
+        function removeFixedPair(idx) {
+            AppState.fixedPairs.splice(idx, 1);
+            saveStateToStorage();
+            renderVincoliChips();
+            calculateOptimalMatching();
+            renderAll();
+            showToast("Coppia rimossa");
+        }
+
+        function addForbiddenPair() {
+            const p1 = document.getElementById('sel-forbid-1').value;
+            const p2 = document.getElementById('sel-forbid-2').value;
+            if (p1 === p2) {
+                showToast("Seleziona due persone diverse");
+                return;
+            }
+            if (!AppState.forbiddenPairs) AppState.forbiddenPairs = [];
+            const exists = AppState.forbiddenPairs.some(p => (p[0] === p1 && p[1] === p2) || (p[0] === p2 && p[1] === p1));
+            if (!exists) {
+                AppState.forbiddenPairs.push([p1, p2]);
+                saveStateToStorage();
+                renderVincoliChips();
+                calculateOptimalMatching();
+                renderAll();
+                showToast("Coppia separata aggiunta");
+            }
+        }
+
+        function removeForbiddenPair(idx) {
+            AppState.forbiddenPairs.splice(idx, 1);
+            saveStateToStorage();
+            renderVincoliChips();
+            calculateOptimalMatching();
+            renderAll();
+            showToast("Coppia rimossa");
         }
 
         function switchTab(tabId) {
-            document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.segment-item').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(c => c.classList.remove('active'));
 
-            if (tabId === 'tab-map') document.getElementById('btn-tab-map').classList.add('active');
-            if (tabId === 'tab-medie') document.getElementById('btn-tab-medie').classList.add('active');
-            if (tabId === 'tab-storico') document.getElementById('btn-tab-storico').classList.add('active');
+            if (tabId === 'tab-map') document.getElementById('seg-map').classList.add('active');
+            if (tabId === 'tab-medie') document.getElementById('seg-medie').classList.add('active');
+            if (tabId === 'tab-storico') document.getElementById('seg-storico').classList.add('active');
 
             document.getElementById(tabId).classList.add('active');
             renderAll();
         }
 
-        // Init App with clean real matching
-        calculateOptimalMatching();
+        const hadSaved = loadStateFromStorage();
+        if (!hadSaved || !AppState.currentAssign || Object.keys(AppState.currentAssign).length === 0) {
+            calculateOptimalMatching();
+        }
         renderAll();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42bfec40f96ed22',t:'MTc5MDY5NTQ3MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c2510aca2ee8c',t:'MTc5MDY5NzAzOQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
