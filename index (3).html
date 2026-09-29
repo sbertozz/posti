@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    
+    <title>Disposizione Banchi</title>
+    <style>
+        :root {
+            --bg: #f2f2f7;
+            --card: #ffffff;
+            --blue: #007aff;
+            --green: #34c759;
+            --orange: #ff9500;
+            --red: #ff3b30;
+            --text: #000000;
+            --subtext: #6c6c70;
+            --border: #d1d1d6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: calc(env(safe-area-inset-top, 0px) + 10px) 12px calc(env(safe-area-inset-bottom, 20px) + 20px);
+            min-height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Header */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 16px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn:active {
+            opacity: 0.8;
+            transform: scale(0.96);
+        }
+
+        .btn-gray {
+            background: #e5e5ea;
+            color: #000;
+        }
+
+        .btn-green {
+            background: var(--green);
+        }
+
+        .btn-red {
+            background: #fee2e2;
+            color: var(--red);
+        }
+
+        /* Segmented Tabs */
+        .segmented {
+            background: #e2e8f0;
+            padding: 3px;
+            border-radius: 10px;
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .seg-btn {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 7px 8px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: #64748b;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.15s;
+            text-align: center;
+        }
+
+        .seg-btn.active {
+            background: white;
+            color: var(--text);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--subtext);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+
+        .stats-bar strong {
+            color: var(--text);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Clean Classroom Grid Container (No doors/windows/blackboard) */
+        .classroom-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 12px 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            margin-bottom: 12px;
+        }
+
+        .classroom-scroll {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 4px;
+        }
+
+        .classroom-plan {
+            min-width: 580px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #f8fafc;
+            padding: 12px 10px;
+            border-radius: 12px;
+            border: 1.5px dashed #cbd5e1;
+        }
+
+        .plan-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .row-label {
+            width: 52px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--subtext);
+            text-transform: uppercase;
+            line-height: 1.15;
+            text-align: center;
+        }
+
+        /* Desk Blocks */
+        .desk-block {
+            display: flex;
+            background: #e2e8f0;
+            padding: 3px;
+            border-radius: 10px;
+            gap: 3px;
+            border: 1.5px solid #cbd5e1;
+        }
+
+        .aisle-space {
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #94a3b8;
+            padding: 0 4px;
+            letter-spacing: -1px;
+        }
+
+        /* Individual Desk Box */
+        .desk-box {
+            background: #ffffff;
+            width: 72px;
+            min-height: 72px;
+            border-radius: 7px;
+            padding: 5px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            border: 2px solid transparent;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+            transition: all 0.12s;
+        }
+
+        .desk-box:active {
+            transform: scale(0.95);
+        }
+
+        .desk-box.selected {
+            border-color: var(--orange) !important;
+            background: #fffbeb !important;
+            box-shadow: 0 0 0 3px rgba(255, 149, 0, 0.4);
+            animation: pulse 1s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.03); }
+        }
+
+        .desk-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 800;
+        }
+
+        .desk-code {
+            color: #1e293b;
+        }
+
+        .desk-score {
+            padding: 1px 4px;
+            border-radius: 4px;
+            font-weight: 800;
+            font-size: 0.62rem;
+        }
+
+        .sc-10 { background: #bbf7d0; color: #14532d; border: 1.5px solid #16a34a; font-weight: 900; }
+        .sc-top { background: #dcfce7; color: #166534; font-weight: 800; }
+        .sc-high { background: #e0f2fe; color: #0369a1; }
+        .sc-mid { background: #fef3c7; color: #b45309; }
+        .sc-low { background: #fee2e2; color: #b91c1c; }
+
+        .desk-name {
+            font-size: 0.76rem;
+            font-weight: 800;
+            color: var(--text);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.15;
+            margin: 2px 0;
+        }
+
+        .desk-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.58rem;
+            color: var(--subtext);
+            border-top: 1px dashed #e2e8f0;
+            padding-top: 2px;
+            line-height: 1;
+        }
+
+        .diff {
+            font-weight: 800;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        .diff-pos { color: var(--green); }
+        .diff-neg { color: var(--red); }
+        .diff-zero { color: var(--subtext); }
+
+        /* Floating Swap Alert Bar */
+        .swap-bar {
+            position: fixed;
+            bottom: calc(env(safe-area-inset-bottom, 20px) + 12px);
+            left: 12px;
+            right: 12px;
+            background: #1c1c1e;
+            color: white;
+            padding: 12px 14px;
+            border-radius: 14px;
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+            z-index: 50;
+        }
+
+        .swap-bar.active {
+            display: flex;
+        }
+
+        /* Editable Student Medie List */
+        .student-item {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            gap: 10px;
+        }
+
+        .st-name {
+            font-size: 0.88rem;
+            font-weight: 800;
+        }
+
+        .st-history-trace {
+            font-size: 0.68rem;
+            color: var(--subtext);
+            margin-top: 2px;
+        }
+
+        .st-mean-input-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mean-input {
+            width: 60px;
+            padding: 6px 4px;
+            border-radius: 8px;
+            border: 1.5px solid var(--border);
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: var(--blue);
+            text-align: center;
+            background: #f8fafc;
+        }
+
+        .mean-input:focus {
+            outline: none;
+            border-color: var(--blue);
+            background: white;
+        }
+
+        /* History Round Chips */
+        .round-selector-bar {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 10px;
+        }
+
+        .round-chip {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--subtext);
+            white-space: nowrap;
+            cursor: pointer;
+        }
+
+        .round-chip.active {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: #1c1c1e;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="toast" class="toast">Notifica</div>
+
+    <!-- Header -->
+    <div class="top-header">
+        <h1 class="title">Banchi</h1>
+        <div class="header-actions">
+            <button class="btn" onclick="calcolaDisposizione()">⚡ Calcola</button>
+        </div>
+    </div>
+
+    <!-- Segmented Navigation -->
+    <div class="segmented">
+        <button id="btn-tab-map" class="seg-btn active" onclick="switchTab('tab-map')">🪑 Piantina</button>
+        <button id="btn-tab-medie" class="seg-btn" onclick="switchTab('tab-medie')">📊 Modifica Medie</button>
+        <button id="btn-tab-storico" class="seg-btn" onclick="switchTab('tab-storico')">📜 Storico</button>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <span>Studenti: <strong>23</strong></span>
+        <span>Media Aula: <strong>6.46</strong></span>
+        <span><strong id="lbl-current-round">Turno 1</strong></span>
+    </div>
+
+    <!-- TAB 1: PIANTINA REALE PULITA -->
+    <div id="tab-map" class="tab-content active">
+        
+        <div class="classroom-card">
+            <div class="classroom-scroll">
+                <div class="classroom-plan">
+                    
+                    <!-- FILA C (Davanti) -->
+                    <div class="plan-row">
+                        <div class="row-label">Fila C</div>
+                        
+                        <!-- Blocco Sinistra (c1, c2) -->
+                        <div class="desk-block">
+                            <div id="seat-c1" class="desk-box" onclick="tapDesk('c1')"></div>
+                            <div id="seat-c2" class="desk-box" onclick="tapDesk('c2')"></div>
+                        </div>
+
+                        <div class="aisle-space">||</div>
+
+                        <!-- Blocco Centro (c4, c5) -->
+                        <div class="desk-block">
+                            <div id="seat-c4" class="desk-box" onclick="tapDesk('c4')"></div>
+                            <div id="seat-c5" class="desk-box" onclick="tapDesk('c5')"></div>
+                        </div>
+
+                        <div class="aisle-space">||</div>
+
+                        <!-- Blocco Destra (c6, c7, c8) -->
+                        <div class="desk-block">
+                            <div id="seat-c6" class="desk-box" onclick="tapDesk('c6')"></div>
+                            <div id="seat-c7" class="desk-box" onclick="tapDesk('c7')"></div>
+                            <div id="seat-c8" class="desk-box" onclick="tapDesk('c8')"></div>
+                        </div>
+                    </div>
+
+                    <!-- FILA B (Centro) -->
+                    <div class="plan-row">
+                        <div class="row-label">Fila B</div>
+                        
+                        <!-- Blocco Sinistra (b1, b2) -->
+                        <div class="desk-block">
+                            <div id="seat-b1" class="desk-box" onclick="tapDesk('b1')"></div>
+                            <div id="seat-b2" class="desk-box" onclick="tapDesk('b2')"></div>
+                        </div>
+
+                        <div class="aisle-space">||</div>
+
+                        <!-- Blocco Centro (b3, b4, b5) -->
+                        <div class="desk-block">
+                            <div id="seat-b3" class="desk-box" onclick="tapDesk('b3')"></div>
+                            <div id="seat-b4" class="desk-box" onclick="tapDesk('b4')"></div>
+                            <div id="seat-b5" class="desk-box" onclick="tapDesk('b5')"></div>
+                        </div>
+
+                        <div class="aisle-space">||</div>
+
+                        <!-- Blocco Destra (b6, b7, b8) -->
+                        <div class="desk-block">
+                            <div id="seat-b6" class="desk-box" onclick="tapDesk('b6')"></div>
+                            <div id="seat-b7" class="desk-box" onclick="tapDesk('b7')"></div>
+                            <div id="seat-b8" class="desk-box" onclick="tapDesk('b8')"></div>
+                        </div>
+                    </div>
+
+                    <!-- FILA A (Fondo) -->
+                    <div class="plan-row">
+                        <div class="row-label">Fila A</div>
+                        
+                        <!-- Blocco Sinistra (a1, a2) -->
+                        <div class="desk-block">
+                            <div id="seat-a1" class="desk-box" onclick="tapDesk('a1')"></div>
+                            <div id="seat-a2" class="desk-box" onclick="tapDesk('a2')"></div>
+                        </div>
+
+                        <div class="aisle-space">||</div>
+
+                        <!-- Blocco Centro (a3, a4, a5) -->
+                        <div class="desk-block">
+                            <div id="seat-a3" class="desk-box" onclick="tapDesk('a3')"></div>
+                            <div id="seat-a4" class="desk-box" onclick="tapDesk('a4')"></div>
+                            <div id="seat-a5" class="desk-box" onclick="tapDesk('a5')"></div>
+                        </div>
+
+                        <div class="aisle-space">||</div>
+
+                        <!-- Blocco Destra (a6, a7, a8) -->
+                        <div class="desk-block">
+                            <div id="seat-a6" class="desk-box" onclick="tapDesk('a6')"></div>
+                            <div id="seat-a7" class="desk-box" onclick="tapDesk('a7')"></div>
+                            <div id="seat-a8" class="desk-box" onclick="tapDesk('a8')"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-green" style="width:100%; padding:13px; border-radius:12px; font-size:0.9rem; font-weight:800; justify-content:center;" onclick="saveAndNextRound()">
+            💾 Salva Turno Corrente e Avanza
+        </button>
+
+    </div>
+
+    <!-- TAB 2: MEDIE TOTALI MODIFICABILI -->
+    <div id="tab-medie" class="tab-content">
+        <div style="font-size:0.78rem; color:var(--subtext); margin-bottom:10px;">
+            Puoi modificare direttamente la media di ogni alunno: il valore che inserisci diventa la sua media effettiva utilizzata dal calcolo.
+        </div>
+        <div id="students-medie-container">
+            <!-- Populated by JS -->
+        </div>
+    </div>
+
+    <!-- TAB 3: STORICO MODIFICABILE -->
+    <div id="tab-storico" class="tab-content">
+        <div class="round-selector-bar" id="history-round-chips">
+            <!-- Chips populated by JS -->
+        </div>
+
+        <div id="history-empty-message" style="display:none; background:white; border-radius:12px; padding:20px; text-align:center; color:var(--subtext); font-size:0.85rem;">
+            Nessun turno precedente archiviato. Clicca su <strong>"Salva Turno Corrente e Avanza"</strong> nella piantina per archiviare il primo turno!
+        </div>
+
+        <div id="history-view-card" class="classroom-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:0 4px;">
+                <span id="history-map-title" style="font-size:0.85rem; font-weight:800;">Mappa Turno 1</span>
+                <button class="btn btn-red" style="padding:4px 8px; font-size:0.7rem;" onclick="deleteSelectedHistoryRound()">Elimina Turno</button>
+            </div>
+            <div class="classroom-scroll">
+                <div class="classroom-plan" id="history-plan-container">
+                    <!-- History Plan Populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Interactive Swap Banner -->
+    <div id="swap-banner" class="swap-bar">
+        <span style="font-size:0.82rem;">
+            🔄 <strong><span id="swap-name-1">Valentina</span></strong> (<span id="swap-code-1">C4</span>) selezionato.<br>
+            Tocca un secondo compagno per scambiarli!
+        </span>
+        <button class="btn btn-gray" style="padding:5px 10px; font-size:0.75rem;" onclick="cancelSwap()">Annulla</button>
+    </div>
+
+    <script>
+        // Exact 23 Seats from photo
+        const SEATS = [
+            // Row C (Davanti)
+            { code: "c1", row: "c", score: 6.5 },
+            { code: "c2", row: "c", score: 4.0 },
+            { code: "c4", row: "c", score: 3.0 },
+            { code: "c5", row: "c", score: 3.0 },
+            { code: "c6", row: "c", score: 3.5 },
+            { code: "c7", row: "c", score: 4.0 },
+            { code: "c8", row: "c", score: 6.0 },
+
+            // Row B (Centro)
+            { code: "b1", row: "b", score: 7.0 },
+            { code: "b2", row: "b", score: 5.5 },
+            { code: "b3", row: "b", score: 5.0 },
+            { code: "b4", row: "b", score: 5.0 },
+            { code: "b5", row: "b", score: 5.0 },
+            { code: "b6", row: "b", score: 5.0 },
+            { code: "b7", row: "b", score: 7.0 },
+            { code: "b8", row: "b", score: 9.0 },
+
+            // Row A (Fondo)
+            { code: "a1", row: "a", score: 10.0 },
+            { code: "a2", row: "a", score: 6.5 },
+            { code: "a3", row: "a", score: 9.5 },
+            { code: "a4", row: "a", score: 8.5 },
+            { code: "a5", row: "a", score: 9.0 },
+            { code: "a6", row: "a", score: 7.0 },
+            { code: "a7", row: "a", score: 9.5 },
+            { code: "a8", row: "a", score: 10.0 }
+        ];
+
+        // 23 FIXED REAL STUDENTS
+        const FIXED_STUDENT_NAMES = [
+            "Mario", "Valentina", "Gianluca", "Davide", "Leonardo", "Manuel", 
+            "Diletta", "Potti", "Riccardo", "Virgi", "Giulia", "Claudia", 
+            "Sofia", "Giada", "Camilla", "Diego", "Elena", "Margot", 
+            "Lina", "Gloria", "Alice", "Betta", "Sara"
+        ];
+
+        const CLASS_AVG = 6.46;
+
+        // Clean initial state (Zero fake history)
+        let AppState = {
+            currentRound: 1,
+            students: FIXED_STUDENT_NAMES.map((name, i) => ({
+                id: i + 1,
+                name: name,
+                customMean: 6.46, // Baseline neutral mean, editable by user
+                history: [] // Clean, empty history
+            })),
+            currentAssign: {}, // stId -> seatCode
+            historyRounds: [], // Zero mock rounds: clean and real
+            selectedSeatCode: null,
+            viewingHistoryRound: null
+        };
+
+        function showToast(msg) {
+            const el = document.getElementById('toast');
+            el.textContent = msg;
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 1800);
+        }
+
+        function getStudentEffectiveMean(st) {
+            if (st.history && st.history.length > 0) {
+                return st.history.reduce((a, b) => a + b, 0) / st.history.length;
+            }
+            return st.customMean !== undefined ? st.customMean : CLASS_AVG;
+        }
+
+        function getScoreClass(score) {
+            if (score >= 10) return "sc-10";
+            if (score >= 8.5) return "sc-top";
+            if (score >= 6.5) return "sc-high";
+            if (score >= 5.0) return "sc-mid";
+            return "sc-low";
+        }
+
+        // Kuhn-Munkres Hungarian Algorithm
+        function hungarian(matrix) {
+            const n = matrix.length;
+            const m = matrix[0].length;
+            const dim = Math.max(n, m);
+            
+            const cost = Array.from({ length: dim }, (_, i) => 
+                Array.from({ length: dim }, (_, j) => (i < n && j < m) ? matrix[i][j] : 1e9)
+            );
+            
+            const u = new Array(dim + 1).fill(0);
+            const v = new Array(dim + 1).fill(0);
+            const p = new Array(dim + 1).fill(0);
+            const way = new Array(dim + 1).fill(0);
+            
+            for (let i = 1; i <= dim; i++) {
+                p[0] = i;
+                let j0 = 0;
+                const minv = new Array(dim + 1).fill(Infinity);
+                const used = new Array(dim + 1).fill(false);
+                
+                do {
+                    used[j0] = true;
+                    const i0 = p[j0];
+                    let delta = Infinity;
+                    let j1 = 0;
+                    
+                    for (let j = 1; j <= dim; j++) {
+                        if (!used[j]) {
+                            const cur = cost[i0 - 1][j - 1] - u[i0] - v[j];
+                            if (cur < minv[j]) {
+                                minv[j] = cur;
+                                way[j] = j0;
+                            }
+                            if (minv[j] < delta) {
+                                delta = minv[j];
+                                j1 = j;
+                            }
+                        }
+                    }
+                    
+                    for (let j = 0; j <= dim; j++) {
+                        if (used[j]) {
+                            u[p[j]] += delta;
+                            v[j] -= delta;
+                        } else {
+                            minv[j] -= delta;
+                        }
+                    }
+                    j0 = j1;
+                } while (p[j0] !== 0);
+                
+                do {
+                    const j1 = way[j0];
+                    p[j0] = p[j1];
+                    j0 = j1;
+                } while (j0 !== 0);
+            }
+            
+            const res = new Array(n);
+            for (let j = 1; j <= dim; j++) {
+                if (p[j] <= n && (j - 1) < m) {
+                    res[p[j] - 1] = j - 1;
+                }
+            }
+            return res;
+        }
+
+        function calculateOptimalMatching() {
+            const costMatrix = [];
+            for (let i = 0; i < AppState.students.length; i++) {
+                const st = AppState.students[i];
+                const histMean = getStudentEffectiveMean(st);
+                const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+
+                const row = [];
+                for (let j = 0; j < SEATS.length; j++) {
+                    const seat = SEATS[j];
+                    const newMean = (histMean * len + seat.score) / (len + 1);
+                    row.push(Math.pow(newMean - CLASS_AVG, 2) * 100);
+                }
+                costMatrix.push(row);
+            }
+
+            const match = hungarian(costMatrix);
+            AppState.currentAssign = {};
+            for (let i = 0; i < AppState.students.length; i++) {
+                const seatIdx = match[i];
+                if (seatIdx !== undefined && seatIdx < SEATS.length) {
+                    AppState.currentAssign[AppState.students[i].id] = SEATS[seatIdx].code;
+                }
+            }
+        }
+
+        function renderAll() {
+            renderCurrentMap();
+            renderMedieList();
+            renderHistoryTab();
+        }
+
+        function renderCurrentMap() {
+            document.getElementById('lbl-current-round').textContent = `Turno ${AppState.currentRound}`;
+
+            SEATS.forEach(seat => {
+                const el = document.getElementById(`seat-${seat.code}`);
+                if (!el) return;
+
+                const stId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === seat.code);
+                const st = stId ? AppState.students.find(s => s.id == stId) : null;
+                const isSelected = AppState.selectedSeatCode === seat.code;
+
+                if (isSelected) el.classList.add('selected');
+                else el.classList.remove('selected');
+
+                let newMean = 0, diff = 0;
+                if (st) {
+                    const m = getStudentEffectiveMean(st);
+                    const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+                    newMean = (m * len + seat.score) / (len + 1);
+                    diff = newMean - CLASS_AVG;
+                }
+
+                el.innerHTML = `
+                    <div class="desk-head">
+                        <span class="desk-code">${seat.code.toUpperCase()}</span>
+                        <span class="desk-score ${getScoreClass(seat.score)}">${seat.score.toFixed(1)}</span>
+                    </div>
+                    <div class="desk-name">${st ? st.name : '<em style="color:#8e8e93">Libero</em>'}</div>
+                    <div class="desk-foot">
+                        <span>M: <strong>${newMean.toFixed(1)}</strong></span>
+                        <span class="diff ${diff > 0.1 ? 'diff-pos' : (diff < -0.1 ? 'diff-neg' : 'diff-zero')}">
+                            ${diff > 0 ? '+' : ''}${diff.toFixed(1)}
+                        </span>
+                    </div>
+                `;
+            });
+        }
+
+        // Tap Desk to swap
+        function tapDesk(code) {
+            if (!AppState.selectedSeatCode) {
+                AppState.selectedSeatCode = code;
+                const stId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === code);
+                const st = stId ? AppState.students.find(s => s.id == stId) : null;
+                
+                document.getElementById('swap-name-1').textContent = st ? st.name : code.toUpperCase();
+                document.getElementById('swap-code-1').textContent = code.toUpperCase();
+                document.getElementById('swap-banner').classList.add('active');
+                renderCurrentMap();
+            } else if (AppState.selectedSeatCode === code) {
+                cancelSwap();
+            } else {
+                const code1 = AppState.selectedSeatCode;
+                const code2 = code;
+
+                const st1Id = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === code1);
+                const st2Id = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === code2);
+
+                const st1 = st1Id ? AppState.students.find(s => s.id == st1Id) : null;
+                const st2 = st2Id ? AppState.students.find(s => s.id == st2Id) : null;
+
+                if (st1Id && st2Id) {
+                    AppState.currentAssign[st1Id] = code2;
+                    AppState.currentAssign[st2Id] = code1;
+                } else if (st1Id) AppState.currentAssign[st1Id] = code2;
+                else if (st2Id) AppState.currentAssign[st2Id] = code1;
+
+                cancelSwap();
+                renderAll();
+                showToast(`Scambiati ${st1 ? st1.name : code1.toUpperCase()} e ${st2 ? st2.name : code2.toUpperCase()}!`);
+            }
+        }
+
+        function cancelSwap() {
+            AppState.selectedSeatCode = null;
+            document.getElementById('swap-banner').classList.remove('active');
+            renderCurrentMap();
+        }
+
+        function calcolaDisposizione() {
+            calculateOptimalMatching();
+            renderAll();
+            showToast("Disposizione Equa Calcolata!");
+        }
+
+        function saveAndNextRound() {
+            // Save current assignment into history
+            AppState.historyRounds.push({
+                roundNum: AppState.currentRound,
+                assign: JSON.parse(JSON.stringify(AppState.currentAssign))
+            });
+
+            // Update student history scores
+            AppState.students.forEach(st => {
+                const code = AppState.currentAssign[st.id];
+                const s = SEATS.find(x => x.code === code);
+                if (s) {
+                    if (!st.history) st.history = [];
+                    st.history.push(s.score);
+                }
+            });
+
+            AppState.currentRound += 1;
+            calculateOptimalMatching();
+            renderAll();
+            showToast(`Turno ${AppState.currentRound - 1} archiviato! Ora sei al Turno ${AppState.currentRound}`);
+        }
+
+        // Render Editable Medie Tab
+        function renderMedieList() {
+            const container = document.getElementById('students-medie-container');
+            container.innerHTML = '';
+
+            // Sorted by name
+            const sorted = [...AppState.students].sort((a, b) => a.name.localeCompare(b.name));
+
+            sorted.forEach((st) => {
+                const currentSeatCode = AppState.currentAssign[st.id];
+                const currentSeat = SEATS.find(s => s.code === currentSeatCode);
+                const mean = getStudentEffectiveMean(st);
+
+                const item = document.createElement('div');
+                item.className = 'student-item';
+
+                let historyTrace = "";
+                if (st.history && st.history.length > 0) {
+                    historyTrace = st.history.map((v, i) => `T${i+1}: ⭐${v}`).join(' ➔ ');
+                } else {
+                    historyTrace = "Media iniziale impostata";
+                }
+
+                item.innerHTML = `
+                    <div>
+                        <div class="st-name">${st.name}</div>
+                        <div class="st-history-trace">Posto Attuale: <strong>${currentSeat ? currentSeat.code.toUpperCase() + ' (⭐' + currentSeat.score + ')' : '-'}</strong></div>
+                        <div class="st-history-trace" style="color:#007aff;">${historyTrace}</div>
+                    </div>
+                    <div class="st-mean-input-box">
+                        <input type="number" step="0.1" min="1" max="10" class="mean-input" value="${mean.toFixed(2)}" onchange="updateStudentMean(${st.id}, this.value)">
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function updateStudentMean(stId, val) {
+            const parsed = parseFloat(val);
+            if (isNaN(parsed) || parsed < 1 || parsed > 10) return;
+            const st = AppState.students.find(s => s.id === stId);
+            if (st) {
+                st.customMean = parsed;
+                // If student has history, update base
+                if (st.history && st.history.length > 0) {
+                    st.history = [parsed];
+                }
+                renderAll();
+                showToast(`Media di ${st.name} aggiornata a ${parsed.toFixed(2)}`);
+            }
+        }
+
+        // Render History Tab
+        function renderHistoryTab() {
+            const chipsContainer = document.getElementById('history-round-chips');
+            chipsContainer.innerHTML = '';
+
+            const emptyMsg = document.getElementById('history-empty-message');
+            const viewCard = document.getElementById('history-view-card');
+
+            if (AppState.historyRounds.length === 0) {
+                emptyMsg.style.display = 'block';
+                viewCard.style.display = 'none';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            viewCard.style.display = 'block';
+
+            if (!AppState.viewingHistoryRound || !AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound)) {
+                AppState.viewingHistoryRound = AppState.historyRounds[AppState.historyRounds.length - 1].roundNum;
+            }
+
+            AppState.historyRounds.forEach(h => {
+                const chip = document.createElement('button');
+                chip.className = `round-chip ${AppState.viewingHistoryRound === h.roundNum ? 'active' : ''}`;
+                chip.textContent = `Turno ${h.roundNum}`;
+                chip.onclick = () => {
+                    AppState.viewingHistoryRound = h.roundNum;
+                    renderHistoryTab();
+                };
+                chipsContainer.appendChild(chip);
+            });
+
+            document.getElementById('history-map-title').textContent = `Mappa Turno ${AppState.viewingHistoryRound}`;
+
+            const hRecord = AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound);
+            const assignToDisplay = hRecord ? hRecord.assign : {};
+
+            const planContainer = document.getElementById('history-plan-container');
+            planContainer.innerHTML = `
+                <div class="plan-row">
+                    <div class="row-label">Fila C</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('c1', assignToDisplay)}
+                        ${renderHistoryDeskHTML('c2', assignToDisplay)}
+                    </div>
+                    <div class="aisle-space">||</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('c4', assignToDisplay)}
+                        ${renderHistoryDeskHTML('c5', assignToDisplay)}
+                    </div>
+                    <div class="aisle-space">||</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('c6', assignToDisplay)}
+                        ${renderHistoryDeskHTML('c7', assignToDisplay)}
+                        ${renderHistoryDeskHTML('c8', assignToDisplay)}
+                    </div>
+                </div>
+
+                <div class="plan-row">
+                    <div class="row-label">Fila B</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('b1', assignToDisplay)}
+                        ${renderHistoryDeskHTML('b2', assignToDisplay)}
+                    </div>
+                    <div class="aisle-space">||</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('b3', assignToDisplay)}
+                        ${renderHistoryDeskHTML('b4', assignToDisplay)}
+                        ${renderHistoryDeskHTML('b5', assignToDisplay)}
+                    </div>
+                    <div class="aisle-space">||</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('b6', assignToDisplay)}
+                        ${renderHistoryDeskHTML('b7', assignToDisplay)}
+                        ${renderHistoryDeskHTML('b8', assignToDisplay)}
+                    </div>
+                </div>
+
+                <div class="plan-row">
+                    <div class="row-label">Fila A</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('a1', assignToDisplay)}
+                        ${renderHistoryDeskHTML('a2', assignToDisplay)}
+                    </div>
+                    <div class="aisle-space">||</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('a3', assignToDisplay)}
+                        ${renderHistoryDeskHTML('a4', assignToDisplay)}
+                        ${renderHistoryDeskHTML('a5', assignToDisplay)}
+                    </div>
+                    <div class="aisle-space">||</div>
+                    <div class="desk-block">
+                        ${renderHistoryDeskHTML('a6', assignToDisplay)}
+                        ${renderHistoryDeskHTML('a7', assignToDisplay)}
+                        ${renderHistoryDeskHTML('a8', assignToDisplay)}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHistoryDeskHTML(code, assignMap) {
+            const seat = SEATS.find(s => s.code === code);
+            const stId = Object.keys(assignMap).find(id => assignMap[id] === code);
+            const st = stId ? AppState.students.find(s => s.id == stId) : null;
+            return `
+                <div class="desk-box" style="cursor:default;">
+                    <div class="desk-head">
+                        <span class="desk-code">${code.toUpperCase()}</span>
+                        <span class="desk-score ${getScoreClass(seat.score)}">${seat.score.toFixed(1)}</span>
+                    </div>
+                    <div class="desk-name">${st ? st.name : '<em style="color:#8e8e93">Libero</em>'}</div>
+                    <div class="desk-foot">
+                        <span>⭐ ${seat.score}</span>
+                        <span style="color:#007aff;">T${AppState.viewingHistoryRound}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function deleteSelectedHistoryRound() {
+            if (!AppState.viewingHistoryRound) return;
+            AppState.historyRounds = AppState.historyRounds.filter(h => h.roundNum !== AppState.viewingHistoryRound);
+            AppState.viewingHistoryRound = AppState.historyRounds.length > 0 ? AppState.historyRounds[AppState.historyRounds.length - 1].roundNum : null;
+            renderAll();
+            showToast("Turno eliminato dallo storico");
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.seg-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+            if (tabId === 'tab-map') document.getElementById('btn-tab-map').classList.add('active');
+            if (tabId === 'tab-medie') document.getElementById('btn-tab-medie').classList.add('active');
+            if (tabId === 'tab-storico') document.getElementById('btn-tab-storico').classList.add('active');
+
+            document.getElementById(tabId).classList.add('active');
+            renderAll();
+        }
+
+        // Init App with clean real matching
+        calculateOptimalMatching();
+        renderAll();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42bfec40f96ed22',t:'MTc5MDY5NTQ3MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
