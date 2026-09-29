@@ -73,7 +73,7 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
         }
 
         /* Native iOS Buttons */
@@ -81,7 +81,7 @@
             background: none;
             border: none;
             color: var(--ios-blue);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 500;
             cursor: pointer;
             padding: 4px 6px;
@@ -310,9 +310,9 @@
         .desk-unit {
             flex: 1;
             min-width: 0;
-            height: 52px;
+            height: 54px;
             background: #FFFFFF;
-            border-radius: 4px;
+            border-radius: 5px;
             padding: 2px 2px;
             cursor: pointer;
             display: flex;
@@ -373,24 +373,40 @@
             letter-spacing: -0.02em;
         }
 
+        /* 100% CLEAR, FULLY-READABLE BONUS / MALUS DELTA PILL */
         .desk-footer {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            font-size: 0.48rem;
-            color: var(--ios-secondary-label);
-            border-top: 0.5px solid #F2F2F7;
-            padding-top: 1px;
+            line-height: 1;
+            width: 100%;
+        }
+
+        .diff-tag {
+            font-size: 0.52rem;
+            font-weight: 800;
+            padding: 1px 4px;
+            border-radius: 3px;
+            display: inline-block;
+            text-align: center;
+            letter-spacing: -0.01em;
             line-height: 1;
         }
 
-        .diff-text {
-            font-weight: 700;
+        .diff-pos {
+            background: #DCFCE7;
+            color: #15803D;
         }
 
-        .diff-pos { color: var(--ios-green); }
-        .diff-neg { color: var(--ios-red); }
-        .diff-zero { color: var(--ios-secondary-label); }
+        .diff-neg {
+            background: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .diff-zero {
+            background: #F2F2F7;
+            color: #8E8E93;
+        }
 
         /* iOS Inset Grouped List (Medie) */
         .inset-list-section {
@@ -629,6 +645,57 @@
             color: var(--ios-label);
         }
 
+        /* Mobile Desk Scores Grid */
+        .desk-scores-row-box {
+            background: var(--ios-card-secondary);
+            border-radius: 10px;
+            padding: 10px 8px;
+            margin-bottom: 12px;
+            border: 1px solid var(--ios-separator);
+        }
+
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .score-edit-cell {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 6px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            border: 1px solid var(--ios-border);
+        }
+
+        .score-code-lbl {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--ios-secondary-label);
+        }
+
+        .score-field-input {
+            width: 46px;
+            padding: 4px 2px;
+            border-radius: 6px;
+            border: 1.5px solid var(--ios-border);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--ios-blue);
+            background: #F8F8FA;
+        }
+
+        .score-field-input:focus {
+            outline: none;
+            border-color: var(--ios-blue);
+            background: #FFFFFF;
+        }
+
         /* Image Save Sheet Modal */
         #img-preview-container {
             text-align: center;
@@ -678,6 +745,7 @@
     <div class="navbar">
         <h1 class="nav-title">Banchi</h1>
         <div class="nav-actions">
+            <button class="btn-link" onclick="openVotiSheet()">Voti</button>
             <button class="btn-link" onclick="openVincoliSheet()">Vincoli</button>
             <button class="btn-primary" onclick="calcolaDisposizione()">Calcola</button>
         </div>
@@ -693,7 +761,7 @@
     <!-- Stats Summary Header -->
     <div class="summary-card">
         <span>Studenti: <span class="val">23</span></span>
-        <span>Media Aula: <span class="val">6.46</span></span>
+        <span>Media Aula: <span class="val" id="lbl-class-avg">6.50</span></span>
         <span><span class="val" id="lbl-current-round">Turno 1</span></span>
     </div>
 
@@ -853,6 +921,43 @@
         <button class="btn-link" style="color:#FFFFFF; font-weight:600;" onclick="cancelHistorySwap()">Annulla</button>
     </div>
 
+    <!-- iOS Native Modal Sheet: Modifica Voti dei Banchi -->
+    <div id="sheet-voti" class="sheet-overlay">
+        <div class="sheet-container">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div>
+                    <div class="sheet-title">Voti dei Banchi</div>
+                    <span style="font-size:0.75rem; color:var(--ios-secondary-label);" id="sheet-voti-avg-lbl">Media Aula: 6.50</span>
+                </div>
+                <button class="btn-link" onclick="closeVotiSheet()">Fine</button>
+            </div>
+
+            <!-- Fila C -->
+            <div class="desk-scores-row-box">
+                <div class="vincoli-section-title">Fila C (Davanti)</div>
+                <div class="scores-grid" id="scores-grid-c"></div>
+            </div>
+
+            <!-- Fila B -->
+            <div class="desk-scores-row-box">
+                <div class="vincoli-section-title">Fila B (Centro)</div>
+                <div class="scores-grid" id="scores-grid-b"></div>
+            </div>
+
+            <!-- Fila A -->
+            <div class="desk-scores-row-box">
+                <div class="vincoli-section-title">Fila A (Fondo)</div>
+                <div class="scores-grid" id="scores-grid-a"></div>
+            </div>
+
+            <button class="btn-secondary" style="width:100%; padding:10px; margin-top:4px;" onclick="resetDeskScoresToDefault()">
+                Ripristina Voti Predefiniti
+            </button>
+        </div>
+    </div>
+
     <!-- iOS Native Modal Sheet: Vincoli -->
     <div id="sheet-vincoli" class="sheet-overlay">
         <div class="sheet-container">
@@ -911,7 +1016,8 @@
     </div>
 
     <script>
-        const SEATS = [
+        // Exact 23 Seats with user's revised scores: b2=5.0, b3=5.5, b4=5.5, b5=5.5
+        const DEFAULT_SEATS = [
             // Fila C (Davanti)
             { code: "c1", row: "c", block: "c_l", score: 6.5 },
             { code: "c2", row: "c", block: "c_l", score: 4.0 },
@@ -923,10 +1029,10 @@
 
             // Fila B (Centro)
             { code: "b1", row: "b", block: "b_l", score: 7.0 },
-            { code: "b2", row: "b", block: "b_l", score: 5.5 },
-            { code: "b3", row: "b", block: "b_m", score: 5.0 },
-            { code: "b4", row: "b", block: "b_m", score: 5.0 },
-            { code: "b5", row: "b", block: "b_m", score: 5.0 },
+            { code: "b2", row: "b", block: "b_l", score: 5.0 }, // 5.0
+            { code: "b3", row: "b", block: "b_m", score: 5.5 }, // 5.5
+            { code: "b4", row: "b", block: "b_m", score: 5.5 }, // 5.5
+            { code: "b5", row: "b", block: "b_m", score: 5.5 }, // 5.5
             { code: "b6", row: "b", block: "b_r", score: 5.0 },
             { code: "b7", row: "b", block: "b_r", score: 7.0 },
             { code: "b8", row: "b", block: "b_r", score: 9.0 },
@@ -941,6 +1047,8 @@
             { code: "a7", row: "a", block: "a_r", score: 9.5 },
             { code: "a8", row: "a", block: "a_r", score: 10.0 }
         ];
+
+        let SEATS = JSON.parse(JSON.stringify(DEFAULT_SEATS));
 
         const FIXED_STUDENT_NAMES = [
             "Mario", "Valentina", "Gianluca", "Davide", "Leonardo", "Manuel", 
@@ -964,21 +1072,26 @@
             return SHORT_NAMES[fullName] || fullName;
         }
 
-        const CLASS_AVG = 6.46;
-        const STORAGE_KEY = "banchi_ios_state_v6";
+        function getClassAvg() {
+            const sum = SEATS.reduce((acc, s) => acc + s.score, 0);
+            return sum / SEATS.length;
+        }
+
+        const STORAGE_KEY = "banchi_ios_state_v7";
 
         let AppState = {
             currentRound: 1,
             students: FIXED_STUDENT_NAMES.map((name, i) => ({
                 id: i + 1,
                 name: name,
-                customMean: 6.46,
+                customMean: 6.50,
                 history: []
             })),
             currentAssign: {},
             historyRounds: [],
             forbiddenPairs: [],
             fixedPairs: [],
+            customSeatScores: {}, // seatCode -> score
             selectedSeatCode: null,
             historySelectedSeatCode: null,
             viewingHistoryRound: null
@@ -1001,6 +1114,14 @@
                     const parsed = JSON.parse(saved);
                     if (parsed && parsed.students && parsed.students.length === 23) {
                         AppState = parsed;
+                        // Restore custom seat scores if any
+                        if (AppState.customSeatScores) {
+                            SEATS.forEach(s => {
+                                if (AppState.customSeatScores[s.code] !== undefined) {
+                                    s.score = AppState.customSeatScores[s.code];
+                                }
+                            });
+                        }
                         return true;
                     }
                 }
@@ -1021,7 +1142,7 @@
             if (st.history && st.history.length > 0) {
                 return st.history.reduce((a, b) => a + b, 0) / st.history.length;
             }
-            return st.customMean !== undefined ? st.customMean : CLASS_AVG;
+            return st.customMean !== undefined ? st.customMean : getClassAvg();
         }
 
         function getScoreBadgeClass(score) {
@@ -1115,11 +1236,11 @@
             return res;
         }
 
-        // Optimization Algorithm: Score Balance + Anti-Repetition + Tie-breaking Recency (WITHOUT forced neighbor rotation)
         function calculateOptimalMatching() {
             const costMatrix = [];
             const n = AppState.students.length;
             const m = SEATS.length;
+            const classAvg = getClassAvg();
 
             const lastRoundRecord = (AppState.historyRounds && AppState.historyRounds.length > 0)
                 ? AppState.historyRounds[AppState.historyRounds.length - 1]
@@ -1151,9 +1272,9 @@
                 for (let j = 0; j < m; j++) {
                     const seat = SEATS[j];
                     const newMean = (histMean * len + seat.score) / (len + 1);
-                    let baseCost = Math.pow(newMean - CLASS_AVG, 2) * 100;
+                    let baseCost = Math.pow(newMean - classAvg, 2) * 100;
 
-                    // Anti-repetition of seat and row
+                    // Anti-repetition
                     if (lastSeatCode && seat.code === lastSeatCode) {
                         baseCost += 220;
                     } else if (lastRow && seat.row === lastRow) {
@@ -1247,14 +1368,20 @@
         }
 
         function renderAll() {
+            const classAvg = getClassAvg();
+            document.getElementById('lbl-class-avg').textContent = classAvg.toFixed(2);
+            document.getElementById('sheet-voti-avg-lbl').textContent = `Media Aula: ${classAvg.toFixed(2)}`;
+
             renderCurrentMap();
             renderMedieList();
             renderHistoryTab();
             renderVincoliDropdowns();
+            renderVotiGrids();
         }
 
         function renderCurrentMap() {
             document.getElementById('lbl-current-round').textContent = `Turno ${AppState.currentRound}`;
+            const classAvg = getClassAvg();
 
             SEATS.forEach(seat => {
                 const el = document.getElementById(`seat-${seat.code}`);
@@ -1267,15 +1394,21 @@
                 if (isSelected) el.classList.add('selected');
                 else el.classList.remove('selected');
 
-                let newMean = 0, diff = 0;
+                let newMean = classAvg, diff = 0;
                 if (st) {
                     const m = getStudentEffectiveMean(st);
                     const len = (st.history && st.history.length > 0) ? st.history.length : 1;
                     newMean = (m * len + seat.score) / (len + 1);
-                    diff = newMean - CLASS_AVG;
+                    diff = newMean - classAvg;
                 }
 
                 const displayName = st ? getDeskDisplayName(st.name) : '<span style="color:#8E8E93">Libero</span>';
+
+                // 100% Readable Bonus / Malus tag
+                let diffClass = "diff-zero";
+                let diffSign = "";
+                if (diff > 0.05) { diffClass = "diff-pos"; diffSign = "+"; }
+                else if (diff < -0.05) { diffClass = "diff-neg"; }
 
                 el.innerHTML = `
                     <div class="desk-header">
@@ -1284,10 +1417,7 @@
                     </div>
                     <div class="desk-name">${displayName}</div>
                     <div class="desk-footer">
-                        <span>M:<strong>${newMean.toFixed(1)}</strong></span>
-                        <span class="diff-text ${diff > 0.1 ? 'diff-pos' : (diff < -0.1 ? 'diff-neg' : 'diff-zero')}">
-                            ${diff > 0 ? '+' : ''}${diff.toFixed(1)}
-                        </span>
+                        <span class="diff-tag ${diffClass}">${diffSign}${diff.toFixed(1)}</span>
                     </div>
                 `;
             });
@@ -1399,6 +1529,64 @@
             showToast(`Turno ${AppState.currentRound - 1} archiviato`);
         }
 
+        // DESK SCORES EDITING SHEET (ORGANIZED & MOBILE OPTIMIZED)
+        function openVotiSheet() {
+            renderVotiGrids();
+            document.getElementById('sheet-voti').classList.add('active');
+        }
+
+        function closeVotiSheet() {
+            document.getElementById('sheet-voti').classList.remove('active');
+        }
+
+        function renderVotiGrids() {
+            const gridC = document.getElementById('scores-grid-c');
+            const gridB = document.getElementById('scores-grid-b');
+            const gridA = document.getElementById('scores-grid-a');
+
+            gridC.innerHTML = '';
+            gridB.innerHTML = '';
+            gridA.innerHTML = '';
+
+            SEATS.forEach(s => {
+                const cell = document.createElement('div');
+                cell.className = 'score-edit-cell';
+                cell.innerHTML = `
+                    <span class="score-code-lbl">${s.code.toUpperCase()}</span>
+                    <input type="number" step="0.5" min="1" max="10" class="score-field-input" value="${s.score.toFixed(1)}" onchange="updateDeskScore('${s.code}', this.value)">
+                `;
+
+                if (s.row === 'c') gridC.appendChild(cell);
+                else if (s.row === 'b') gridB.appendChild(cell);
+                else if (s.row === 'a') gridA.appendChild(cell);
+            });
+        }
+
+        function updateDeskScore(code, val) {
+            const parsed = parseFloat(val);
+            if (isNaN(parsed) || parsed < 1 || parsed > 10) return;
+            const s = SEATS.find(x => x.code === code);
+            if (s) {
+                s.score = parsed;
+                if (!AppState.customSeatScores) AppState.customSeatScores = {};
+                AppState.customSeatScores[code] = parsed;
+
+                syncStudentHistoriesFromRounds();
+                saveStateToStorage();
+                renderAll();
+                showToast(`Banco ${code.toUpperCase()} impostato a ${parsed.toFixed(1)}`);
+            }
+        }
+
+        function resetDeskScoresToDefault() {
+            SEATS = JSON.parse(JSON.stringify(DEFAULT_SEATS));
+            AppState.customSeatScores = {};
+            syncStudentHistoriesFromRounds();
+            saveStateToStorage();
+            renderAll();
+            showToast("Voti dei banchi ripristinati");
+        }
+
         // HIGH RESOLUTION CANVAS PHOTO EXPORT
         function renderClassroomCanvas(assignMap, roundNumber) {
             const width = 1200;
@@ -1407,6 +1595,7 @@
             canvas.width = width;
             canvas.height = height;
             const ctx = canvas.getContext('2d');
+            const classAvg = getClassAvg();
 
             // Background
             ctx.fillStyle = '#F2F2F7';
@@ -1424,7 +1613,7 @@
             // Subtitle
             ctx.fillStyle = '#8E8E93';
             ctx.font = '500 20px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif';
-            ctx.fillText('23 Studenti • Media Aula: 6.46', 75, 140);
+            ctx.fillText(`23 Studenti • Media Aula: ${classAvg.toFixed(2)}`, 75, 140);
 
             // Layout definitions
             const rows = [
@@ -1507,7 +1696,7 @@
                         ctx.lineTo(deskX + 90, deskY + 98);
                         ctx.stroke();
 
-                        let meanVal = 6.46;
+                        let meanVal = classAvg;
                         if (st) {
                             const m = getStudentEffectiveMean(st);
                             const len = (st.history && st.history.length > 0) ? st.history.length : 1;
@@ -1517,8 +1706,8 @@
                         ctx.font = '600 13px -apple-system, sans-serif';
                         ctx.fillText(`M:${meanVal.toFixed(1)}`, deskX + 8, deskY + 116);
 
-                        const diff = meanVal - CLASS_AVG;
-                        ctx.fillStyle = diff > 0.1 ? '#34C759' : (diff < -0.1 ? '#FF3B30' : '#8E8E93');
+                        const diff = meanVal - classAvg;
+                        ctx.fillStyle = diff > 0.05 ? '#15803D' : (diff < -0.05 ? '#B91C1C' : '#8E8E93');
                         ctx.font = 'bold 13px -apple-system, sans-serif';
                         ctx.fillText(`${diff > 0 ? '+' : ''}${diff.toFixed(1)}`, deskX + 60, deskY + 116);
                     });
@@ -1782,8 +1971,7 @@
                     </div>
                     <div class="desk-name">${displayName}</div>
                     <div class="desk-footer">
-                        <span>P:${seat.score}</span>
-                        <span style="color:var(--ios-blue);">T${AppState.viewingHistoryRound}</span>
+                        <span class="diff-tag diff-zero">T${AppState.viewingHistoryRound}</span>
                     </div>
                 </div>
             `;
@@ -1933,5 +2121,5 @@
         }
         renderAll();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c9f8af915bd8f',t:'MTc5MDcwMjA1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42cbcebdb87cd75',t:'MTc5MDcwMzI1OQ=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
