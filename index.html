@@ -73,7 +73,7 @@
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         /* Native iOS Buttons */
@@ -95,7 +95,7 @@
             background: var(--ios-blue);
             color: #FFFFFF;
             border: none;
-            padding: 6px 14px;
+            padding: 6px 13px;
             border-radius: 18px;
             font-size: 0.88rem;
             font-weight: 600;
@@ -140,8 +140,14 @@
             background: rgba(255, 59, 48, 0.25);
         }
 
+        .action-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
         .btn-full {
-            width: 100%;
+            flex: 2;
             padding: 13px;
             border-radius: 12px;
             font-size: 1rem;
@@ -157,6 +163,23 @@
         .btn-full:active {
             opacity: 0.8;
             transform: scale(0.99);
+        }
+
+        .btn-share {
+            flex: 1;
+            padding: 13px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: #E5E5EA;
+            color: var(--ios-label);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-share:active {
+            background: #D1D1D6;
         }
 
         /* Native iOS Segmented Control */
@@ -216,7 +239,7 @@
             display: block;
         }
 
-        /* 100% SINGLE-SCREEN RESPONSIVE CLASSROOM PLAN (ZERO HORIZONTAL SCROLL) */
+        /* 100% SINGLE-SCREEN RESPONSIVE CLASSROOM PLAN */
         .classroom-card {
             background: var(--ios-card);
             border-radius: 14px;
@@ -508,7 +531,7 @@
             display: flex;
         }
 
-        /* iOS Modal Sheet */
+        /* iOS Modal Sheets */
         .sheet-overlay {
             position: fixed;
             inset: 0;
@@ -604,6 +627,20 @@
             margin-bottom: 6px;
             font-weight: 500;
             color: var(--ios-label);
+        }
+
+        /* Image Save Sheet Modal */
+        #img-preview-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        #img-preview-el {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+            border: 1px solid var(--ios-separator);
         }
 
         /* Notification Banner */
@@ -749,9 +786,14 @@
             </div>
         </div>
 
-        <button class="btn-full" onclick="saveAndNextRound()">
-            Salva
-        </button>
+        <div class="action-row">
+            <button class="btn-full" onclick="saveAndNextRound()">
+                Salva
+            </button>
+            <button class="btn-share" onclick="generateAndSaveClassroomImage()">
+                Foto
+            </button>
+        </div>
 
     </div>
 
@@ -781,7 +823,10 @@
                     <span id="history-map-title" style="font-size:0.88rem; font-weight:700;">Turno 1</span>
                     <span style="font-size:0.68rem; color:var(--ios-secondary-label); display:block;">Tocca due banchi per scambiarli</span>
                 </div>
-                <button class="btn-destructive" onclick="deleteSelectedHistoryRound()">Elimina Turno</button>
+                <div style="display:flex; gap:6px;">
+                    <button class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="generateAndSaveHistoryImage()">Foto</button>
+                    <button class="btn-destructive" onclick="deleteSelectedHistoryRound()">Elimina</button>
+                </div>
             </div>
             
             <div class="classroom-plan" id="history-plan-container">
@@ -842,6 +887,29 @@
         </div>
     </div>
 
+    <!-- iOS Native Modal Sheet: Salva Immagine in Galleria -->
+    <div id="sheet-image-save" class="sheet-overlay">
+        <div class="sheet-container">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div>
+                    <div class="sheet-title">Piantina Pronta</div>
+                    <span style="font-size:0.75rem; color:var(--ios-secondary-label);">Tieni premuto sull'immagine per salvarla in Foto</span>
+                </div>
+                <button class="btn-link" onclick="closeImageSaveSheet()">Fine</button>
+            </div>
+
+            <div id="img-preview-container">
+                <img id="img-preview-el" alt="Piantina Banchi">
+            </div>
+
+            <button class="btn-full" style="margin-top:10px;" onclick="triggerDirectDownloadImage()">
+                Salva Immagine in Galleria
+            </button>
+        </div>
+    </div>
+
     <script>
         const SEATS = [
             // Fila C (Davanti)
@@ -881,7 +949,6 @@
             "Lina", "Gloria", "Alice", "Betta", "Sara"
         ];
 
-        // Clean natural abbreviations so names fit without any ellipsis dots
         const SHORT_NAMES = {
             "Valentina": "Vale",
             "Leonardo": "Leo",
@@ -898,7 +965,7 @@
         }
 
         const CLASS_AVG = 6.46;
-        const STORAGE_KEY = "banchi_ios_state_v4";
+        const STORAGE_KEY = "banchi_ios_state_v6";
 
         let AppState = {
             currentRound: 1,
@@ -916,6 +983,8 @@
             historySelectedSeatCode: null,
             viewingHistoryRound: null
         };
+
+        let currentGeneratedImageDataUrl = null;
 
         function saveStateToStorage() {
             try {
@@ -1046,21 +1115,60 @@
             return res;
         }
 
+        // Optimization Algorithm: Score Balance + Anti-Repetition + Tie-breaking Recency (WITHOUT forced neighbor rotation)
         function calculateOptimalMatching() {
             const costMatrix = [];
             const n = AppState.students.length;
             const m = SEATS.length;
+
+            const lastRoundRecord = (AppState.historyRounds && AppState.historyRounds.length > 0)
+                ? AppState.historyRounds[AppState.historyRounds.length - 1]
+                : null;
 
             for (let i = 0; i < n; i++) {
                 const st = AppState.students[i];
                 const histMean = getStudentEffectiveMean(st);
                 const len = (st.history && st.history.length > 0) ? st.history.length : 1;
 
+                const lastSeatCode = lastRoundRecord ? lastRoundRecord.assign[st.id] : null;
+                const lastSeatObj = lastSeatCode ? SEATS.find(s => s.code === lastSeatCode) : null;
+                const lastRow = lastSeatObj ? lastSeatObj.row : null;
+
+                let turnsSinceRowA = 99;
+                let turnsSinceRowC = 99;
+                if (AppState.historyRounds) {
+                    for (let rIdx = AppState.historyRounds.length - 1; rIdx >= 0; rIdx--) {
+                        const hSeat = AppState.historyRounds[rIdx].assign[st.id];
+                        const sObj = SEATS.find(x => x.code === hSeat);
+                        if (sObj) {
+                            if (sObj.row === 'a' && turnsSinceRowA === 99) turnsSinceRowA = AppState.historyRounds.length - rIdx;
+                            if (sObj.row === 'c' && turnsSinceRowC === 99) turnsSinceRowC = AppState.historyRounds.length - rIdx;
+                        }
+                    }
+                }
+
                 const row = [];
                 for (let j = 0; j < m; j++) {
                     const seat = SEATS[j];
                     const newMean = (histMean * len + seat.score) / (len + 1);
-                    row.push(Math.pow(newMean - CLASS_AVG, 2) * 100);
+                    let baseCost = Math.pow(newMean - CLASS_AVG, 2) * 100;
+
+                    // Anti-repetition of seat and row
+                    if (lastSeatCode && seat.code === lastSeatCode) {
+                        baseCost += 220;
+                    } else if (lastRow && seat.row === lastRow) {
+                        baseCost += 35;
+                    }
+
+                    // Recency tie-breaking
+                    if (seat.row === 'a' && turnsSinceRowA > 1) {
+                        baseCost -= Math.min(turnsSinceRowA * 1.5, 6);
+                    }
+                    if (seat.row === 'c' && turnsSinceRowC === 1) {
+                        baseCost += 8;
+                    }
+
+                    row.push(baseCost);
                 }
                 costMatrix.push(row);
             }
@@ -1073,6 +1181,7 @@
                     cost += costMatrix[i][assign[i]];
                 }
 
+                // Check Forbidden Pairs
                 if (AppState.forbiddenPairs) {
                     for (const [p1, p2] of AppState.forbiddenPairs) {
                         const idx1 = AppState.students.findIndex(s => s.name === p1);
@@ -1087,6 +1196,7 @@
                     }
                 }
 
+                // Check Fixed Pairs
                 if (AppState.fixedPairs) {
                     for (const [p1, p2] of AppState.fixedPairs) {
                         const idx1 = AppState.students.findIndex(s => s.name === p1);
@@ -1287,6 +1397,216 @@
             saveStateToStorage();
             renderAll();
             showToast(`Turno ${AppState.currentRound - 1} archiviato`);
+        }
+
+        // HIGH RESOLUTION CANVAS PHOTO EXPORT
+        function renderClassroomCanvas(assignMap, roundNumber) {
+            const width = 1200;
+            const height = 900;
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+
+            // Background
+            ctx.fillStyle = '#F2F2F7';
+            ctx.fillRect(0, 0, width, height);
+
+            // Container card
+            ctx.fillStyle = '#FFFFFF';
+            roundRect(ctx, 40, 40, 1120, 820, 28, true, false);
+
+            // Header Title
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 38px -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif';
+            ctx.fillText(`Disposizione Banchi — Turno ${roundNumber}`, 75, 105);
+
+            // Subtitle
+            ctx.fillStyle = '#8E8E93';
+            ctx.font = '500 20px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif';
+            ctx.fillText('23 Studenti • Media Aula: 6.46', 75, 140);
+
+            // Layout definitions
+            const rows = [
+                {
+                    label: 'FILA C (Davanti)',
+                    y: 180,
+                    blocks: [
+                        { codes: ['c1', 'c2'], x: 130 },
+                        { codes: ['c4', 'c5'], x: 480 },
+                        { codes: ['c6', 'c7', 'c8'], x: 800 }
+                    ]
+                },
+                {
+                    label: 'FILA B (Centro)',
+                    y: 390,
+                    blocks: [
+                        { codes: ['b1', 'b2'], x: 130 },
+                        { codes: ['b3', 'b4', 'b5'], x: 450 },
+                        { codes: ['b6', 'b7', 'b8'], x: 800 }
+                    ]
+                },
+                {
+                    label: 'FILA A (Fondo)',
+                    y: 600,
+                    blocks: [
+                        { codes: ['a1', 'a2'], x: 130 },
+                        { codes: ['a3', 'a4', 'a5'], x: 450 },
+                        { codes: ['a6', 'a7', 'a8'], x: 800 }
+                    ]
+                }
+            ];
+
+            rows.forEach(r => {
+                ctx.fillStyle = '#6E6E73';
+                ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif';
+                ctx.fillText(r.label, 75, r.y + 25);
+
+                r.blocks.forEach(blk => {
+                    const blkWidth = blk.codes.length * 105 + 10;
+                    ctx.fillStyle = '#E5E5EA';
+                    roundRect(ctx, blk.x - 6, r.y + 40, blkWidth, 140, 16, true, false);
+
+                    blk.codes.forEach((code, idx) => {
+                        const seat = SEATS.find(s => s.code === code);
+                        const stId = Object.keys(assignMap).find(id => assignMap[id] === code);
+                        const st = stId ? AppState.students.find(s => s.id == stId) : null;
+                        const deskX = blk.x + idx * 105;
+                        const deskY = r.y + 46;
+
+                        ctx.fillStyle = '#FFFFFF';
+                        roundRect(ctx, deskX, deskY, 96, 128, 12, true, false);
+
+                        ctx.fillStyle = '#1C1C1E';
+                        ctx.font = 'bold 16px -apple-system, sans-serif';
+                        ctx.fillText(code.toUpperCase(), deskX + 8, deskY + 24);
+
+                        let badgeBg = '#E0F2FE', badgeFg = '#0369A1';
+                        if (seat.score >= 10) { badgeBg = '#D1FADF'; badgeFg = '#027A48'; }
+                        else if (seat.score >= 7.0) { badgeBg = '#E0F2FE'; badgeFg = '#0369A1'; }
+                        else if (seat.score >= 5.0) { badgeBg = '#FEF3C7'; badgeFg = '#B45309'; }
+                        else { badgeBg = '#FEE2E2'; badgeFg = '#B91C1C'; }
+
+                        ctx.fillStyle = badgeBg;
+                        roundRect(ctx, deskX + 54, deskY + 10, 34, 18, 6, true, false);
+                        ctx.fillStyle = badgeFg;
+                        ctx.font = 'bold 13px -apple-system, sans-serif';
+                        ctx.fillText(seat.score.toFixed(1), deskX + 58, deskY + 23);
+
+                        ctx.fillStyle = '#000000';
+                        ctx.font = 'bold 17px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif';
+                        ctx.textAlign = 'center';
+                        const nameToDraw = st ? st.name : 'Libero';
+                        ctx.fillText(nameToDraw, deskX + 48, deskY + 74);
+                        ctx.textAlign = 'left';
+
+                        ctx.strokeStyle = '#F2F2F7';
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        ctx.moveTo(deskX + 6, deskY + 98);
+                        ctx.lineTo(deskX + 90, deskY + 98);
+                        ctx.stroke();
+
+                        let meanVal = 6.46;
+                        if (st) {
+                            const m = getStudentEffectiveMean(st);
+                            const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+                            meanVal = (m * len + seat.score) / (len + 1);
+                        }
+                        ctx.fillStyle = '#8E8E93';
+                        ctx.font = '600 13px -apple-system, sans-serif';
+                        ctx.fillText(`M:${meanVal.toFixed(1)}`, deskX + 8, deskY + 116);
+
+                        const diff = meanVal - CLASS_AVG;
+                        ctx.fillStyle = diff > 0.1 ? '#34C759' : (diff < -0.1 ? '#FF3B30' : '#8E8E93');
+                        ctx.font = 'bold 13px -apple-system, sans-serif';
+                        ctx.fillText(`${diff > 0 ? '+' : ''}${diff.toFixed(1)}`, deskX + 60, deskY + 116);
+                    });
+                });
+            });
+
+            ctx.fillStyle = '#C7C7CC';
+            ctx.font = '500 15px -apple-system, sans-serif';
+            ctx.fillText('Generato con Banchi', 75, 830);
+
+            return canvas;
+        }
+
+        function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            if (fill) ctx.fill();
+            if (stroke) ctx.stroke();
+        }
+
+        function generateAndSaveClassroomImage() {
+            exportFloorPlanPhoto(AppState.currentAssign, AppState.currentRound);
+        }
+
+        function generateAndSaveHistoryImage() {
+            if (!AppState.viewingHistoryRound) return;
+            const hRecord = AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound);
+            if (hRecord) {
+                exportFloorPlanPhoto(hRecord.assign, hRecord.roundNum);
+            }
+        }
+
+        function exportFloorPlanPhoto(assignMap, roundNum) {
+            const canvas = renderClassroomCanvas(assignMap, roundNum);
+            const fileName = `banchi-turno-${roundNum}.png`;
+
+            canvas.toBlob(blob => {
+                if (!blob) {
+                    showToast("Errore generazione immagine");
+                    return;
+                }
+
+                const file = new File([blob], fileName, { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    navigator.share({
+                        files: [file],
+                        title: `Banchi Turno ${roundNum}`,
+                        text: `Disposizione Banchi Turno ${roundNum}`
+                    }).catch(err => {
+                        if (err.name !== 'AbortError') {
+                            openImagePreviewModal(canvas.toDataURL('image/png'), fileName);
+                        }
+                    });
+                } else {
+                    openImagePreviewModal(canvas.toDataURL('image/png'), fileName);
+                }
+            }, 'image/png');
+        }
+
+        function openImagePreviewModal(dataUrl, fileName) {
+            currentGeneratedImageDataUrl = dataUrl;
+            document.getElementById('img-preview-el').src = dataUrl;
+            document.getElementById('sheet-image-save').classList.add('active');
+        }
+
+        function closeImageSaveSheet() {
+            document.getElementById('sheet-image-save').classList.remove('active');
+        }
+
+        function triggerDirectDownloadImage() {
+            if (!currentGeneratedImageDataUrl) return;
+            const a = document.createElement('a');
+            a.href = currentGeneratedImageDataUrl;
+            a.download = `banchi-turno-${AppState.currentRound}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast("Immagine salvata!");
         }
 
         function renderMedieList() {
@@ -1613,5 +1933,5 @@
         }
         renderAll();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c59460b2a4bef',t:'MTc5MDY5OTE3Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c9f8af915bd8f',t:'MTc5MDcwMjA1Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
