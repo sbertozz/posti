@@ -42,7 +42,11 @@
         body {
             background-color: var(--ios-bg);
             color: var(--ios-label);
-            padding: calc(env(safe-area-inset-top, 0px) + 12px) 16px calc(env(safe-area-inset-bottom, 20px) + 24px);
+            /* Generous top margin to prevent notch / Dynamic Island overlapping */
+            padding-top: max(56px, calc(env(safe-area-inset-top, 0px) + 24px));
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-bottom: max(34px, calc(env(safe-area-inset-bottom, 0px) + 28px));
             min-height: 100vh;
             user-select: none;
             -webkit-user-select: none;
@@ -54,20 +58,22 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 14px;
+            margin-bottom: 16px;
+            padding-top: 4px;
         }
 
         .nav-title {
-            font-size: 1.7rem;
+            font-size: 1.75rem;
             font-weight: 700;
             letter-spacing: -0.03em;
             color: var(--ios-label);
+            line-height: 1.2;
         }
 
         .nav-actions {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         /* Native iOS Buttons */
@@ -75,10 +81,10 @@
             background: none;
             border: none;
             color: var(--ios-blue);
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
-            padding: 4px 6px;
+            padding: 6px 8px;
         }
 
         .btn-link:active {
@@ -89,9 +95,9 @@
             background: var(--ios-blue);
             color: #FFFFFF;
             border: none;
-            padding: 6px 14px;
+            padding: 7px 16px;
             border-radius: 18px;
-            font-size: 0.9rem;
+            font-size: 0.92rem;
             font-weight: 600;
             cursor: pointer;
             display: inline-flex;
@@ -138,7 +144,7 @@
             width: 100%;
             padding: 14px;
             border-radius: 14px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             background: var(--ios-blue);
             color: #FFFFFF;
@@ -167,8 +173,8 @@
             flex: 1;
             background: transparent;
             border: none;
-            padding: 6px 0;
-            font-size: 0.82rem;
+            padding: 7px 0;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--ios-label);
             border-radius: 7px;
@@ -584,7 +590,7 @@
         /* Notification Banner */
         .toast {
             position: fixed;
-            top: 16px;
+            top: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(-20px);
             background: rgba(28, 28, 30, 0.95);
@@ -624,7 +630,7 @@
     <!-- iOS Native Segmented Control -->
     <div class="segmented-control">
         <button id="seg-map" class="segment-item active" onclick="switchTab('tab-map')">Piantina</button>
-        <button id="seg-medie" class="segment-item" onclick="switchTab('tab-medie')">Visualizza Medie</button>
+        <button id="seg-medie" class="segment-item" onclick="switchTab('tab-medie')">Medie</button>
         <button id="seg-storico" class="segment-item" onclick="switchTab('tab-storico')">Storico</button>
     </div>
 
@@ -724,12 +730,12 @@
         </div>
 
         <button class="btn-full" onclick="saveAndNextRound()">
-            Salva Turno Corrente e Avanza
+            Salva
         </button>
 
     </div>
 
-    <!-- TAB 2: VISUALIZZA MEDIE (DECRESCENTE) -->
+    <!-- TAB 2: MEDIE (DECRESCENTE) -->
     <div id="tab-medie" class="tab-pane">
         <div class="inset-list-section">
             <div class="section-header">Classifica Medie Studenti</div>
@@ -746,7 +752,7 @@
         </div>
 
         <div id="history-empty-message" style="display:none; background:var(--ios-card); border-radius:14px; padding:24px 16px; text-align:center; color:var(--ios-secondary-label); font-size:0.88rem;">
-            Nessun turno archiviato nello storico.<br>Tocca "Salva Turno Corrente e Avanza" nella piantina per archiviare il primo turno.
+            Nessun turno archiviato nello storico.<br>Tocca "Salva" nella piantina per archiviare il primo turno.
         </div>
 
         <div id="history-view-card" class="classroom-card">
@@ -921,7 +927,6 @@
             return "badge-low";
         }
 
-        // Recalculates each student's history array from the stored history rounds
         function syncStudentHistoriesFromRounds() {
             AppState.students.forEach(st => {
                 if (!AppState.historyRounds || AppState.historyRounds.length === 0) {
@@ -1182,7 +1187,6 @@
             renderCurrentMap();
         }
 
-        // Tap Desk in History View (Allows modifying past rounds and syncing averages!)
         function tapHistoryDesk(code) {
             const hRecord = AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound);
             if (!hRecord) return;
@@ -1565,5 +1569,5 @@
         }
         renderAll();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c35869ff8f615',t:'MTc5MDY5NzcxMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a42c44285b275a1f',t:'MTc5MDY5ODMxMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
