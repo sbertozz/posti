@@ -1,0 +1,3309 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Banchi">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    
+    <!-- Apple Touch Icon (Embedded Base64 for 100% Reliable iOS Home Screen Icon) -->
+    <link rel="apple-touch-icon" href="data:image/png;base64,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">
+    <link rel="apple-touch-icon-precomposed" href="data:image/png;base64,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">
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+    <title>Banchi</title>
+    <style>
+        :root {
+            --ios-bg: #EEF1F6;
+            --ios-bg-gradient: linear-gradient(180deg, #F3F5F9 0%, #E5E9F2 100%);
+            --ios-glass: rgba(255, 255, 255, 0.76);
+            --ios-glass-card: rgba(255, 255, 255, 0.84);
+            --ios-glass-secondary: rgba(246, 248, 252, 0.72);
+            --ios-glass-border: rgba(255, 255, 255, 0.75);
+            --ios-shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --ios-shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+            
+            --ios-blue: #007AFF;
+            --ios-green: #34C759;
+            --ios-orange: #FF9500;
+            --ios-red: #FF3B30;
+            --ios-label: #1C1C1E;
+            --ios-secondary-label: #8E8E93;
+            --ios-tertiary-label: #C7C7CC;
+            --ios-separator: rgba(60, 60, 67, 0.12);
+            --ios-border: #D1D1D6;
+            --ios-segment-bg: rgba(118, 118, 128, 0.12);
+            
+            --ios-spring: cubic-bezier(0.32, 0.72, 0, 1);
+            --ios-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.25);
+            --ios-smooth: cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: var(--ios-bg-gradient);
+            background-attachment: fixed;
+            color: var(--ios-label);
+            padding-top: max(54px, calc(env(safe-area-inset-top, 0px) + 20px));
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: max(32px, calc(env(safe-area-inset-bottom, 0px) + 26px));
+            min-height: 100vh;
+            user-select: none;
+            -webkit-user-select: none;
+            letter-spacing: -0.01em;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            position: relative;
+        }
+
+        /* Ambient Glass Specular Lights (Subtle background lighting for Liquid Glass effect) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -100px;
+            right: -80px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(0, 122, 255, 0.12) 0%, rgba(0, 122, 255, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -100px;
+            left: -80px;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(52, 199, 89, 0.1) 0%, rgba(52, 199, 89, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Liquid Glass Navigation Bar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 0 2px;
+        }
+
+        .nav-title {
+            font-size: 1.65rem;
+            font-weight: 700;
+            letter-spacing: -0.035em;
+            color: var(--ios-label);
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        /* Eye Visibility Toggle Button (Liquid Glass Circle) */
+        .btn-icon-glass {
+            background: rgba(230, 233, 240, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--ios-blue);
+            transition: transform 0.18s var(--ios-spring), background 0.15s ease, color 0.15s ease;
+            touch-action: manipulation;
+            margin-right: 2px;
+        }
+
+        .btn-icon-glass:active {
+            transform: scale(0.92);
+            background: rgba(210, 215, 225, 0.9);
+        }
+
+        .btn-icon-glass.hidden-state {
+            color: var(--ios-secondary-label);
+            background: rgba(210, 215, 225, 0.5);
+        }
+
+        .nav-svg-icon {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            transition: fill 0.2s ease;
+        }
+
+        /* Liquid Glass Native Buttons */
+        .btn-link {
+            background: none;
+            border: none;
+            color: var(--ios-blue);
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px 7px;
+            border-radius: 9px;
+            transition: opacity 0.15s ease, transform 0.18s var(--ios-spring), background 0.15s ease;
+            touch-action: manipulation;
+        }
+
+        .btn-link:active {
+            opacity: 0.5;
+            transform: scale(0.93);
+            background: rgba(0, 122, 255, 0.08);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #007AFF 0%, #0062D2 100%);
+            color: #FFFFFF;
+            border: none;
+            padding: 7px 14px;
+            border-radius: 18px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.18s var(--ios-spring), box-shadow 0.18s ease, opacity 0.15s ease;
+            touch-action: manipulation;
+            box-shadow: 0 3px 8px rgba(0, 122, 255, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .btn-primary:active {
+            opacity: 0.85;
+            transform: scale(0.93);
+            box-shadow: 0 1px 3px rgba(0, 122, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(230, 233, 240, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--ios-label);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 6px 14px;
+            border-radius: 18px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.18s var(--ios-spring), background 0.15s ease;
+            touch-action: manipulation;
+        }
+
+        .btn-secondary:active {
+            background: rgba(210, 215, 225, 0.9);
+            transform: scale(0.94);
+        }
+
+        .btn-destructive {
+            background: rgba(255, 59, 48, 0.12);
+            color: var(--ios-red);
+            border: 1px solid rgba(255, 59, 48, 0.2);
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.18s var(--ios-spring), background 0.15s ease;
+            touch-action: manipulation;
+        }
+
+        .btn-destructive:active {
+            background: rgba(255, 59, 48, 0.25);
+            transform: scale(0.94);
+        }
+
+        .action-row {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .btn-full {
+            flex: 2;
+            padding: 13px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #007AFF 0%, #005EC4 100%);
+            color: #FFFFFF;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 4px 14px rgba(0, 122, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: transform 0.2s var(--ios-spring), box-shadow 0.2s ease, opacity 0.15s ease;
+            touch-action: manipulation;
+        }
+
+        .btn-full:active {
+            opacity: 0.85;
+            transform: scale(0.96);
+            box-shadow: 0 2px 6px rgba(0, 122, 255, 0.2);
+        }
+
+        .btn-share {
+            flex: 1;
+            padding: 13px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: var(--ios-glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            color: var(--ios-label);
+            border: 1px solid var(--ios-glass-border);
+            cursor: pointer;
+            text-align: center;
+            box-shadow: var(--ios-shadow-card);
+            transition: transform 0.2s var(--ios-spring), background 0.15s ease;
+            touch-action: manipulation;
+        }
+
+        .btn-share:active {
+            background: rgba(220, 225, 235, 0.9);
+            transform: scale(0.96);
+        }
+
+        /* Liquid Glass Native Segmented Control with Smooth Glider */
+        .segmented-control {
+            background: rgba(118, 118, 128, 0.14);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            padding: 3px;
+            border-radius: 10px;
+            display: flex;
+            margin-bottom: 10px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+            user-select: none;
+        }
+
+        .segment-glider {
+            position: absolute;
+            top: 3px;
+            bottom: 3px;
+            left: 3px;
+            width: calc((100% - 6px) / 3);
+            background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 100%);
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.12), inset 0 1px 0 #FFFFFF;
+            transition: transform 0.3s var(--ios-spring);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .segment-item {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 7px 0;
+            font-size: 0.83rem;
+            font-weight: 500;
+            color: var(--ios-secondary-label);
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: color 0.24s ease, font-weight 0.24s ease, transform 0.16s var(--ios-spring);
+            touch-action: manipulation;
+        }
+
+        .segment-item.active {
+            color: var(--ios-label);
+            font-weight: 600;
+        }
+
+        .segment-item:active {
+            transform: scale(0.96);
+        }
+
+        /* Liquid Glass Summary Header */
+        .summary-card {
+            background: var(--ios-glass);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--ios-glass-border);
+            border-radius: 12px;
+            padding: 9px 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 0.76rem;
+            color: var(--ios-secondary-label);
+            box-shadow: var(--ios-shadow-card);
+            transition: all 0.25s var(--ios-spring);
+        }
+
+        .summary-card .val {
+            color: var(--ios-label);
+            font-weight: 700;
+        }
+
+        /* Tab Content & Fluid Page Transitions */
+        .tab-pane {
+            display: none;
+            opacity: 0;
+            transform: translateY(6px);
+        }
+
+        .tab-pane.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            animation: tabFadeIn 0.28s var(--ios-spring) forwards;
+        }
+
+        @keyframes tabFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(6px) scale(0.995);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* 100% SINGLE-SCREEN RESPONSIVE CLASSROOM PLAN (Liquid Glass Card) */
+        .classroom-card {
+            background: var(--ios-glass-card);
+            backdrop-filter: blur(22px) saturate(180%);
+            -webkit-backdrop-filter: blur(22px) saturate(180%);
+            border: 1px solid var(--ios-glass-border);
+            border-radius: 16px;
+            padding: 8px 6px;
+            box-shadow: var(--ios-shadow-glass), var(--ios-shadow-card);
+            margin-bottom: 12px;
+            width: 100%;
+        }
+
+        .classroom-plan {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            background: rgba(240, 243, 249, 0.7);
+            padding: 6px 4px;
+            border-radius: 12px;
+            border: 1px solid rgba(220, 226, 238, 0.8);
+            position: relative;
+        }
+
+        .plan-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3px;
+            width: 100%;
+        }
+
+        .row-label {
+            font-size: 0.65rem;
+            font-weight: 800;
+            color: var(--ios-secondary-label);
+            width: 14px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .blocks-container {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .desk-block {
+            display: flex;
+            background: rgba(220, 225, 235, 0.7);
+            padding: 2px;
+            border-radius: 8px;
+            gap: 2px;
+            border: 1px solid rgba(200, 208, 222, 0.8);
+            min-width: 0;
+        }
+
+        .block-2 { flex: 2; }
+        .block-3 { flex: 3; }
+
+        .aisle-space {
+            font-size: 0.55rem;
+            color: #B4B9C8;
+            flex-shrink: 0;
+            padding: 0 1px;
+            font-weight: 800;
+        }
+
+        /* Individual Responsive Desk with Liquid Glass Surface & Physics */
+        .desk-unit {
+            flex: 1;
+            min-width: 0;
+            height: 54px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 6px;
+            padding: 2px 2px;
+            cursor: grab;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            border: 1.5px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.02);
+            transition: transform 0.22s var(--ios-spring), box-shadow 0.22s ease, border-color 0.22s ease, background 0.22s ease, opacity 0.2s ease;
+            touch-action: none;
+            will-change: transform, box-shadow;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .desk-unit:active {
+            transform: scale(0.93);
+            background: rgba(240, 242, 248, 0.9);
+        }
+
+        .desk-unit.selected {
+            border-color: var(--ios-orange) !important;
+            background: #FFF9ED !important;
+            animation: selectedAuraPulse 1.8s infinite ease-in-out;
+            z-index: 5;
+        }
+
+        @keyframes selectedAuraPulse {
+            0%, 100% {
+                transform: scale(1.02);
+                box-shadow: 0 0 0 2px rgba(255, 149, 0, 0.5), 0 4px 12px rgba(255, 149, 0, 0.25);
+            }
+            50% {
+                transform: scale(1.035);
+                box-shadow: 0 0 0 3.5px rgba(255, 149, 0, 0.75), 0 6px 18px rgba(255, 149, 0, 0.38);
+            }
+        }
+
+        /* Drag and Drop Origin Dimmed State */
+        .desk-unit.drag-origin-dimmed {
+            opacity: 0.35 !important;
+            transform: scale(0.94) !important;
+            border: 1.5px dashed var(--ios-blue) !important;
+            background: rgba(0, 122, 255, 0.06) !important;
+        }
+
+        /* Drag and Drop Hover Target Snap */
+        .desk-unit.drag-hover-target {
+            transform: scale(1.08) !important;
+            border-color: var(--ios-blue) !important;
+            background: #EBF5FF !important;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.45), 0 8px 20px rgba(0, 122, 255, 0.25) !important;
+            z-index: 10 !important;
+        }
+
+        /* Floating Dragged Clone Surface (Liquid Glass Lift & Float) */
+        .floating-drag-desk {
+            position: fixed;
+            width: 72px;
+            height: 56px;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            border: 2px solid var(--ios-blue);
+            border-radius: 9px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25), 0 4px 14px rgba(0, 122, 255, 0.35);
+            pointer-events: none;
+            z-index: 99999;
+            padding: 3px 4px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+            will-change: left, top, transform;
+            opacity: 0.98;
+        }
+
+        /* Desk Swap Fluid Animation */
+        .desk-unit.swapping {
+            animation: deskSwapGlow 0.48s var(--ios-bounce) forwards;
+            z-index: 6;
+        }
+
+        @keyframes deskSwapGlow {
+            0% {
+                transform: scale(1);
+            }
+            45% {
+                transform: scale(1.09);
+                border-color: var(--ios-blue);
+                box-shadow: 0 0 16px rgba(0, 122, 255, 0.5);
+                background: #F0F7FF;
+            }
+            100% {
+                transform: scale(1);
+                border-color: rgba(255, 255, 255, 0.8);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+                background: rgba(255, 255, 255, 0.95);
+            }
+        }
+
+        /* Recalculate Ripple Wave Animation */
+        .desk-unit.recalc-pop {
+            animation: deskRecalcPop 0.42s var(--ios-spring) both;
+        }
+
+        @keyframes deskRecalcPop {
+            0% {
+                opacity: 0.5;
+                transform: scale(0.9);
+            }
+            60% {
+                transform: scale(1.04);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .desk-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.52rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .desk-code {
+            color: #3C3C43;
+        }
+
+        .desk-badge {
+            font-size: 0.5rem;
+            font-weight: 700;
+            padding: 0 2px;
+            border-radius: 3px;
+            line-height: 1.1;
+        }
+
+        .badge-10 { background: #D1FADF; color: #027A48; font-weight: 800; }
+        .badge-high { background: #E0F2FE; color: #0369A1; }
+        .badge-mid { background: #FEF3C7; color: #B45309; }
+        .badge-low { background: #FEE2E2; color: #B91C1C; }
+
+        .desk-name {
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: var(--ios-label);
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: clip;
+            line-height: 1.1;
+            margin: 1px 0;
+            letter-spacing: -0.02em;
+        }
+
+        /* 100% CLEAR BONUS / MALUS DELTA PILL (Green, Orange <= -0.05, Red < -0.9) */
+        .desk-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1;
+            width: 100%;
+        }
+
+        .diff-tag {
+            font-size: 0.52rem;
+            font-weight: 800;
+            padding: 1px 4px;
+            border-radius: 4px;
+            display: inline-block;
+            text-align: center;
+            letter-spacing: -0.01em;
+            line-height: 1;
+            transition: transform 0.2s var(--ios-spring), background 0.2s ease, color 0.2s ease;
+        }
+
+        .diff-pos {
+            background: #DCFCE7;
+            color: #15803D;
+        }
+
+        .diff-orange {
+            background: #FEF3C7;
+            color: #B45309;
+        }
+
+        .diff-neg {
+            background: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .diff-zero {
+            background: #F2F2F7;
+            color: #8E8E93;
+        }
+
+        .desk-footer-hidden {
+            height: 2px;
+            width: 100%;
+        }
+
+        /* SEARCH BAR FOR MEDIE (iOS Native Style) */
+        .search-container {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .ios-search-bar {
+            display: flex;
+            align-items: center;
+            background: rgba(142, 142, 147, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 10px;
+            padding: 6px 10px;
+            gap: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transition: background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .ios-search-bar:focus-within {
+            background: #FFFFFF;
+            border-color: var(--ios-blue);
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.15);
+        }
+
+        .search-icon-svg {
+            width: 15px;
+            height: 15px;
+            fill: var(--ios-secondary-label);
+            flex-shrink: 0;
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 0.88rem;
+            color: var(--ios-label);
+            outline: none;
+            padding: 2px 0;
+        }
+
+        .search-clear-btn {
+            background: #C7C7CC;
+            border: none;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            color: #FFFFFF;
+            cursor: pointer;
+            font-weight: 800;
+        }
+
+        .search-clear-btn.visible {
+            display: flex;
+        }
+
+        /* iOS Inset Grouped List (Medie) with Liquid Glass */
+        .inset-list-section {
+            margin-bottom: 20px;
+        }
+
+        .section-header {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--ios-secondary-label);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin: 0 0 6px 8px;
+        }
+
+        .inset-list {
+            background: var(--ios-glass-card);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid var(--ios-glass-border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--ios-shadow-glass), var(--ios-shadow-card);
+        }
+
+        .list-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            position: relative;
+            transition: background 0.15s ease;
+        }
+
+        .list-row:active {
+            background: rgba(240, 243, 250, 0.8);
+        }
+
+        .list-row:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 44px;
+            right: 0;
+            height: 0.5px;
+            background: var(--ios-separator);
+        }
+
+        .row-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .row-rank {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
+            width: 18px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .row-name {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--ios-label);
+        }
+
+        .row-sub {
+            font-size: 0.68rem;
+            color: var(--ios-secondary-label);
+            margin-top: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mean-field {
+            width: 62px;
+            padding: 6px 4px;
+            border-radius: 8px;
+            border: 1px solid var(--ios-border);
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--ios-blue);
+            text-align: center;
+            background: rgba(248, 250, 254, 0.9);
+            flex-shrink: 0;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .mean-field:focus {
+            outline: none;
+            border-color: var(--ios-blue);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+        }
+
+        /* History Chips */
+        .history-chips {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+            margin-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .history-chip {
+            background: var(--ios-glass);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid var(--ios-glass-border);
+            padding: 6px 13px;
+            border-radius: 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--ios-secondary-label);
+            white-space: nowrap;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            transition: transform 0.18s var(--ios-spring), background 0.18s ease, color 0.18s ease;
+            touch-action: manipulation;
+        }
+
+        .history-chip:active {
+            transform: scale(0.94);
+        }
+
+        .history-chip.active {
+            background: linear-gradient(135deg, #007AFF 0%, #005EC4 100%);
+            color: #FFFFFF;
+            border-color: transparent;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.28);
+        }
+
+        /* Interactive Swap Floating Bar with Liquid Glass & iOS Bounce */
+        .swap-alert {
+            position: fixed;
+            bottom: calc(env(safe-area-inset-bottom, 20px) + 12px);
+            left: 12px;
+            right: 12px;
+            background: rgba(28, 28, 30, 0.88);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #FFFFFF;
+            padding: 11px 16px;
+            border-radius: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            z-index: 50;
+            transform: translate3d(0, calc(100% + 30px), 0);
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.36s var(--ios-bounce), opacity 0.24s ease;
+            will-change: transform, opacity;
+        }
+
+        .swap-alert.active {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Liquid Glass Native Modal Sheets */
+        .sheet-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.36);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: flex-end;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.32s var(--ios-spring);
+            will-change: opacity;
+        }
+
+        .sheet-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sheet-container {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(30px) saturate(190%);
+            -webkit-backdrop-filter: blur(30px) saturate(190%);
+            border-top: 1px solid rgba(255, 255, 255, 0.8);
+            width: 100%;
+            border-radius: 22px 22px 0 0;
+            padding: 12px 16px calc(env(safe-area-inset-bottom, 20px) + 16px);
+            max-height: 88vh;
+            overflow-y: auto;
+            transform: translate3d(0, 100%, 0);
+            transition: transform 0.38s var(--ios-spring);
+            will-change: transform;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.16);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sheet-overlay.active .sheet-container {
+            transform: translate3d(0, 0, 0);
+        }
+
+        .sheet-grabber {
+            width: 38px;
+            height: 5px;
+            background: #C7C7CC;
+            border-radius: 2.5px;
+            margin: 0 auto 12px;
+            transition: background 0.2s ease;
+        }
+
+        .sheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .sheet-title {
+            font-size: 1.18rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .vincoli-section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 6px;
+        }
+
+        .pair-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(242, 242, 247, 0.8);
+            backdrop-filter: blur(8px);
+            padding: 5px 9px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin: 2px;
+            border: 1px solid var(--ios-border);
+            animation: tagPopIn 0.25s var(--ios-spring);
+        }
+
+        @keyframes tagPopIn {
+            0% { opacity: 0; transform: scale(0.85); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .pair-tag.fixed-tag {
+            border-color: #A7F3D0;
+            background: rgba(236, 253, 245, 0.85);
+            color: #065F46;
+        }
+
+        .pair-tag.forbid-tag {
+            border-color: #FECACA;
+            background: rgba(254, 242, 242, 0.85);
+            color: #991B1B;
+        }
+
+        .pair-delete {
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0 4px;
+            color: var(--ios-secondary-label);
+            transition: color 0.15s ease, transform 0.15s var(--ios-spring);
+        }
+
+        .pair-delete:active {
+            color: var(--ios-red);
+            transform: scale(1.2);
+        }
+
+        select.ios-select {
+            width: 100%;
+            padding: 9px 10px;
+            border-radius: 9px;
+            border: 1px solid var(--ios-border);
+            font-size: 0.85rem;
+            background: rgba(248, 248, 250, 0.9);
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: var(--ios-label);
+            transition: border-color 0.2s ease;
+        }
+
+        select.ios-select:focus {
+            outline: none;
+            border-color: var(--ios-blue);
+        }
+
+        /* Mobile Desk Scores Grid */
+        .desk-scores-row-box {
+            background: rgba(240, 243, 250, 0.7);
+            border-radius: 12px;
+            padding: 10px 8px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(220, 226, 238, 0.8);
+        }
+
+        .scores-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .score-edit-cell {
+            background: #FFFFFF;
+            border-radius: 8px;
+            padding: 6px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            border: 1px solid rgba(210, 216, 228, 0.9);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            transition: transform 0.15s var(--ios-spring);
+        }
+
+        .score-code-lbl {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--ios-secondary-label);
+        }
+
+        .score-field-input {
+            width: 48px;
+            padding: 4px 2px;
+            border-radius: 6px;
+            border: 1.5px solid var(--ios-border);
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-align: center;
+            color: var(--ios-blue);
+            background: #F8F8FA;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .score-field-input:focus {
+            outline: none;
+            border-color: var(--ios-blue);
+            background: #FFFFFF;
+        }
+
+        /* AI Assistant Chat Stream & Message Bubble Animations */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 48vh;
+            overflow-y: auto;
+            padding: 4px 2px 10px;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+
+        .chat-msg {
+            display: flex;
+            flex-direction: column;
+            max-width: 88%;
+            font-size: 0.85rem;
+            line-height: 1.38;
+            animation: bubbleSlideIn 0.28s var(--ios-spring) forwards;
+            will-change: transform, opacity;
+        }
+
+        @keyframes bubbleSlideIn {
+            0% { opacity: 0; transform: translateY(10px) scale(0.97); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .chat-msg.assistant {
+            align-self: flex-start;
+            background: rgba(230, 233, 240, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: #000000;
+            padding: 10px 14px;
+            border-radius: 18px 18px 18px 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .chat-msg.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #007AFF 0%, #005EC4 100%);
+            color: #FFFFFF;
+            padding: 10px 14px;
+            border-radius: 18px 18px 4px 18px;
+            box-shadow: 0 3px 10px rgba(0, 122, 255, 0.25);
+        }
+
+        /* iOS Typing Indicator */
+        .typing-bubble {
+            align-self: flex-start;
+            background: rgba(230, 233, 240, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 10px 14px;
+            border-radius: 18px 18px 18px 4px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            animation: bubbleSlideIn 0.2s var(--ios-spring);
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #8E8E93;
+            animation: typingBounce 1.2s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-4px); opacity: 1; }
+        }
+
+        .chat-suggestion-chips {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 6px 0 10px;
+            margin-top: 6px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .suggestion-chip {
+            background: var(--ios-glass);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--ios-glass-border);
+            padding: 6px 12px;
+            border-radius: 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--ios-blue);
+            white-space: nowrap;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+            transition: transform 0.16s var(--ios-spring), background 0.16s ease;
+            touch-action: manipulation;
+        }
+
+        .suggestion-chip:active {
+            background: rgba(220, 225, 238, 0.9);
+            transform: scale(0.94);
+        }
+
+        .chat-input-bar {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 20px;
+            border: 1px solid var(--ios-border);
+            font-size: 0.88rem;
+            background: rgba(248, 248, 250, 0.9);
+            transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--ios-blue);
+            background: #FFFFFF;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
+        }
+
+        /* Image Save Sheet Modal */
+        #img-preview-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        #img-preview-el {
+            max-width: 100%;
+            height: auto;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.14);
+            border: 1px solid var(--ios-separator);
+        }
+
+        /* Notification Banner with Dynamic Island Spring */
+        .toast {
+            position: fixed;
+            top: max(20px, env(safe-area-inset-top, 20px));
+            left: 50%;
+            transform: translate3d(-50%, -40px, 0) scale(0.9);
+            background: rgba(28, 28, 30, 0.88);
+            backdrop-filter: blur(25px) saturate(190%);
+            -webkit-backdrop-filter: blur(25px) saturate(190%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            color: #FFFFFF;
+            padding: 8px 18px;
+            border-radius: 22px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.36s var(--ios-bounce), opacity 0.24s ease;
+            z-index: 200;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            will-change: transform, opacity;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translate3d(-50%, 0, 0) scale(1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="toast" class="toast">Notifica</div>
+
+    <!-- Liquid Glass Navigation Bar -->
+    <div class="navbar">
+        <h1 class="nav-title">Banchi</h1>
+        <div class="nav-actions">
+            <!-- Show / Hide Diff Tags Eye Button -->
+            <button id="btn-toggle-eye" class="btn-icon-glass" onclick="toggleDiffVisibility()" title="Mostra o nascondi scarti">
+                <svg id="eye-icon-svg" class="nav-svg-icon" viewBox="0 0 24 24">
+                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                </svg>
+            </button>
+            <button class="btn-link" onclick="openAssistantSheet()">Consulente</button>
+            <button class="btn-link" onclick="openVotiSheet()">Voti</button>
+            <button class="btn-link" onclick="openVincoliSheet()">Vincoli</button>
+            <button class="btn-primary" onclick="calcolaDisposizione()">Calcola</button>
+        </div>
+    </div>
+
+    <!-- Liquid Glass Native Segmented Control with Animated Glider -->
+    <div class="segmented-control">
+        <div id="segment-glider" class="segment-glider"></div>
+        <button id="seg-map" class="segment-item active" onclick="switchTab('tab-map', 0)">Piantina</button>
+        <button id="seg-medie" class="segment-item" onclick="switchTab('tab-medie', 1)">Medie</button>
+        <button id="seg-storico" class="segment-item" onclick="switchTab('tab-storico', 2)">Storico</button>
+    </div>
+
+    <!-- Liquid Glass Stats Summary Header -->
+    <div class="summary-card">
+        <span>Studenti: <span class="val">23</span></span>
+        <span>Media Aula: <span class="val" id="lbl-class-avg">6.50</span></span>
+        <span><span class="val" id="lbl-current-round">Turno 1</span></span>
+    </div>
+
+    <!-- TAB 1: PIANTINA IN UN'UNICA SCHERMATA -->
+    <div id="tab-map" class="tab-pane active">
+        
+        <div class="classroom-card">
+            <div class="classroom-plan" id="live-classroom-plan">
+                
+                <!-- Fila C -->
+                <div class="plan-row">
+                    <span class="row-label">C</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            <div id="seat-c1" class="desk-unit" data-code="c1"></div>
+                            <div id="seat-c2" class="desk-unit" data-code="c2"></div>
+                        </div>
+
+                        <span class="aisle-space">|</span>
+
+                        <div class="desk-block block-2">
+                            <div id="seat-c4" class="desk-unit" data-code="c4"></div>
+                            <div id="seat-c5" class="desk-unit" data-code="c5"></div>
+                        </div>
+
+                        <span class="aisle-space">|</span>
+
+                        <div class="desk-block block-3">
+                            <div id="seat-c6" class="desk-unit" data-code="c6"></div>
+                            <div id="seat-c7" class="desk-unit" data-code="c7"></div>
+                            <div id="seat-c8" class="desk-unit" data-code="c8"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fila B -->
+                <div class="plan-row">
+                    <span class="row-label">B</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            <div id="seat-b1" class="desk-unit" data-code="b1"></div>
+                            <div id="seat-b2" class="desk-unit" data-code="b2"></div>
+                        </div>
+
+                        <span class="aisle-space">|</span>
+
+                        <div class="desk-block block-3">
+                            <div id="seat-b3" class="desk-unit" data-code="b3"></div>
+                            <div id="seat-b4" class="desk-unit" data-code="b4"></div>
+                            <div id="seat-b5" class="desk-unit" data-code="b5"></div>
+                        </div>
+
+                        <span class="aisle-space">|</span>
+
+                        <div class="desk-block block-3">
+                            <div id="seat-b6" class="desk-unit" data-code="b6"></div>
+                            <div id="seat-b7" class="desk-unit" data-code="b7"></div>
+                            <div id="seat-b8" class="desk-unit" data-code="b8"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fila A -->
+                <div class="plan-row">
+                    <span class="row-label">A</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            <div id="seat-a1" class="desk-unit" data-code="a1"></div>
+                            <div id="seat-a2" class="desk-unit" data-code="a2"></div>
+                        </div>
+
+                        <span class="aisle-space">|</span>
+
+                        <div class="desk-block block-3">
+                            <div id="seat-a3" class="desk-unit" data-code="a3"></div>
+                            <div id="seat-a4" class="desk-unit" data-code="a4"></div>
+                            <div id="seat-a5" class="desk-unit" data-code="a5"></div>
+                        </div>
+
+                        <span class="aisle-space">|</span>
+
+                        <div class="desk-block block-3">
+                            <div id="seat-a6" class="desk-unit" data-code="a6"></div>
+                            <div id="seat-a7" class="desk-unit" data-code="a7"></div>
+                            <div id="seat-a8" class="desk-unit" data-code="a8"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="action-row">
+            <button class="btn-full" onclick="saveAndNextRound()">
+                Salva
+            </button>
+            <button class="btn-share" onclick="generateAndSaveClassroomImage()">
+                Foto
+            </button>
+        </div>
+
+    </div>
+
+    <!-- TAB 2: MEDIE CON RICERCA E MODIFICATORE STORICO REALE -->
+    <div id="tab-medie" class="tab-pane">
+        
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="ios-search-bar">
+                <svg class="search-icon-svg" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/>
+                </svg>
+                <input type="text" id="student-search-input" class="search-input" placeholder="Cerca studente per nome..." oninput="filterStudentsMedie()">
+                <button id="search-clear-btn" class="search-clear-btn" onclick="clearStudentSearch()">&times;</button>
+            </div>
+        </div>
+
+        <div class="inset-list-section">
+            <div class="section-header" id="medie-list-header">Classifica Medie Studenti (23)</div>
+            <div class="inset-list" id="students-medie-container">
+                <!-- Rows populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TAB 3: STORICO MODIFICABILE -->
+    <div id="tab-storico" class="tab-pane">
+        <div class="history-chips" id="history-round-chips">
+            <!-- Chips populated by JS -->
+        </div>
+
+        <div id="history-empty-message" style="display:none; background:var(--ios-glass-card); backdrop-filter:blur(20px); border:1px solid var(--ios-glass-border); border-radius:16px; padding:20px 14px; text-align:center; color:var(--ios-secondary-label); font-size:0.85rem;">
+            Nessun turno archiviato nello storico.<br>Tocca "Salva" nella piantina per archiviare il primo turno.
+        </div>
+
+        <div id="history-view-card" class="classroom-card">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; padding:0 2px;">
+                <div>
+                    <span id="history-map-title" style="font-size:0.88rem; font-weight:700;">Turno 1</span>
+                    <span style="font-size:0.68rem; color:var(--ios-secondary-label); display:block;">Tocca o trascina due banchi per scambiarli</span>
+                </div>
+                <div style="display:flex; gap:6px;">
+                    <button class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="generateAndSaveHistoryImage()">Foto</button>
+                    <button class="btn-destructive" onclick="deleteSelectedHistoryRound()">Elimina</button>
+                </div>
+            </div>
+            
+            <div class="classroom-plan" id="history-plan-container">
+                <!-- History Plan Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Interactive Swap Alert (Live Plan) -->
+    <div id="swap-banner" class="swap-alert">
+        <span style="font-size:0.78rem;">
+            <strong id="swap-name-1">Valentina</strong> (<span id="swap-code-1">C4</span>) selezionato.<br>
+            Tocca o trascina su un secondo banco per scambiare.
+        </span>
+        <button class="btn-link" style="color:#FFFFFF; font-weight:600;" onclick="cancelSwap()">Annulla</button>
+    </div>
+
+    <!-- Floating Interactive Swap Alert (History Plan) -->
+    <div id="history-swap-banner" class="swap-alert">
+        <span style="font-size:0.78rem;">
+            Modifica Storico: <strong id="hist-swap-name-1">Valentina</strong> selezionato.<br>
+            Tocca un secondo posto per scambiare in questo turno.
+        </span>
+        <button class="btn-link" style="color:#FFFFFF; font-weight:600;" onclick="cancelHistorySwap()">Annulla</button>
+    </div>
+
+    <!-- iOS Native Modal Sheet: Consulente AI Integrato Avanzato -->
+    <div id="sheet-assistant" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-assistant')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div>
+                    <div class="sheet-title">Consulente Banchi AI</div>
+                    <span style="font-size:0.75rem; color:var(--ios-secondary-label);">Motore Intelligente dell'Algoritmo di Equità</span>
+                </div>
+                <button class="btn-link" onclick="closeAssistantSheet()">Fine</button>
+            </div>
+
+            <!-- Chat Stream -->
+            <div class="chat-container" id="chat-stream">
+                <div class="chat-msg assistant">
+                    Ciao! Sono il motore AI integrato per l'algoritmo dei banchi. Conosco tutti i 23 studenti, lo storico dei turni e la matrice di costo ungherese. Chiedimi qualsiasi cosa (es. <em>"Dove mettere Manuel?"</em>, <em>"Migliori 3 scambi"</em>, <em>"Simula Diletta in A1"</em>, <em>"Chi deve recuperare?"</em> o <em>"Spiegami l'algoritmo"</em>)!
+                </div>
+            </div>
+
+            <!-- Quick Suggestion Chips -->
+            <div class="chat-suggestion-chips">
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Consigliami i migliori 3 scambi per aumentare l equità')">Migliori 3 scambi</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Dove posso mettere Claudia per renderla più equa?')">Dove mettere Claudia?</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Chi deve recuperare punti adesso?')">Chi deve recuperare?</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Analisi dettagliata equità e varianza')">Analisi varianza</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Chi è troppo in vantaggio?')">Chi è in vantaggio?</button>
+                <button class="suggestion-chip" onclick="askPredefinedQuery('Spiegami come funziona il calcolo dei posti')">Come funziona l algoritmo?</button>
+            </div>
+
+            <!-- Chat Input Bar -->
+            <div class="chat-input-bar">
+                <input type="text" id="chat-input-text" class="chat-input" placeholder="Chiedi al consulente o simula..." onkeydown="if(event.key==='Enter') sendChatMessage()">
+                <button class="btn-primary" style="padding:8px 14px;" onclick="sendChatMessage()">Invia</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- iOS Native Modal Sheet: Modifica Voti dei Banchi -->
+    <div id="sheet-voti" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-voti')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div>
+                    <div class="sheet-title">Voti dei Banchi</div>
+                    <span style="font-size:0.75rem; color:var(--ios-secondary-label);" id="sheet-voti-avg-lbl">Media Aula: 6.50</span>
+                </div>
+                <button class="btn-link" onclick="closeVotiSheet()">Fine</button>
+            </div>
+
+            <!-- Fila C -->
+            <div class="desk-scores-row-box">
+                <div class="vincoli-section-title">Fila C (Davanti)</div>
+                <div class="scores-grid" id="scores-grid-c"></div>
+            </div>
+
+            <!-- Fila B -->
+            <div class="desk-scores-row-box">
+                <div class="vincoli-section-title">Fila B (Centro)</div>
+                <div class="scores-grid" id="scores-grid-b"></div>
+            </div>
+
+            <!-- Fila A -->
+            <div class="desk-scores-row-box">
+                <div class="vincoli-section-title">Fila A (Fondo)</div>
+                <div class="scores-grid" id="scores-grid-a"></div>
+            </div>
+
+            <button class="btn-secondary" style="width:100%; padding:10px; margin-top:4px;" onclick="resetDeskScoresToDefault()">
+                Ripristina Voti Predefiniti
+            </button>
+        </div>
+    </div>
+
+    <!-- iOS Native Modal Sheet: Vincoli -->
+    <div id="sheet-vincoli" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-vincoli')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div class="sheet-title">Vincoli di Posizione</div>
+                <button class="btn-link" onclick="closeVincoliSheet()">Fine</button>
+            </div>
+
+            <!-- Coppie Fisse -->
+            <div style="margin-bottom:16px;">
+                <div class="vincoli-section-title">Coppie Fisse (Sempre vicini di banco)</div>
+                <div id="fixed-pairs-list" style="margin-bottom:8px;"></div>
+                <div style="display:flex; gap:6px;">
+                    <select id="sel-fixed-1" class="ios-select"></select>
+                    <select id="sel-fixed-2" class="ios-select"></select>
+                </div>
+                <button class="btn-secondary" style="width:100%; padding:8px; border-radius:8px;" onclick="addFixedPair()">Aggiungi Coppia Fissa</button>
+            </div>
+
+            <!-- Coppie Separate -->
+            <div style="margin-bottom:12px;">
+                <div class="vincoli-section-title">Coppie Separate (Mai vicini di banco)</div>
+                <div id="forbidden-pairs-list" style="margin-bottom:8px;"></div>
+                <div style="display:flex; gap:6px;">
+                    <select id="sel-forbid-1" class="ios-select"></select>
+                    <select id="sel-forbid-2" class="ios-select"></select>
+                </div>
+                <button class="btn-secondary" style="width:100%; padding:8px; border-radius:8px;" onclick="addForbiddenPair()">Aggiungi Coppia Separata</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- iOS Native Modal Sheet: Salva Immagine in Galleria -->
+    <div id="sheet-image-save" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-image-save')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div>
+                    <div class="sheet-title">Piantina Pronta</div>
+                    <span style="font-size:0.75rem; color:var(--ios-secondary-label);">Tieni premuto sull'immagine per salvarla in Foto</span>
+                </div>
+                <button class="btn-link" onclick="closeImageSaveSheet()">Fine</button>
+            </div>
+
+            <div id="img-preview-container">
+                <img id="img-preview-el" alt="Piantina Banchi">
+            </div>
+
+            <button class="btn-full" style="margin-top:10px;" onclick="triggerDirectDownloadImage()">
+                Salva Immagine in Galleria
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_SEATS = [
+            // Fila C (Davanti)
+            { code: "c1", row: "c", block: "c_l", score: 6.5 },
+            { code: "c2", row: "c", block: "c_l", score: 4.0 },
+            { code: "c4", row: "c", block: "c_m", score: 3.0 },
+            { code: "c5", row: "c", block: "c_m", score: 3.0 },
+            { code: "c6", row: "c", block: "c_r", score: 3.5 },
+            { code: "c7", row: "c", block: "c_r", score: 4.0 },
+            { code: "c8", row: "c", block: "c_r", score: 6.0 },
+
+            // Fila B (Centro)
+            { code: "b1", row: "b", block: "b_l", score: 7.0 },
+            { code: "b2", row: "b", block: "b_l", score: 5.0 },
+            { code: "b3", row: "b", block: "b_m", score: 5.5 },
+            { code: "b4", row: "b", block: "b_m", score: 5.5 },
+            { code: "b5", row: "b", block: "b_m", score: 5.5 },
+            { code: "b6", row: "b", block: "b_r", score: 5.0 },
+            { code: "b7", row: "b", block: "b_r", score: 7.0 },
+            { code: "b8", row: "b", block: "b_r", score: 9.0 },
+
+            // Fila A (Fondo)
+            { code: "a1", row: "a", block: "a_l", score: 10.0 },
+            { code: "a2", row: "a", block: "a_l", score: 6.5 },
+            { code: "a3", row: "a", block: "a_m", score: 9.5 },
+            { code: "a4", row: "a", block: "a_m", score: 8.5 },
+            { code: "a5", row: "a", block: "a_m", score: 9.0 },
+            { code: "a6", row: "a", block: "a_r", score: 7.0 },
+            { code: "a7", row: "a", block: "a_r", score: 9.5 },
+            { code: "a8", row: "a", block: "a_r", score: 10.0 }
+        ];
+
+        let SEATS = JSON.parse(JSON.stringify(DEFAULT_SEATS));
+
+        const FIXED_STUDENT_NAMES = [
+            "Mario", "Valentina", "Gianluca", "Davide", "Leonardo", "Manuel", 
+            "Diletta", "Potti", "Riccardo", "Virgi", "Giulia", "Claudia", 
+            "Sofia", "Giada", "Camilla", "Diego", "Elena", "Margot", 
+            "Lina", "Gloria", "Alice", "Betta", "Sara"
+        ];
+
+        const SHORT_NAMES = {
+            "Valentina": "Vale",
+            "Leonardo": "Leo",
+            "Gianluca": "Gian",
+            "Riccardo": "Ricky",
+            "Camilla": "Cami",
+            "Diletta": "Dile",
+            "Claudia": "Clau"
+        };
+
+        function getDeskDisplayName(fullName) {
+            if (!fullName) return "";
+            return SHORT_NAMES[fullName] || fullName;
+        }
+
+        function getClassAvg() {
+            const sum = SEATS.reduce((acc, s) => acc + s.score, 0);
+            return sum / SEATS.length;
+        }
+
+        const STORAGE_KEY = "banchi_ios_state_v8";
+
+        let AppState = {
+            currentRound: 1,
+            showDiffTags: true,
+            students: FIXED_STUDENT_NAMES.map((name, i) => ({
+                id: i + 1,
+                name: name,
+                customMean: 6.50,
+                history: []
+            })),
+            currentAssign: {},
+            historyRounds: [],
+            forbiddenPairs: [],
+            fixedPairs: [],
+            customSeatScores: {},
+            selectedSeatCode: null,
+            historySelectedSeatCode: null,
+            viewingHistoryRound: null
+        };
+
+        let currentGeneratedImageDataUrl = null;
+
+        function saveStateToStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(AppState));
+            } catch (e) {
+                console.error("Storage save error:", e);
+            }
+        }
+
+        function loadStateFromStorage() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && parsed.students && parsed.students.length === 23) {
+                        AppState = parsed;
+                        if (AppState.showDiffTags === undefined) {
+                            AppState.showDiffTags = true;
+                        }
+                        if (AppState.customSeatScores) {
+                            SEATS.forEach(s => {
+                                if (AppState.customSeatScores[s.code] !== undefined) {
+                                    s.score = AppState.customSeatScores[s.code];
+                                }
+                            });
+                        }
+                        return true;
+                    }
+                }
+            } catch (e) {
+                console.error("Storage load error:", e);
+            }
+            return false;
+        }
+
+        let toastTimeout = null;
+        function showToast(msg) {
+            const el = document.getElementById('toast');
+            el.textContent = msg;
+            el.classList.add('show');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                el.classList.remove('show');
+            }, 1800);
+        }
+
+        function toggleDiffVisibility() {
+            AppState.showDiffTags = !AppState.showDiffTags;
+            saveStateToStorage();
+            updateEyeButtonState();
+            renderCurrentMap();
+            showToast(AppState.showDiffTags ? "Scarti visibili" : "Scarti nascosti");
+        }
+
+        function updateEyeButtonState() {
+            const btn = document.getElementById('btn-toggle-eye');
+            const svg = document.getElementById('eye-icon-svg');
+            if (!btn || !svg) return;
+
+            if (AppState.showDiffTags) {
+                btn.classList.remove('hidden-state');
+                svg.innerHTML = '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+            } else {
+                btn.classList.add('hidden-state');
+                svg.innerHTML = '<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46A11.804 11.804 0 0 0 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>';
+            }
+        }
+
+        function getStudentEffectiveMean(st) {
+            if (st.history && st.history.length > 0) {
+                return st.history.reduce((a, b) => a + b, 0) / st.history.length;
+            }
+            return st.customMean !== undefined ? st.customMean : getClassAvg();
+        }
+
+        function getScoreBadgeClass(score) {
+            if (score >= 10) return "badge-10";
+            if (score >= 7.0) return "badge-high";
+            if (score >= 5.0) return "badge-mid";
+            return "badge-low";
+        }
+
+        function syncStudentHistoriesFromRounds() {
+            AppState.students.forEach(st => {
+                if (!AppState.historyRounds || AppState.historyRounds.length === 0) {
+                    // Keep existing history or customMean
+                } else {
+                    st.history = [];
+                    AppState.historyRounds.forEach(h => {
+                        const seatCode = h.assign[st.id];
+                        const s = SEATS.find(x => x.code === seatCode);
+                        if (s) {
+                            st.history.push(s.score);
+                        }
+                    });
+                }
+            });
+        }
+
+        function hungarian(matrix) {
+            const n = matrix.length;
+            const m = matrix[0].length;
+            const dim = Math.max(n, m);
+            
+            const cost = Array.from({ length: dim }, (_, i) => 
+                Array.from({ length: dim }, (_, j) => (i < n && j < m) ? matrix[i][j] : 1e9)
+            );
+            
+            const u = new Array(dim + 1).fill(0);
+            const v = new Array(dim + 1).fill(0);
+            const p = new Array(dim + 1).fill(0);
+            const way = new Array(dim + 1).fill(0);
+            
+            for (let i = 1; i <= dim; i++) {
+                p[0] = i;
+                let j0 = 0;
+                const minv = new Array(dim + 1).fill(Infinity);
+                const used = new Array(dim + 1).fill(false);
+                
+                do {
+                    used[j0] = true;
+                    const i0 = p[j0];
+                    let delta = Infinity;
+                    let j1 = 0;
+                    
+                    for (let j = 1; j <= dim; j++) {
+                        if (!used[j]) {
+                            const cur = cost[i0 - 1][j - 1] - u[i0] - v[j];
+                            if (cur < minv[j]) {
+                                minv[j] = cur;
+                                way[j] = j0;
+                            }
+                            if (minv[j] < delta) {
+                                delta = minv[j];
+                                j1 = j;
+                            }
+                        }
+                    }
+                    
+                    for (let j = 0; j <= dim; j++) {
+                        if (used[j]) {
+                            u[p[j]] += delta;
+                            v[j] -= delta;
+                        } else {
+                            minv[j] -= delta;
+                        }
+                    }
+                    j0 = j1;
+                } while (p[j0] !== 0);
+                
+                do {
+                    const j1 = way[j0];
+                    p[j0] = p[j1];
+                    j0 = j1;
+                } while (j0 !== 0);
+            }
+            
+            const res = new Array(n);
+            for (let j = 1; j <= dim; j++) {
+                if (p[j] <= n && (j - 1) < m) {
+                    res[p[j] - 1] = j - 1;
+                }
+            }
+            return res;
+        }
+
+        function calculateOptimalMatching() {
+            const costMatrix = [];
+            const n = AppState.students.length;
+            const m = SEATS.length;
+            const classAvg = getClassAvg();
+
+            const lastRoundRecord = (AppState.historyRounds && AppState.historyRounds.length > 0)
+                ? AppState.historyRounds[AppState.historyRounds.length - 1]
+                : null;
+
+            for (let i = 0; i < n; i++) {
+                const st = AppState.students[i];
+                const histMean = getStudentEffectiveMean(st);
+                const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+
+                const lastSeatCode = lastRoundRecord ? lastRoundRecord.assign[st.id] : null;
+                const lastSeatObj = lastSeatCode ? SEATS.find(s => s.code === lastSeatCode) : null;
+                const lastRow = lastSeatObj ? lastSeatObj.row : null;
+
+                let turnsSinceRowA = 99;
+                let turnsSinceRowC = 99;
+                if (AppState.historyRounds) {
+                    for (let rIdx = AppState.historyRounds.length - 1; rIdx >= 0; rIdx--) {
+                        const hSeat = AppState.historyRounds[rIdx].assign[st.id];
+                        const sObj = SEATS.find(x => x.code === hSeat);
+                        if (sObj) {
+                            if (sObj.row === 'a' && turnsSinceRowA === 99) turnsSinceRowA = AppState.historyRounds.length - rIdx;
+                            if (sObj.row === 'c' && turnsSinceRowC === 99) turnsSinceRowC = AppState.historyRounds.length - rIdx;
+                        }
+                    }
+                }
+
+                const row = [];
+                for (let j = 0; j < m; j++) {
+                    const seat = SEATS[j];
+                    const newMean = (histMean * len + seat.score) / (len + 1);
+                    let baseCost = Math.pow(newMean - classAvg, 2) * 100;
+
+                    // Anti-repetition
+                    if (lastSeatCode && seat.code === lastSeatCode) {
+                        baseCost += 220;
+                    } else if (lastRow && seat.row === lastRow) {
+                        baseCost += 35;
+                    }
+
+                    // Recency tie-breaking
+                    if (seat.row === 'a' && turnsSinceRowA > 1) {
+                        baseCost -= Math.min(turnsSinceRowA * 1.5, 6);
+                    }
+                    if (seat.row === 'c' && turnsSinceRowC === 1) {
+                        baseCost += 8;
+                    }
+
+                    row.push(baseCost);
+                }
+                costMatrix.push(row);
+            }
+
+            let rawAssign = hungarian(costMatrix);
+
+            function evaluateAssignmentCost(assign) {
+                let cost = 0;
+                for (let i = 0; i < n; i++) {
+                    cost += costMatrix[i][assign[i]];
+                }
+
+                // Check Forbidden Pairs
+                if (AppState.forbiddenPairs) {
+                    for (const [p1, p2] of AppState.forbiddenPairs) {
+                        const idx1 = AppState.students.findIndex(s => s.name === p1);
+                        const idx2 = AppState.students.findIndex(s => s.name === p2);
+                        if (idx1 !== -1 && idx2 !== -1) {
+                            const seat1 = SEATS[assign[idx1]];
+                            const seat2 = SEATS[assign[idx2]];
+                            if (seat1.block === seat2.block) {
+                                cost += 100000;
+                            }
+                        }
+                    }
+                }
+
+                // Check Fixed Pairs
+                if (AppState.fixedPairs) {
+                    for (const [p1, p2] of AppState.fixedPairs) {
+                        const idx1 = AppState.students.findIndex(s => s.name === p1);
+                        const idx2 = AppState.students.findIndex(s => s.name === p2);
+                        if (idx1 !== -1 && idx2 !== -1) {
+                            const seat1 = SEATS[assign[idx1]];
+                            const seat2 = SEATS[assign[idx2]];
+                            if (seat1.block !== seat2.block) {
+                                cost += 100000;
+                            }
+                        }
+                    }
+                }
+
+                return cost;
+            }
+
+            let currentCost = evaluateAssignmentCost(rawAssign);
+            for (let iter = 0; iter < 500; iter++) {
+                let improved = false;
+                for (let i = 0; i < n; i++) {
+                    for (let j = i + 1; j < n; j++) {
+                        const temp = [...rawAssign];
+                        const tmp = temp[i];
+                        temp[i] = temp[j];
+                        temp[j] = tmp;
+
+                        const newCost = evaluateAssignmentCost(temp);
+                        if (newCost < currentCost - 1e-4) {
+                            rawAssign = temp;
+                            currentCost = newCost;
+                            improved = true;
+                        }
+                    }
+                }
+                if (!improved) break;
+            }
+
+            AppState.currentAssign = {};
+            for (let i = 0; i < n; i++) {
+                const seatIdx = rawAssign[i];
+                if (seatIdx !== undefined && seatIdx < m) {
+                    AppState.currentAssign[AppState.students[i].id] = SEATS[seatIdx].code;
+                }
+            }
+
+            saveStateToStorage();
+        }
+
+        function renderAll() {
+            const classAvg = getClassAvg();
+            document.getElementById('lbl-class-avg').textContent = classAvg.toFixed(2);
+            document.getElementById('sheet-voti-avg-lbl').textContent = `Media Aula: ${classAvg.toFixed(2)}`;
+
+            updateEyeButtonState();
+            renderCurrentMap();
+            renderMedieList();
+            renderHistoryTab();
+            renderVincoliDropdowns();
+            renderVotiGrids();
+        }
+
+        function renderCurrentMap() {
+            document.getElementById('lbl-current-round').textContent = `Turno ${AppState.currentRound}`;
+            const classAvg = getClassAvg();
+
+            SEATS.forEach(seat => {
+                const el = document.getElementById(`seat-${seat.code}`);
+                if (!el) return;
+
+                const stId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === seat.code);
+                const st = stId ? AppState.students.find(s => s.id == stId) : null;
+                const isSelected = AppState.selectedSeatCode === seat.code;
+
+                if (isSelected) el.classList.add('selected');
+                else el.classList.remove('selected');
+
+                let newMean = classAvg, diff = 0;
+                if (st) {
+                    const m = getStudentEffectiveMean(st);
+                    const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+                    newMean = (m * len + seat.score) / (len + 1);
+                    diff = newMean - classAvg;
+                }
+
+                const displayName = st ? getDeskDisplayName(st.name) : '<span style="color:#8E8E93">Libero</span>';
+
+                // Diff color logic:
+                // diff > +0.05 -> Green (.diff-pos)
+                // diff <= -0.05 and >= -0.901 -> Orange (.diff-orange)
+                // diff < -0.901 -> Red (.diff-neg)
+                // otherwise -> Zero/Neutral (.diff-zero)
+                let diffClass = "diff-zero";
+                let diffSign = "";
+                if (diff > 0.05) {
+                    diffClass = "diff-pos";
+                    diffSign = "+";
+                } else if (diff < -0.901) {
+                    diffClass = "diff-neg";
+                } else if (diff < -0.05) {
+                    diffClass = "diff-orange";
+                }
+
+                let footerHTML = "";
+                if (AppState.showDiffTags) {
+                    footerHTML = `
+                        <div class="desk-footer">
+                            <span class="diff-tag ${diffClass}">${diffSign}${diff.toFixed(1)}</span>
+                        </div>
+                    `;
+                } else {
+                    footerHTML = `<div class="desk-footer-hidden"></div>`;
+                }
+
+                el.innerHTML = `
+                    <div class="desk-header">
+                        <span class="desk-code">${seat.code.toUpperCase()}</span>
+                        <span class="desk-badge ${getScoreBadgeClass(seat.score)}">${seat.score.toFixed(1)}</span>
+                    </div>
+                    <div class="desk-name" style="${AppState.showDiffTags ? '' : 'font-size:0.72rem; margin: auto 0;'}">${displayName}</div>
+                    ${footerHTML}
+                `;
+            });
+        }
+
+        function triggerSeatSwapVisual(code1, code2) {
+            const el1 = document.getElementById(`seat-${code1}`);
+            const el2 = document.getElementById(`seat-${code2}`);
+            if (el1) {
+                el1.classList.remove('swapping');
+                void el1.offsetWidth;
+                el1.classList.add('swapping');
+                setTimeout(() => el1.classList.remove('swapping'), 500);
+            }
+            if (el2) {
+                el2.classList.remove('swapping');
+                void el2.offsetWidth;
+                el2.classList.add('swapping');
+                setTimeout(() => el2.classList.remove('swapping'), 500);
+            }
+        }
+
+        function triggerRecalcWaveVisual() {
+            SEATS.forEach((s, idx) => {
+                const el = document.getElementById(`seat-${s.code}`);
+                if (el) {
+                    el.classList.remove('recalc-pop');
+                    void el.offsetWidth;
+                    el.style.animationDelay = `${(idx % 8) * 0.03}s`;
+                    el.classList.add('recalc-pop');
+                    setTimeout(() => {
+                        el.classList.remove('recalc-pop');
+                        el.style.animationDelay = '';
+                    }, 600);
+                }
+            });
+        }
+
+        // --- FLUID PROFESSIONAL TOUCH & POINTER DRAG AND DROP ENGINE ---
+        let dragSourceCode = null;
+        let dragHoverCode = null;
+        let dragCloneEl = null;
+        let dragStartX = 0;
+        let dragStartY = 0;
+        let isDragging = false;
+        let dragTimer = null;
+        let isHistoryDrag = false;
+
+        function initDragAndDrop() {
+            document.addEventListener('pointerdown', handleGlobalPointerDown, { passive: false });
+            document.addEventListener('pointermove', handleGlobalPointerMove, { passive: false });
+            document.addEventListener('pointerup', handleGlobalPointerUp, { passive: false });
+            document.addEventListener('pointercancel', handleGlobalPointerUp, { passive: false });
+        }
+
+        function handleGlobalPointerDown(e) {
+            const deskEl = e.target.closest('.desk-unit');
+            if (!deskEl) return;
+
+            const code = deskEl.getAttribute('data-code');
+            if (!code) return;
+
+            // Check if inside history plan or live plan
+            isHistoryDrag = !!deskEl.closest('#history-plan-container');
+
+            dragSourceCode = code;
+            dragHoverCode = null;
+            dragStartX = e.clientX;
+            dragStartY = e.clientY;
+            isDragging = false;
+
+            if (dragTimer) clearTimeout(dragTimer);
+
+            // Responsive hold delay (180ms)
+            dragTimer = setTimeout(() => {
+                startDragging(deskEl, e.clientX, e.clientY);
+            }, 180);
+        }
+
+        function startDragging(sourceDeskEl, clientX, clientY) {
+            isDragging = true;
+            if (navigator.vibrate) {
+                try { navigator.vibrate(25); } catch(err) {}
+            }
+
+            sourceDeskEl.classList.add('drag-origin-dimmed');
+
+            // Create floating clone
+            dragCloneEl = document.createElement('div');
+            dragCloneEl.className = 'floating-drag-desk';
+            dragCloneEl.innerHTML = sourceDeskEl.innerHTML;
+            dragCloneEl.style.left = `${clientX}px`;
+            dragCloneEl.style.top = `${clientY}px`;
+            document.body.appendChild(dragCloneEl);
+        }
+
+        function handleGlobalPointerMove(e) {
+            if (!dragSourceCode) return;
+
+            const dist = Math.hypot(e.clientX - dragStartX, e.clientY - dragStartY);
+            if (!isDragging && dist > 10) {
+                // If moved before timer fired, user is probably scrolling page
+                if (dragTimer) clearTimeout(dragTimer);
+            }
+
+            if (!isDragging || !dragCloneEl) return;
+
+            e.preventDefault();
+
+            dragCloneEl.style.left = `${e.clientX}px`;
+            dragCloneEl.style.top = `${e.clientY}px`;
+
+            // Detect desk under finger/cursor
+            const elUnderPoint = document.elementFromPoint(e.clientX, e.clientY);
+            const targetDeskEl = elUnderPoint ? elUnderPoint.closest('.desk-unit') : null;
+            const targetCode = targetDeskEl ? targetDeskEl.getAttribute('data-code') : null;
+
+            if (targetCode !== dragHoverCode) {
+                // Remove highlight from previous
+                document.querySelectorAll('.desk-unit.drag-hover-target').forEach(el => {
+                    el.classList.remove('drag-hover-target');
+                });
+
+                if (targetDeskEl && targetCode !== dragSourceCode) {
+                    targetDeskEl.classList.add('drag-hover-target');
+                    if (navigator.vibrate) {
+                        try { navigator.vibrate(10); } catch(err) {}
+                    }
+                }
+                dragHoverCode = targetCode;
+            }
+        }
+
+        function handleGlobalPointerUp(e) {
+            if (dragTimer) {
+                clearTimeout(dragTimer);
+                dragTimer = null;
+            }
+
+            if (!dragSourceCode) return;
+
+            if (!isDragging) {
+                // Was a short tap! Execute standard tap
+                const code = dragSourceCode;
+                dragSourceCode = null;
+                if (isHistoryDrag) {
+                    tapHistoryDesk(code);
+                } else {
+                    tapDesk(code);
+                }
+                return;
+            }
+
+            // Clean up visual states
+            document.querySelectorAll('.desk-unit.drag-origin-dimmed').forEach(el => {
+                el.classList.remove('drag-origin-dimmed');
+            });
+            document.querySelectorAll('.desk-unit.drag-hover-target').forEach(el => {
+                el.classList.remove('drag-hover-target');
+            });
+
+            if (dragCloneEl) {
+                dragCloneEl.remove();
+                dragCloneEl = null;
+            }
+
+            const src = dragSourceCode;
+            const dest = dragHoverCode;
+            const wasHistory = isHistoryDrag;
+
+            dragSourceCode = null;
+            dragHoverCode = null;
+            isDragging = false;
+
+            if (dest && dest !== src) {
+                // Execute swap directly via Drag and Drop!
+                if (wasHistory) {
+                    executeHistorySwap(src, dest);
+                } else {
+                    executeLiveSwap(src, dest);
+                }
+            }
+        }
+
+        function executeLiveSwap(code1, code2) {
+            const st1Id = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === code1);
+            const st2Id = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === code2);
+
+            const st1 = st1Id ? AppState.students.find(s => s.id == st1Id) : null;
+            const st2 = st2Id ? AppState.students.find(s => s.id == st2Id) : null;
+
+            if (st1Id && st2Id) {
+                AppState.currentAssign[st1Id] = code2;
+                AppState.currentAssign[st2Id] = code1;
+            } else if (st1Id) AppState.currentAssign[st1Id] = code2;
+            else if (st2Id) AppState.currentAssign[st2Id] = code1;
+
+            cancelSwap();
+            saveStateToStorage();
+            renderAll();
+            triggerSeatSwapVisual(code1, code2);
+            showToast(`Spostato ${st1 ? st1.name : code1.toUpperCase()} ⇄ ${st2 ? st2.name : code2.toUpperCase()}`);
+        }
+
+        function executeHistorySwap(code1, code2) {
+            const hRecord = AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound);
+            if (!hRecord) return;
+
+            const st1Id = Object.keys(hRecord.assign).find(id => hRecord.assign[id] === code1);
+            const st2Id = Object.keys(hRecord.assign).find(id => hRecord.assign[id] === code2);
+
+            const st1 = st1Id ? AppState.students.find(s => s.id == st1Id) : null;
+            const st2 = st2Id ? AppState.students.find(s => s.id == st2Id) : null;
+
+            if (st1Id && st2Id) {
+                hRecord.assign[st1Id] = code2;
+                hRecord.assign[st2Id] = code1;
+            } else if (st1Id) hRecord.assign[st1Id] = code2;
+            else if (st2Id) hRecord.assign[st2Id] = code1;
+
+            cancelHistorySwap();
+            syncStudentHistoriesFromRounds();
+            saveStateToStorage();
+            renderAll();
+            showToast(`Turno ${AppState.viewingHistoryRound}: scambiati ${st1 ? st1.name : code1} ⇄ ${st2 ? st2.name : code2}`);
+        }
+
+        function tapDesk(code) {
+            if (!AppState.selectedSeatCode) {
+                AppState.selectedSeatCode = code;
+                const stId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === code);
+                const st = stId ? AppState.students.find(s => s.id == stId) : null;
+                
+                document.getElementById('swap-name-1').textContent = st ? st.name : code.toUpperCase();
+                document.getElementById('swap-code-1').textContent = code.toUpperCase();
+                document.getElementById('swap-banner').classList.add('active');
+                renderCurrentMap();
+            } else if (AppState.selectedSeatCode === code) {
+                cancelSwap();
+            } else {
+                executeLiveSwap(AppState.selectedSeatCode, code);
+            }
+        }
+
+        function cancelSwap() {
+            AppState.selectedSeatCode = null;
+            document.getElementById('swap-banner').classList.remove('active');
+            renderCurrentMap();
+        }
+
+        function tapHistoryDesk(code) {
+            const hRecord = AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound);
+            if (!hRecord) return;
+
+            if (!AppState.historySelectedSeatCode) {
+                AppState.historySelectedSeatCode = code;
+                const stId = Object.keys(hRecord.assign).find(id => hRecord.assign[id] === code);
+                const st = stId ? AppState.students.find(s => s.id == stId) : null;
+
+                document.getElementById('hist-swap-name-1').textContent = st ? st.name : code.toUpperCase();
+                document.getElementById('history-swap-banner').classList.add('active');
+                renderHistoryTab();
+            } else if (AppState.historySelectedSeatCode === code) {
+                cancelHistorySwap();
+            } else {
+                executeHistorySwap(AppState.historySelectedSeatCode, code);
+            }
+        }
+
+        function cancelHistorySwap() {
+            AppState.historySelectedSeatCode = null;
+            document.getElementById('history-swap-banner').classList.remove('active');
+            renderHistoryTab();
+        }
+
+        function calcolaDisposizione() {
+            calculateOptimalMatching();
+            renderAll();
+            triggerRecalcWaveVisual();
+            showToast("Disposizione aggiornata");
+        }
+
+        function saveAndNextRound() {
+            if (!AppState.historyRounds) AppState.historyRounds = [];
+            AppState.historyRounds.push({
+                roundNum: AppState.currentRound,
+                assign: JSON.parse(JSON.stringify(AppState.currentAssign))
+            });
+
+            syncStudentHistoriesFromRounds();
+            AppState.currentRound += 1;
+            calculateOptimalMatching();
+            saveStateToStorage();
+            renderAll();
+            triggerRecalcWaveVisual();
+            showToast(`Turno ${AppState.currentRound - 1} archiviato`);
+        }
+
+        // DESK SCORES EDITING SHEET
+        function openVotiSheet() {
+            renderVotiGrids();
+            document.getElementById('sheet-voti').classList.add('active');
+        }
+
+        function closeVotiSheet() {
+            document.getElementById('sheet-voti').classList.remove('active');
+        }
+
+        function renderVotiGrids() {
+            const gridC = document.getElementById('scores-grid-c');
+            const gridB = document.getElementById('scores-grid-b');
+            const gridA = document.getElementById('scores-grid-a');
+
+            gridC.innerHTML = '';
+            gridB.innerHTML = '';
+            gridA.innerHTML = '';
+
+            SEATS.forEach(s => {
+                const cell = document.createElement('div');
+                cell.className = 'score-edit-cell';
+                cell.innerHTML = `
+                    <span class="score-code-lbl">${s.code.toUpperCase()}</span>
+                    <input type="number" step="0.5" min="1" max="10" class="score-field-input" value="${s.score.toFixed(1)}" onchange="updateDeskScore('${s.code}', this.value)">
+                `;
+
+                if (s.row === 'c') gridC.appendChild(cell);
+                else if (s.row === 'b') gridB.appendChild(cell);
+                else if (s.row === 'a') gridA.appendChild(cell);
+            });
+        }
+
+        function updateDeskScore(code, val) {
+            const parsed = parseFloat(val);
+            if (isNaN(parsed) || parsed < 1 || parsed > 10) return;
+            const s = SEATS.find(x => x.code === code);
+            if (s) {
+                s.score = parsed;
+                if (!AppState.customSeatScores) AppState.customSeatScores = {};
+                AppState.customSeatScores[code] = parsed;
+
+                syncStudentHistoriesFromRounds();
+                saveStateToStorage();
+                renderAll();
+                showToast(`Banco ${code.toUpperCase()} impostato a ${parsed.toFixed(1)}`);
+            }
+        }
+
+        function resetDeskScoresToDefault() {
+            SEATS = JSON.parse(JSON.stringify(DEFAULT_SEATS));
+            AppState.customSeatScores = {};
+            syncStudentHistoriesFromRounds();
+            saveStateToStorage();
+            renderAll();
+            showToast("Voti dei banchi ripristinati");
+        }
+
+        // EMBEDDED ADVANCED AI ADVISOR (CONSULENTE BANCHI)
+        function openAssistantSheet() {
+            document.getElementById('sheet-assistant').classList.add('active');
+        }
+
+        function closeAssistantSheet() {
+            document.getElementById('sheet-assistant').classList.remove('active');
+        }
+
+        function handleOverlayClick(event, sheetId) {
+            if (event.target === document.getElementById(sheetId)) {
+                document.getElementById(sheetId).classList.remove('active');
+            }
+        }
+
+        function askPredefinedQuery(text) {
+            document.getElementById('chat-input-text').value = text;
+            sendChatMessage();
+        }
+
+        function sendChatMessage() {
+            const inputEl = document.getElementById('chat-input-text');
+            const userText = inputEl.value.trim();
+            if (!userText) return;
+
+            const chatStream = document.getElementById('chat-stream');
+
+            // Add user message bubble
+            const userMsgEl = document.createElement('div');
+            userMsgEl.className = 'chat-msg user';
+            userMsgEl.textContent = userText;
+            chatStream.appendChild(userMsgEl);
+            inputEl.value = '';
+
+            // Add typing indicator
+            const typingEl = document.createElement('div');
+            typingEl.className = 'typing-bubble';
+            typingEl.id = 'chat-typing-dots';
+            typingEl.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+            chatStream.appendChild(typingEl);
+            chatStream.scrollTop = chatStream.scrollHeight;
+
+            // Compute AI Advice with natural delay
+            const responseData = computeAdvisorResponse(userText);
+
+            setTimeout(() => {
+                const typing = document.getElementById('chat-typing-dots');
+                if (typing) typing.remove();
+
+                const aiMsgEl = document.createElement('div');
+                aiMsgEl.className = 'chat-msg assistant';
+                aiMsgEl.innerHTML = responseData.html;
+                chatStream.appendChild(aiMsgEl);
+                chatStream.scrollTop = chatStream.scrollHeight;
+            }, 320);
+        }
+
+        function computeAdvisorResponse(query) {
+            const q = query.toLowerCase();
+            const classAvg = getClassAvg();
+
+            // 1. Simulation / "Cosa succede se metto [Nome] in [Posto]"
+            const matchedSeatInQuery = SEATS.find(s => q.includes(s.code.toLowerCase()) || q.includes(' ' + s.code.toLowerCase()));
+            const matchedStInQuery = AppState.students.find(s => q.includes(s.name.toLowerCase()));
+
+            if (q.includes('simula') || (matchedStInQuery && matchedSeatInQuery)) {
+                if (matchedStInQuery && matchedSeatInQuery) {
+                    const curSeatCode = AppState.currentAssign[matchedStInQuery.id];
+                    const curMean = getStudentEffectiveMean(matchedStInQuery);
+                    const len = (matchedStInQuery.history && matchedStInQuery.history.length > 0) ? matchedStInQuery.history.length : 1;
+                    const simMean = (curMean * len + matchedSeatInQuery.score) / (len + 1);
+                    const delta = simMean - classAvg;
+
+                    const occId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === matchedSeatInQuery.code);
+                    const occupant = occId ? AppState.students.find(x => x.id == occId) : null;
+
+                    let advice = `<strong>Simulazione Scambio:</strong><br>`;
+                    advice += `Se sposti <strong>${matchedStInQuery.name}</strong> nel banco <strong>${matchedSeatInQuery.code.toUpperCase()}</strong> (${matchedSeatInQuery.score.toFixed(1)} punti, Fila ${matchedSeatInQuery.row.toUpperCase()}):<br>`;
+                    advice += `• La sua media passerà da <strong>${curMean.toFixed(2)}</strong> a <strong>${simMean.toFixed(2)}</strong> (${delta >= 0 ? '+' : ''}${delta.toFixed(2)} rispetto alla media aula ${classAvg.toFixed(2)}).<br>`;
+                    
+                    if (occupant && occupant.id !== matchedStInQuery.id) {
+                        const curSeatObj = SEATS.find(s => s.code === curSeatCode);
+                        const occMean = getStudentEffectiveMean(occupant);
+                        const occLen = (occupant.history && occupant.history.length > 0) ? occupant.history.length : 1;
+                        const occSimMean = (occMean * occLen + (curSeatObj ? curSeatObj.score : classAvg)) / (occLen + 1);
+
+                        advice += `• <strong>${occupant.name}</strong> andrà in <strong>${curSeatCode.toUpperCase()}</strong> e la sua media diventerà <strong>${occSimMean.toFixed(2)}</strong>.<br><br>`;
+                        advice += `👉 <button class="btn-primary" style="margin-top:4px; font-size:0.78rem; padding:6px 12px;" onclick="applyAdvisorSwap(${matchedStInQuery.id}, ${occupant.id})">Applica Scambio (${matchedStInQuery.name} ⇄ ${occupant.name})</button>`;
+                    }
+                    return { html: advice };
+                }
+            }
+
+            // 2. Best 3 Swaps across the whole classroom to optimize global fairness
+            if (q.includes('migliori') || q.includes('3 scambi') || q.includes('consigliami') || q.includes('migliorare') || q.includes('ottimizza')) {
+                const allSwaps = [];
+                const students = AppState.students;
+
+                function calcTotalClassVariance(assignMap) {
+                    let totalSqDiff = 0;
+                    students.forEach(st => {
+                        const sCode = assignMap[st.id];
+                        const s = SEATS.find(x => x.code === sCode);
+                        if (s) {
+                            const m = getStudentEffectiveMean(st);
+                            const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+                            const newM = (m * len + s.score) / (len + 1);
+                            totalSqDiff += Math.pow(newM - classAvg, 2);
+                        }
+                    });
+                    return totalSqDiff;
+                }
+
+                const baseVar = calcTotalClassVariance(AppState.currentAssign);
+
+                for (let i = 0; i < students.length; i++) {
+                    for (let j = i + 1; j < students.length; j++) {
+                        const st1 = students[i];
+                        const st2 = students[j];
+                        const code1 = AppState.currentAssign[st1.id];
+                        const code2 = AppState.currentAssign[st2.id];
+                        if (!code1 || !code2 || code1 === code2) continue;
+
+                        const testAssign = { ...AppState.currentAssign, [st1.id]: code2, [st2.id]: code1 };
+                        const newVar = calcTotalClassVariance(testAssign);
+                        const improvement = baseVar - newVar;
+
+                        if (improvement > 0.05) {
+                            allSwaps.push({ st1, st2, code1, code2, improvement });
+                        }
+                    }
+                }
+
+                allSwaps.sort((a, b) => b.improvement - a.improvement);
+                const top3 = allSwaps.slice(0, 3);
+
+                if (top3.length === 0) {
+                    return {
+                        html: `<strong>Mappa già al massimo dell'equità!</strong><br>` +
+                              `La disposizione corrente è già ottimale con l'algoritmo di assegnamento ungherese. Nessun singolo scambio aumenterebbe l'equità globale.`
+                    };
+                }
+
+                let advice = `<strong>Migliori scambi calcolati dall'algoritmo:</strong><br><br>`;
+                top3.forEach((sw, idx) => {
+                    advice += `<strong>${idx + 1}. ${sw.st1.name} (${sw.code1.toUpperCase()}) ⇄ ${sw.st2.name} (${sw.code2.toUpperCase()})</strong><br>`;
+                    advice += `• Guadagno di equità aula: <strong>+${(sw.improvement * 10).toFixed(1)}%</strong><br>`;
+                    advice += `<button class="btn-primary" style="margin: 4px 0 10px; font-size:0.78rem; padding:5px 12px;" onclick="applyAdvisorSwap(${sw.st1.id}, ${sw.st2.id})">Applica Scambio #${idx + 1}</button><br>`;
+                });
+
+                return { html: advice };
+            }
+
+            // 3. Specific Student Query
+            if (matchedStInQuery) {
+                const curSeatCode = AppState.currentAssign[matchedStInQuery.id];
+                const curSeat = SEATS.find(s => s.code === curSeatCode);
+                const curMean = getStudentEffectiveMean(matchedStInQuery);
+                const len = (matchedStInQuery.history && matchedStInQuery.history.length > 0) ? matchedStInQuery.history.length : 1;
+
+                const targetScore = classAvg * (len + 1) - curMean * len;
+
+                const candidates = SEATS.map(s => {
+                    const projectedMean = (curMean * len + s.score) / (len + 1);
+                    const delta = Math.abs(projectedMean - classAvg);
+                    const occupantId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === s.code);
+                    const occupant = occupantId ? AppState.students.find(x => x.id == occupantId) : null;
+                    return { seat: s, projectedMean, delta, occupant };
+                }).sort((a, b) => a.delta - b.delta);
+
+                const best = candidates[0];
+
+                let advice = `<strong>Consiglio AI per ${matchedStInQuery.name}:</strong><br>`;
+                advice += `• Media attuale: <strong>${curMean.toFixed(2)}</strong> (Posto attuale: <strong>${curSeat ? curSeat.code.toUpperCase() + ' da ' + curSeat.score.toFixed(1) : '-'}</strong>)<br>`;
+                advice += `• Voto ideale per allinearsi: <strong>${targetScore.toFixed(1)} punti</strong><br><br>`;
+                advice += `Il banco matematicamente ottimale è <strong>${best.seat.code.toUpperCase()}</strong> (${best.seat.score.toFixed(1)} punti, Fila ${best.seat.row.toUpperCase()}), che porta la sua media a <strong>${best.projectedMean.toFixed(2)}</strong> (vicinissima a ${classAvg.toFixed(2)}).`;
+
+                if (best.occupant && best.occupant.id !== matchedStInQuery.id) {
+                    advice += `<br><br>👉 Puoi scambiarlo con <strong>${best.occupant.name}</strong>:<br>`;
+                    advice += `<button class="btn-primary" style="margin-top:6px; font-size:0.78rem; padding:6px 12px;" onclick="applyAdvisorSwap(${matchedStInQuery.id}, ${best.occupant.id})">Applica Scambio con ${best.occupant.name}</button>`;
+                }
+
+                return { html: advice };
+            }
+
+            // 4. Who needs points / who is lowest?
+            if (q.includes('recuperare') || q.includes('bassa') || q.includes('peggio') || q.includes('svantaggiat')) {
+                const sortedLowest = [...AppState.students].sort((a, b) => getStudentEffectiveMean(a) - getStudentEffectiveMean(b));
+                const top3 = sortedLowest.slice(0, 3);
+
+                let advice = `<strong>Studenti che devono recuperare punteggio:</strong><br>`;
+                top3.forEach((st, idx) => {
+                    const curSeatCode = AppState.currentAssign[st.id];
+                    const curSeat = SEATS.find(s => s.code === curSeatCode);
+                    advice += `${idx + 1}. <strong>${st.name}</strong> (Media: <strong>${getStudentEffectiveMean(st).toFixed(2)}</strong>, Posto attuale: ${curSeat ? curSeat.code.toUpperCase() : '-' })<br>`;
+                });
+                advice += `<br>💡 Consiglio di assegnare a loro i banchi di Fila A (A1, A3, A5, A8 da 9.0 - 10.0) per riallinearli rapidamente a ${classAvg.toFixed(2)}.`;
+                return { html: advice };
+            }
+
+            // 5. Who has highest average?
+            if (q.includes('alta') || q.includes('testa') || q.includes('meglio') || q.includes('vantaggio')) {
+                const sortedHighest = [...AppState.students].sort((a, b) => getStudentEffectiveMean(b) - getStudentEffectiveMean(a));
+                const top3 = sortedHighest.slice(0, 3);
+
+                let advice = `<strong>Studenti con la media più alta:</strong><br>`;
+                top3.forEach((st, idx) => {
+                    advice += `${idx + 1}. <strong>${st.name}</strong> (Media: <strong>${getStudentEffectiveMean(st).toFixed(2)}</strong>)<br>`;
+                });
+                advice += `<br>💡 Nei prossimi turni l'algoritmo li collocherà in Fila C (Davanti) per compensare e mantenere la classe equa.`;
+                return { html: advice };
+            }
+
+            // 6. Overall Class Fairness Analysis
+            if (q.includes('equità') || q.includes('analisi') || q.includes('situazione') || q.includes('varianza') || q.includes('come sta')) {
+                const means = AppState.students.map(s => getStudentEffectiveMean(s));
+                const minM = Math.min(...means);
+                const maxM = Math.max(...means);
+                const spread = maxM - minM;
+                const variance = means.reduce((acc, m) => acc + Math.pow(m - classAvg, 2), 0) / means.length;
+                const stdDev = Math.sqrt(variance);
+
+                let advice = `<strong>Analisi Dettagliata Equità Aula:</strong><br>`;
+                advice += `• Media Obiettivo Classe: <strong>${classAvg.toFixed(2)}</strong><br>`;
+                advice += `• Deviazione Standard: <strong>${stdDev.toFixed(2)}</strong><br>`;
+                advice += `• Range Medie: da <strong>${minM.toFixed(2)}</strong> a <strong>${maxM.toFixed(2)}</strong> (Diff: ${spread.toFixed(2)})<br><br>`;
+
+                if (spread <= 1.0) {
+                    advice += `🟢 <strong>Ottimo bilanciamento:</strong> la classe è perfettamente allineata intorno alla media aula!`;
+                } else if (spread <= 2.2) {
+                    advice += `🟡 <strong>Buon bilanciamento:</strong> le differenze rientreranno automaticamente con il prossimo turno.`;
+                } else {
+                    advice += `🟠 <strong>Fase di assestamento:</strong> l'algoritmo compenserà con precisione al prossimo turno archiviato.`;
+                }
+                return { html: advice };
+            }
+
+            // 7. Explain Algorithm
+            if (q.includes('come funziona') || q.includes('algoritmo') || q.includes('formula') || q.includes('calcolo') || q.includes('spiega')) {
+                let advice = `<strong>Come funziona il Calcolo dei Posti:</strong><br><br>`;
+                advice += `1. <strong>Matrice di Costo LAP:</strong> Per ogni studente e per ogni banco $j$, calcola la futura media ipotetica e imposta una penalità quadratica $(Media_{nuova} - ${classAvg.toFixed(2)})^2 \times 100$.<br>`;
+                advice += `2. <strong>Algoritmo Ungherese:</strong> Trova l'assegnamento globale a costo minimo in $O(N^3)$, garantendo che la varianza dell'intera classe sia minima.<br>`;
+                advice += `3. <strong>Anti-Ripetizione:</strong> Aggiunge penalità per chi si trova nello stesso banco o nella stessa fila del turno precedente.<br>`;
+                advice += `4. <strong>Vincoli di Coppia:</strong> Applica penalità enormi per separare le coppie vietate e unire le coppie fisse nello stesso blocco banco.`;
+                return { html: advice };
+            }
+
+            // Default fallback response
+            return {
+                html: `Posso eseguire qualsiasi operazione sull'algoritmo dell'aula:<br>` +
+                      `• Chiedimi di uno studente: <em>"Dove posso mettere Manuel?"</em><br>` +
+                      `• Chiedimi <em>"Migliori 3 scambi"</em> per ottimizzare subito l'aula<br>` +
+                      `• Simula uno spostamento: <em>"Simula Diletta in A1"</em><br>` +
+                      `• Chiedimi <em>"Chi deve recuperare?"</em> o <em>"Analisi varianza"</em>!`
+            };
+        }
+
+        function applyAdvisorSwap(st1Id, st2Id) {
+            const code1 = AppState.currentAssign[st1Id];
+            const code2 = AppState.currentAssign[st2Id];
+            const st1 = AppState.students.find(s => s.id === st1Id);
+            const st2 = AppState.students.find(s => s.id === st2Id);
+
+            AppState.currentAssign[st1Id] = code2;
+            AppState.currentAssign[st2Id] = code1;
+
+            saveStateToStorage();
+            renderAll();
+            closeAssistantSheet();
+            triggerSeatSwapVisual(code1, code2);
+            showToast(`Scambiati ${st1.name} e ${st2.name} come suggerito!`);
+        }
+
+        // HIGH RESOLUTION CANVAS PHOTO EXPORT
+        function renderClassroomCanvas(assignMap, roundNumber) {
+            const width = 1200;
+            const height = 900;
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            const classAvg = getClassAvg();
+
+            // Background
+            ctx.fillStyle = '#EEF1F6';
+            ctx.fillRect(0, 0, width, height);
+
+            // Container card
+            ctx.fillStyle = '#FFFFFF';
+            roundRect(ctx, 40, 40, 1120, 820, 28, true, false);
+
+            // Header Title
+            ctx.fillStyle = '#000000';
+            ctx.font = 'bold 38px -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif';
+            ctx.fillText(`Disposizione Banchi — Turno ${roundNumber}`, 75, 105);
+
+            // Subtitle
+            ctx.fillStyle = '#8E8E93';
+            ctx.font = '500 20px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif';
+            ctx.fillText(`23 Studenti • Media Aula: ${classAvg.toFixed(2)}`, 75, 140);
+
+            // Layout definitions
+            const rows = [
+                {
+                    label: 'FILA C (Davanti)',
+                    y: 180,
+                    blocks: [
+                        { codes: ['c1', 'c2'], x: 130 },
+                        { codes: ['c4', 'c5'], x: 480 },
+                        { codes: ['c6', 'c7', 'c8'], x: 800 }
+                    ]
+                },
+                {
+                    label: 'FILA B (Centro)',
+                    y: 390,
+                    blocks: [
+                        { codes: ['b1', 'b2'], x: 130 },
+                        { codes: ['b3', 'b4', 'b5'], x: 450 },
+                        { codes: ['b6', 'b7', 'b8'], x: 800 }
+                    ]
+                },
+                {
+                    label: 'FILA A (Fondo)',
+                    y: 600,
+                    blocks: [
+                        { codes: ['a1', 'a2'], x: 130 },
+                        { codes: ['a3', 'a4', 'a5'], x: 450 },
+                        { codes: ['a6', 'a7', 'a8'], x: 800 }
+                    ]
+                }
+            ];
+
+            rows.forEach(r => {
+                ctx.fillStyle = '#6E6E73';
+                ctx.font = 'bold 18px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif';
+                ctx.fillText(r.label, 75, r.y + 25);
+
+                r.blocks.forEach(blk => {
+                    const blkWidth = blk.codes.length * 105 + 10;
+                    ctx.fillStyle = '#E5E5EA';
+                    roundRect(ctx, blk.x - 6, r.y + 40, blkWidth, 140, 16, true, false);
+
+                    blk.codes.forEach((code, idx) => {
+                        const seat = SEATS.find(s => s.code === code);
+                        const stId = Object.keys(assignMap).find(id => assignMap[id] === code);
+                        const st = stId ? AppState.students.find(s => s.id == stId) : null;
+                        const deskX = blk.x + idx * 105;
+                        const deskY = r.y + 46;
+
+                        ctx.fillStyle = '#FFFFFF';
+                        roundRect(ctx, deskX, deskY, 96, 128, 12, true, false);
+
+                        ctx.fillStyle = '#1C1C1E';
+                        ctx.font = 'bold 16px -apple-system, sans-serif';
+                        ctx.fillText(code.toUpperCase(), deskX + 8, deskY + 24);
+
+                        let badgeBg = '#E0F2FE', badgeFg = '#0369A1';
+                        if (seat.score >= 10) { badgeBg = '#D1FADF'; badgeFg = '#027A48'; }
+                        else if (seat.score >= 7.0) { badgeBg = '#E0F2FE'; badgeFg = '#0369A1'; }
+                        else if (seat.score >= 5.0) { badgeBg = '#FEF3C7'; badgeFg = '#B45309'; }
+                        else { badgeBg = '#FEE2E2'; badgeFg = '#B91C1C'; }
+
+                        ctx.fillStyle = badgeBg;
+                        roundRect(ctx, deskX + 54, deskY + 10, 34, 18, 6, true, false);
+                        ctx.fillStyle = badgeFg;
+                        ctx.font = 'bold 13px -apple-system, sans-serif';
+                        ctx.fillText(seat.score.toFixed(1), deskX + 58, deskY + 23);
+
+                        ctx.fillStyle = '#000000';
+                        ctx.font = 'bold 17px -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif';
+                        ctx.textAlign = 'center';
+                        const nameToDraw = st ? st.name : 'Libero';
+
+                        if (AppState.showDiffTags) {
+                            ctx.fillText(nameToDraw, deskX + 48, deskY + 74);
+                            ctx.textAlign = 'left';
+
+                            ctx.strokeStyle = '#F2F2F7';
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(deskX + 6, deskY + 98);
+                            ctx.lineTo(deskX + 90, deskY + 98);
+                            ctx.stroke();
+
+                            let meanVal = classAvg;
+                            if (st) {
+                                const m = getStudentEffectiveMean(st);
+                                const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+                                meanVal = (m * len + seat.score) / (len + 1);
+                            }
+                            ctx.fillStyle = '#8E8E93';
+                            ctx.font = '600 13px -apple-system, sans-serif';
+                            ctx.fillText(`M:${meanVal.toFixed(1)}`, deskX + 8, deskY + 116);
+
+                            const diff = meanVal - classAvg;
+                            let diffColor = '#8E8E93';
+                            if (diff > 0.05) diffColor = '#15803D';
+                            else if (diff < -0.901) diffColor = '#B91C1C';
+                            else if (diff < -0.05) diffColor = '#B45309';
+
+                            ctx.fillStyle = diffColor;
+                            ctx.font = 'bold 13px -apple-system, sans-serif';
+                            ctx.fillText(`${diff > 0 ? '+' : ''}${diff.toFixed(1)}`, deskX + 60, deskY + 116);
+                        } else {
+                            // Centered clean student name without diff tags
+                            ctx.fillText(nameToDraw, deskX + 48, deskY + 82);
+                            ctx.textAlign = 'left';
+                        }
+                    });
+                });
+            });
+
+            ctx.fillStyle = '#C7C7CC';
+            ctx.font = '500 15px -apple-system, sans-serif';
+            ctx.fillText('Generato con Banchi', 75, 830);
+
+            return canvas;
+        }
+
+        function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            if (fill) ctx.fill();
+            if (stroke) ctx.stroke();
+        }
+
+        function generateAndSaveClassroomImage() {
+            exportFloorPlanPhoto(AppState.currentAssign, AppState.currentRound);
+        }
+
+        function generateAndSaveHistoryImage() {
+            if (!AppState.viewingHistoryRound) return;
+            const hRecord = AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound);
+            if (hRecord) {
+                exportFloorPlanPhoto(hRecord.assign, hRecord.roundNum);
+            }
+        }
+
+        function exportFloorPlanPhoto(assignMap, roundNum) {
+            const canvas = renderClassroomCanvas(assignMap, roundNum);
+            const fileName = `banchi-turno-${roundNum}.png`;
+
+            canvas.toBlob(blob => {
+                if (!blob) {
+                    showToast("Errore generazione immagine");
+                    return;
+                }
+
+                const file = new File([blob], fileName, { type: 'image/png' });
+
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    navigator.share({
+                        files: [file],
+                        title: `Banchi Turno ${roundNum}`,
+                        text: `Disposizione Banchi Turno ${roundNum}`
+                    }).catch(err => {
+                        if (err.name !== 'AbortError') {
+                            openImagePreviewModal(canvas.toDataURL('image/png'), fileName);
+                        }
+                    });
+                } else {
+                    openImagePreviewModal(canvas.toDataURL('image/png'), fileName);
+                }
+            }, 'image/png');
+        }
+
+        function openImagePreviewModal(dataUrl, fileName) {
+            currentGeneratedImageDataUrl = dataUrl;
+            document.getElementById('img-preview-el').src = dataUrl;
+            document.getElementById('sheet-image-save').classList.add('active');
+        }
+
+        function closeImageSaveSheet() {
+            document.getElementById('sheet-image-save').classList.remove('active');
+        }
+
+        function triggerDirectDownloadImage() {
+            if (!currentGeneratedImageDataUrl) return;
+            const a = document.createElement('a');
+            a.href = currentGeneratedImageDataUrl;
+            a.download = `banchi-turno-${AppState.currentRound}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast("Immagine salvata!");
+        }
+
+        let studentSearchQuery = "";
+
+        function filterStudentsMedie() {
+            const input = document.getElementById('student-search-input');
+            const clearBtn = document.getElementById('search-clear-btn');
+            studentSearchQuery = input.value.trim().toLowerCase();
+            
+            if (studentSearchQuery.length > 0) {
+                clearBtn.classList.add('visible');
+            } else {
+                clearBtn.classList.remove('visible');
+            }
+            
+            renderMedieList();
+        }
+
+        function clearStudentSearch() {
+            const input = document.getElementById('student-search-input');
+            const clearBtn = document.getElementById('search-clear-btn');
+            input.value = "";
+            studentSearchQuery = "";
+            clearBtn.classList.remove('visible');
+            renderMedieList();
+        }
+
+        function renderMedieList() {
+            const container = document.getElementById('students-medie-container');
+            container.innerHTML = '';
+
+            let sorted = [...AppState.students].sort((a, b) => getStudentEffectiveMean(b) - getStudentEffectiveMean(a));
+
+            if (studentSearchQuery) {
+                sorted = sorted.filter(s => s.name.toLowerCase().includes(studentSearchQuery));
+            }
+
+            const headerEl = document.getElementById('medie-list-header');
+            if (headerEl) {
+                headerEl.textContent = `Classifica Medie Studenti (${sorted.length})`;
+            }
+
+            if (sorted.length === 0) {
+                container.innerHTML = `
+                    <div style="padding:20px; text-align:center; color:var(--ios-secondary-label); font-size:0.85rem;">
+                        Nessuno studente trovato con "${studentSearchQuery}"
+                    </div>
+                `;
+                return;
+            }
+
+            sorted.forEach((st, idx) => {
+                const currentSeatCode = AppState.currentAssign[st.id];
+                const currentSeat = SEATS.find(s => s.code === currentSeatCode);
+                const mean = getStudentEffectiveMean(st);
+
+                const item = document.createElement('div');
+                item.className = 'list-row';
+
+                let historyTrace = "";
+                if (st.history && st.history.length > 0) {
+                    historyTrace = st.history.map((v, i) => `T${i+1}: ${v.toFixed(1)}`).join(' → ');
+                } else {
+                    historyTrace = "Nessun turno archiviato (Media base)";
+                }
+
+                item.innerHTML = `
+                    <div class="row-left">
+                        <span class="row-rank">${idx + 1}</span>
+                        <div>
+                            <div class="row-name">${st.name}</div>
+                            <div class="row-sub">Banco attuale: <strong>${currentSeat ? currentSeat.code.toUpperCase() + ' (' + currentSeat.score.toFixed(1) + ')' : '-'}</strong> · ${historyTrace}</div>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="number" step="0.1" min="1" max="10" class="mean-field" value="${mean.toFixed(2)}" onchange="updateStudentMeanRealHistory(${st.id}, this.value)">
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        // MATHEMATICALLY CONSISTENT HISTORICAL AVERAGE ADJUSTER
+        // Fixes student past turn grades so their historical average matches the user's input exactly
+        function updateStudentMeanRealHistory(stId, val) {
+            const targetMean = parseFloat(val);
+            if (isNaN(targetMean) || targetMean < 1 || targetMean > 10) return;
+
+            const st = AppState.students.find(s => s.id === stId);
+            if (!st) return;
+
+            st.customMean = targetMean;
+
+            if (st.history && st.history.length > 0) {
+                const k = st.history.length;
+                const currentSum = st.history.reduce((a, b) => a + b, 0);
+                const targetSum = targetMean * k;
+                const delta = targetSum - currentSum;
+                const perRoundDelta = delta / k;
+
+                // Adjust each past round proportionally & bound between 1.0 and 10.0
+                st.history = st.history.map(score => {
+                    let adjusted = score + perRoundDelta;
+                    return Math.max(1.0, Math.min(10.0, adjusted));
+                });
+
+                // Micro-balance any remaining rounding residue so mean is exact
+                const newSum = st.history.reduce((a, b) => a + b, 0);
+                const residue = targetSum - newSum;
+                st.history[st.history.length - 1] += residue;
+                st.history[st.history.length - 1] = Math.max(1.0, Math.min(10.0, st.history[st.history.length - 1]));
+            } else {
+                // No past rounds yet: set custom baseline
+                st.history = [targetMean];
+            }
+
+            saveStateToStorage();
+            renderAll();
+            showToast(`Media di ${st.name} impostata a ${targetMean.toFixed(2)}`);
+        }
+
+        function renderHistoryTab() {
+            const chipsContainer = document.getElementById('history-round-chips');
+            chipsContainer.innerHTML = '';
+
+            const emptyMsg = document.getElementById('history-empty-message');
+            const viewCard = document.getElementById('history-view-card');
+
+            if (!AppState.historyRounds || AppState.historyRounds.length === 0) {
+                emptyMsg.style.display = 'block';
+                viewCard.style.display = 'none';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            viewCard.style.display = 'block';
+
+            if (!AppState.viewingHistoryRound || !AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound)) {
+                AppState.viewingHistoryRound = AppState.historyRounds[AppState.historyRounds.length - 1].roundNum;
+            }
+
+            AppState.historyRounds.forEach(h => {
+                const chip = document.createElement('button');
+                chip.className = `history-chip ${AppState.viewingHistoryRound === h.roundNum ? 'active' : ''}`;
+                chip.textContent = `Turno ${h.roundNum}`;
+                chip.onclick = () => {
+                    cancelHistorySwap();
+                    AppState.viewingHistoryRound = h.roundNum;
+                    renderHistoryTab();
+                };
+                chipsContainer.appendChild(chip);
+            });
+
+            document.getElementById('history-map-title').textContent = `Mappa Turno ${AppState.viewingHistoryRound}`;
+
+            const hRecord = AppState.historyRounds.find(h => h.roundNum === AppState.viewingHistoryRound);
+            const assignToDisplay = hRecord ? hRecord.assign : {};
+
+            const planContainer = document.getElementById('history-plan-container');
+            planContainer.innerHTML = `
+                <div class="plan-row">
+                    <span class="row-label">C</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('c1', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c2', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('c4', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c5', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('c6', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c7', assignToDisplay)}
+                            ${renderHistoryDeskHTML('c8', assignToDisplay)}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-row">
+                    <span class="row-label">B</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('b1', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b2', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('b3', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b4', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b5', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('b6', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b7', assignToDisplay)}
+                            ${renderHistoryDeskHTML('b8', assignToDisplay)}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="plan-row">
+                    <span class="row-label">A</span>
+                    <div class="blocks-container">
+                        <div class="desk-block block-2">
+                            ${renderHistoryDeskHTML('a1', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a2', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('a3', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a4', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a5', assignToDisplay)}
+                        </div>
+                        <span class="aisle-space">|</span>
+                        <div class="desk-block block-3">
+                            ${renderHistoryDeskHTML('a6', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a7', assignToDisplay)}
+                            ${renderHistoryDeskHTML('a8', assignToDisplay)}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHistoryDeskHTML(code, assignMap) {
+            const seat = SEATS.find(s => s.code === code);
+            const stId = Object.keys(assignMap).find(id => assignMap[id] === code);
+            const st = stId ? AppState.students.find(s => s.id == stId) : null;
+            const isSelected = AppState.historySelectedSeatCode === code;
+            const displayName = st ? getDeskDisplayName(st.name) : '<span style="color:#8E8E93">Libero</span>';
+
+            return `
+                <div class="desk-unit ${isSelected ? 'selected' : ''}" data-code="${code}">
+                    <div class="desk-header">
+                        <span class="desk-code">${code.toUpperCase()}</span>
+                        <span class="desk-badge ${getScoreBadgeClass(seat.score)}">${seat.score.toFixed(1)}</span>
+                    </div>
+                    <div class="desk-name">${displayName}</div>
+                    <div class="desk-footer">
+                        <span class="diff-tag diff-zero">T${AppState.viewingHistoryRound}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        function deleteSelectedHistoryRound() {
+            if (!AppState.viewingHistoryRound) return;
+            AppState.historyRounds = AppState.historyRounds.filter(h => h.roundNum !== AppState.viewingHistoryRound);
+            AppState.viewingHistoryRound = AppState.historyRounds.length > 0 ? AppState.historyRounds[AppState.historyRounds.length - 1].roundNum : null;
+            syncStudentHistoriesFromRounds();
+            saveStateToStorage();
+            renderAll();
+            showToast("Turno eliminato");
+        }
+
+        function openVincoliSheet() {
+            renderVincoliDropdowns();
+            renderVincoliChips();
+            document.getElementById('sheet-vincoli').classList.add('active');
+        }
+
+        function closeVincoliSheet() {
+            document.getElementById('sheet-vincoli').classList.remove('active');
+        }
+
+        function renderVincoliDropdowns() {
+            const selects = ['sel-fixed-1', 'sel-fixed-2', 'sel-forbid-1', 'sel-forbid-2'];
+            selects.forEach(sId => {
+                const el = document.getElementById(sId);
+                if (!el) return;
+                const currentVal = el.value;
+                el.innerHTML = '';
+                FIXED_STUDENT_NAMES.forEach(name => {
+                    const opt = document.createElement('option');
+                    opt.value = name;
+                    opt.textContent = name;
+                    el.appendChild(opt);
+                });
+                if (currentVal) el.value = currentVal;
+            });
+            renderVincoliChips();
+        }
+
+        function renderVincoliChips() {
+            const fixedContainer = document.getElementById('fixed-pairs-list');
+            if (fixedContainer) {
+                fixedContainer.innerHTML = '';
+                if (!AppState.fixedPairs || AppState.fixedPairs.length === 0) {
+                    fixedContainer.innerHTML = '<span style="font-size:0.75rem; color:var(--ios-secondary-label);">Nessun vincolo impostato</span>';
+                } else {
+                    AppState.fixedPairs.forEach((pair, idx) => {
+                        const chip = document.createElement('span');
+                        chip.className = 'pair-tag fixed-tag';
+                        chip.innerHTML = `${pair[0]} & ${pair[1]} <span class="pair-delete" onclick="removeFixedPair(${idx})">&times;</span>`;
+                        fixedContainer.appendChild(chip);
+                    });
+                }
+            }
+
+            const forbidContainer = document.getElementById('forbidden-pairs-list');
+            if (forbidContainer) {
+                forbidContainer.innerHTML = '';
+                if (!AppState.forbiddenPairs || AppState.forbiddenPairs.length === 0) {
+                    forbidContainer.innerHTML = '<span style="font-size:0.75rem; color:var(--ios-secondary-label);">Nessun vincolo impostato</span>';
+                } else {
+                    AppState.forbiddenPairs.forEach((pair, idx) => {
+                        const chip = document.createElement('span');
+                        chip.className = 'pair-tag forbid-tag';
+                        chip.innerHTML = `${pair[0]} & ${pair[1]} <span class="pair-delete" onclick="removeForbiddenPair(${idx})">&times;</span>`;
+                        forbidContainer.appendChild(chip);
+                    });
+                }
+            }
+        }
+
+        function addFixedPair() {
+            const p1 = document.getElementById('sel-fixed-1').value;
+            const p2 = document.getElementById('sel-fixed-2').value;
+            if (p1 === p2) {
+                showToast("Seleziona due persone diverse");
+                return;
+            }
+            if (!AppState.fixedPairs) AppState.fixedPairs = [];
+            const exists = AppState.fixedPairs.some(p => (p[0] === p1 && p[1] === p2) || (p[0] === p2 && p[1] === p1));
+            if (!exists) {
+                AppState.fixedPairs.push([p1, p2]);
+                saveStateToStorage();
+                renderVincoliChips();
+                calculateOptimalMatching();
+                renderAll();
+                showToast("Coppia fissa aggiunta");
+            }
+        }
+
+        function removeFixedPair(idx) {
+            AppState.fixedPairs.splice(idx, 1);
+            saveStateToStorage();
+            renderVincoliChips();
+            calculateOptimalMatching();
+            renderAll();
+            showToast("Coppia rimossa");
+        }
+
+        function addForbiddenPair() {
+            const p1 = document.getElementById('sel-forbid-1').value;
+            const p2 = document.getElementById('sel-forbid-2').value;
+            if (p1 === p2) {
+                showToast("Seleziona due persone diverse");
+                return;
+            }
+            if (!AppState.forbiddenPairs) AppState.forbiddenPairs = [];
+            const exists = AppState.forbiddenPairs.some(p => (p[0] === p1 && p[1] === p2) || (p[0] === p2 && p[1] === p1));
+            if (!exists) {
+                AppState.forbiddenPairs.push([p1, p2]);
+                saveStateToStorage();
+                renderVincoliChips();
+                calculateOptimalMatching();
+                renderAll();
+                showToast("Coppia separata aggiunta");
+            }
+        }
+
+        function removeForbiddenPair(idx) {
+            AppState.forbiddenPairs.splice(idx, 1);
+            saveStateToStorage();
+            renderVincoliChips();
+            calculateOptimalMatching();
+            renderAll();
+            showToast("Coppia rimossa");
+        }
+
+        function switchTab(tabId, tabIndex) {
+            document.querySelectorAll('.segment-item').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-pane').forEach(c => c.classList.remove('active'));
+
+            const glider = document.getElementById('segment-glider');
+            if (glider && tabIndex !== undefined) {
+                glider.style.transform = `translateX(${tabIndex * 100}%)`;
+            }
+
+            if (tabId === 'tab-map') document.getElementById('seg-map').classList.add('active');
+            if (tabId === 'tab-medie') document.getElementById('seg-medie').classList.add('active');
+            if (tabId === 'tab-storico') document.getElementById('seg-storico').classList.add('active');
+
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+            renderAll();
+        }
+
+        const hadSaved = loadStateFromStorage();
+        if (!hadSaved || !AppState.currentAssign || Object.keys(AppState.currentAssign).length === 0) {
+            calculateOptimalMatching();
+        }
+        renderAll();
+        initDragAndDrop();
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5211e5e0bb2a01f',t:'MTc5MzI2NTc3Ng=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
