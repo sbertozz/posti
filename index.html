@@ -1,0 +1,3047 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Banchi">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    
+    <link rel="apple-touch-icon" href="data:image/png;base64,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">
+    <link rel="apple-touch-icon-precomposed" href="data:image/png;base64,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">
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+
+    <title>Banchi</title>
+    <style>
+        :root {
+            --ios-bg: #F2F2F7;
+            --ios-card: #FFFFFF;
+            --ios-primary: #007AFF;
+            --ios-success: #34C759;
+            --ios-warning: #FF9500;
+            --ios-danger: #FF3B30;
+            --ios-purple: #5856D6;
+            --ios-label: #1C1C1E;
+            --ios-secondary-label: #8E8E93;
+            --ios-separator: rgba(0, 0, 0, 0.08);
+            --ios-card-border: rgba(0, 0, 0, 0.06);
+            --ios-card-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            --safe-area-top: max(10px, env(safe-area-inset-top));
+            --safe-area-bottom: max(12px, env(safe-area-inset-bottom));
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        html, body {
+            height: 100%;
+            height: 100dvh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            overscroll-behavior: none;
+            background-color: var(--ios-bg);
+            color: var(--ios-label);
+            -webkit-font-smoothing: antialiased;
+            touch-action: none;
+        }
+
+        .app-container {
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            max-width: 480px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: var(--safe-area-top);
+            padding-bottom: var(--safe-area-bottom);
+            padding-left: max(8px, env(safe-area-inset-left));
+            padding-right: max(8px, env(safe-area-inset-right));
+            gap: 8px;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            top: max(48px, calc(env(safe-area-inset-top) + 38px));
+            left: 50%;
+            transform: translateX(-50%) translateY(-20px);
+            background: rgba(28, 28, 30, 0.94);
+            color: #FFFFFF;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 500;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 99999;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Top Navigation Header */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 2px 0 2px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .nav-title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            letter-spacing: -0.4px;
+            color: var(--ios-label);
+            line-height: 1;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-nav-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            background: #FFFFFF;
+            border: 1px solid var(--ios-card-border);
+            color: var(--ios-primary);
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            touch-action: manipulation;
+            transition: background 0.15s ease, transform 0.1s ease;
+        }
+
+        .btn-nav-icon:active {
+            background: #E5E5EA;
+            transform: scale(0.94);
+        }
+
+        .btn-nav-icon.active-toggle {
+            background: #007AFF;
+            color: #FFFFFF;
+            border-color: #007AFF;
+        }
+
+        .btn-nav-text {
+            background: #FFFFFF;
+            border: 1px solid var(--ios-card-border);
+            color: var(--ios-primary);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 6px 11px;
+            height: 32px;
+            border-radius: 9px;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            touch-action: manipulation;
+            transition: background 0.15s ease, transform 0.1s ease;
+        }
+
+        .btn-nav-text:active {
+            background: #E5E5EA;
+            transform: scale(0.95);
+        }
+
+        .nav-badge {
+            background: #007AFF;
+            color: #FFFFFF;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 8px;
+            line-height: 1.2;
+        }
+
+        .nav-svg-icon {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+        }
+
+        /* Segmented Control */
+        .segmented-control {
+            display: flex;
+            position: relative;
+            background: #E5E5EA;
+            border-radius: 10px;
+            padding: 2px;
+            width: 100%;
+            flex-shrink: 0;
+        }
+
+        .segment-glider {
+            position: absolute;
+            top: 2px;
+            bottom: 2px;
+            left: 2px;
+            width: calc(33.333% - 1.33px);
+            background: #FFFFFF;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 1;
+        }
+
+        .segment-item {
+            flex: 1;
+            text-align: center;
+            padding: 6px 0;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--ios-secondary-label);
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 2;
+            transition: color 0.2s ease;
+            touch-action: manipulation;
+        }
+
+        .segment-item.active {
+            color: var(--ios-label);
+        }
+
+        /* Summary Header Info */
+        .summary-card {
+            background: #FFFFFF;
+            border: 1px solid var(--ios-card-border);
+            border-radius: 10px;
+            padding: 6px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.78rem;
+            color: var(--ios-secondary-label);
+            box-shadow: var(--ios-card-shadow);
+            flex-shrink: 0;
+        }
+
+        .summary-card .val {
+            font-weight: 700;
+            color: var(--ios-label);
+        }
+
+        /* Main View Container */
+        .view-content-area {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        /* Tab Panes */
+        .tab-pane {
+            display: none;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .tab-pane.active {
+            display: flex;
+        }
+
+        /* TAB 1: PIANTINA (FULL SCREEN HEIGHT, NO SCROLL) */
+        #tab-map {
+            justify-content: space-between;
+            gap: 8px;
+            overflow: hidden;
+            touch-action: none;
+        }
+
+        /* Classroom Card: Expands vertically to fill available screen height */
+        .classroom-card {
+            flex: 1;
+            min-height: 0;
+            background: #FFFFFF;
+            border: 1px solid var(--ios-card-border);
+            border-radius: 16px;
+            padding: 8px 4px;
+            box-shadow: var(--ios-card-shadow);
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            touch-action: none;
+        }
+
+        .classroom-plan {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 100%;
+            height: 100%;
+            gap: 6px;
+            touch-action: none;
+        }
+
+        .plan-row {
+            flex: 1;
+            min-height: 0;
+            display: flex;
+            align-items: stretch;
+            width: 100%;
+            gap: 2px;
+        }
+
+        .row-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
+            width: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .blocks-container {
+            display: flex;
+            align-items: stretch;
+            flex: 1;
+            min-width: 0;
+            gap: 2px;
+        }
+
+        .desk-block {
+            display: flex;
+            gap: 2px;
+            min-width: 0;
+        }
+
+        .desk-block.block-2 {
+            flex: 2;
+        }
+
+        .desk-block.block-3 {
+            flex: 3;
+        }
+
+        .aisle-space {
+            width: 1px;
+            background: rgba(0, 0, 0, 0.12);
+            margin: 2px 1px;
+            flex-shrink: 0;
+        }
+
+        /* Desk Unit: Taller, clearer, comfortable touch targets */
+        .desk-unit {
+            flex: 1;
+            min-width: 0;
+            height: 100%;
+            background: #F9F9FB;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 1px 3px 1px;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+            touch-action: none;
+            box-sizing: border-box;
+            transition: transform 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+        }
+
+        .desk-unit:active {
+            transform: scale(0.96);
+        }
+
+        .desk-unit.selected {
+            border: 2px solid #007AFF !important;
+            background: #EFF6FF !important;
+            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.28) !important;
+        }
+
+        .desk-unit.desk-empty {
+            border: 1px dashed rgba(0, 0, 0, 0.22) !important;
+            background: rgba(250, 250, 250, 0.6) !important;
+        }
+
+        .desk-empty-label {
+            color: var(--ios-secondary-label) !important;
+            font-style: italic !important;
+            font-weight: 500 !important;
+        }
+
+        /* Fixed / Locked Seat Tag */
+        .exact-seat-tag {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #5856D6;
+            color: #FFFFFF;
+            font-size: 7px;
+            font-weight: 700;
+            padding: 1px 3px;
+            border-radius: 3px;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* Drag & Drop Styles: Native iOS floating feel */
+        .desk-unit.drag-origin-dimmed {
+            opacity: 0.25 !important;
+            filter: grayscale(0.6);
+        }
+
+        .desk-unit.drag-hover-target {
+            border: 2px solid #007AFF !important;
+            background: #E1EFFF !important;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.32) !important;
+            z-index: 10;
+        }
+
+        .floating-drag-desk {
+            position: fixed;
+            pointer-events: none;
+            z-index: 999999;
+            background: #FFFFFF;
+            border: 2px solid #007AFF;
+            border-radius: 10px;
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.28), 0 4px 12px rgba(0, 122, 255, 0.35);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 2px;
+            will-change: transform;
+            transform: translate3d(-50%, -50%, 0) scale(1.12);
+            opacity: 0.98;
+            touch-action: none;
+        }
+
+        /* Shuffle Animation */
+        .desk-unit.is-shuffling {
+            animation: desk-shuffle-wobble 0.16s infinite alternate ease-in-out;
+            background: #F3F5FA !important;
+            border-color: rgba(0, 122, 255, 0.45) !important;
+        }
+
+        @keyframes desk-shuffle-wobble {
+            0% { transform: scale(0.97) rotate(-0.6deg); }
+            100% { transform: scale(1.02) rotate(0.6deg); }
+        }
+
+        .desk-unit.desk-reveal {
+            animation: desk-reveal-spring 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+        }
+
+        @keyframes desk-reveal-spring {
+            0% { transform: scale(0.93); box-shadow: 0 0 0 2px #007AFF; }
+            60% { transform: scale(1.05); box-shadow: 0 0 0 2px #34C759; }
+            100% { transform: scale(1); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03); }
+        }
+
+        /* Desk internal typography */
+        .desk-name {
+            font-size: clamp(10.5px, 2.9vw, 13px);
+            font-weight: 700;
+            color: var(--ios-label);
+            text-align: center;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: clip;
+            line-height: 1.1;
+            margin-top: 1px;
+            letter-spacing: -0.2px;
+        }
+
+        .desk-score-tag {
+            font-size: clamp(8.5px, 2.2vw, 10px);
+            font-weight: 600;
+            color: var(--ios-secondary-label);
+            background: rgba(0, 0, 0, 0.04);
+            padding: 1px 3px;
+            border-radius: 4px;
+            line-height: 1;
+        }
+
+        .desk-diff {
+            font-size: clamp(9px, 2.3vw, 10.5px);
+            font-weight: 700;
+            padding: 1px 3px;
+            border-radius: 4px;
+            line-height: 1;
+            white-space: nowrap;
+            transition: opacity 0.2s ease;
+        }
+
+        body.hide-diff-tags .desk-diff {
+            display: none !important;
+        }
+
+        .diff-pos {
+            background: rgba(52, 199, 89, 0.15);
+            color: #248A3D;
+        }
+
+        .diff-orange {
+            background: rgba(255, 149, 0, 0.15);
+            color: #C97200;
+        }
+
+        .diff-neg {
+            background: rgba(255, 59, 48, 0.15);
+            color: #D70015;
+        }
+
+        .diff-zero {
+            background: rgba(142, 142, 147, 0.12);
+            color: var(--ios-secondary-label);
+        }
+
+        /* Hero Primary Action Station */
+        .hero-action-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex-shrink: 0;
+        }
+
+        .btn-hero-primary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            height: 46px;
+            background: linear-gradient(180deg, #0A84FF 0%, #007AFF 100%);
+            color: #FFFFFF;
+            font-size: 0.96rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0, 122, 255, 0.28);
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: transform 0.12s ease, filter 0.12s ease;
+        }
+
+        .btn-hero-primary:active {
+            transform: scale(0.98);
+            filter: brightness(0.92);
+        }
+
+        .btn-hero-primary.is-calculating {
+            opacity: 0.85;
+            pointer-events: none;
+            animation: hero-pulse 0.9s infinite alternate;
+        }
+
+        @keyframes hero-pulse {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.18); }
+        }
+
+        .hero-btn-svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .secondary-action-row {
+            display: flex;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .btn-action-secondary {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 40px;
+            background: #FFFFFF;
+            color: var(--ios-primary);
+            font-size: 0.86rem;
+            font-weight: 600;
+            border: 1px solid var(--ios-card-border);
+            border-radius: 10px;
+            box-shadow: var(--ios-card-shadow);
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: background 0.12s ease, transform 0.12s ease;
+        }
+
+        .btn-action-secondary:active {
+            background: #E5E5EA;
+            transform: scale(0.97);
+        }
+
+        .action-btn-svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        /* TAB 2: STUDENTI (Scrollable Content) */
+        #tab-studenti {
+            gap: 8px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+            padding-bottom: 24px;
+        }
+
+        .studenti-top-card {
+            background: #FFFFFF;
+            border: 1px solid var(--ios-card-border);
+            border-radius: 14px;
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: var(--ios-card-shadow);
+            flex-shrink: 0;
+        }
+
+        .studenti-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .studenti-title-col h2 {
+            font-size: 1.02rem;
+            font-weight: 700;
+        }
+
+        .studenti-title-col span {
+            font-size: 0.74rem;
+            color: var(--ios-secondary-label);
+        }
+
+        .btn-add-pill {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: #007AFF;
+            color: #FFFFFF;
+            border: none;
+            padding: 5px 11px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            touch-action: manipulation;
+            transition: transform 0.1s ease;
+        }
+
+        .btn-add-pill:active {
+            transform: scale(0.95);
+        }
+
+        /* Search input bar */
+        .ios-search-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .search-icon-svg {
+            position: absolute;
+            left: 10px;
+            width: 15px;
+            height: 15px;
+            fill: var(--ios-secondary-label);
+            pointer-events: none;
+        }
+
+        .search-input {
+            width: 100%;
+            height: 34px;
+            background: #E5E5EA;
+            border: none;
+            border-radius: 9px;
+            padding: 0 28px 0 32px;
+            font-size: 0.86rem;
+            color: var(--ios-label);
+            outline: none;
+        }
+
+        .search-input::placeholder {
+            color: var(--ios-secondary-label);
+        }
+
+        .search-clear-btn {
+            position: absolute;
+            right: 8px;
+            background: rgba(0, 0, 0, 0.12);
+            border: none;
+            color: var(--ios-label);
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            visibility: hidden;
+        }
+
+        .search-clear-btn.visible {
+            visibility: visible;
+        }
+
+        /* Inset List */
+        .inset-list {
+            background: #FFFFFF;
+            border: 1px solid var(--ios-card-border);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--ios-card-shadow);
+        }
+
+        .student-row {
+            display: flex;
+            align-items: center;
+            padding: 9px 12px;
+            border-bottom: 1px solid var(--ios-separator);
+            gap: 10px;
+        }
+
+        .student-row:last-child {
+            border-bottom: none;
+        }
+
+        .st-rank {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
+            width: 22px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .st-info {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .st-name-line {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .st-name {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--ios-label);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .st-exact-tag {
+            background: #5856D6;
+            color: #FFFFFF;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 4px;
+        }
+
+        .st-stats-line {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.76rem;
+            color: var(--ios-secondary-label);
+        }
+
+        .st-mean-bold {
+            color: var(--ios-label);
+            font-weight: 700;
+        }
+
+        .st-actions {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-st-tool {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: #F2F2F7;
+            border: none;
+            color: var(--ios-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .btn-st-tool:active {
+            background: #E5E5EA;
+        }
+
+        .btn-st-tool.tool-danger {
+            color: var(--ios-danger);
+        }
+
+        .tool-svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        /* TAB 3: STORICO (Scrollable Content) */
+        #tab-storico {
+            gap: 8px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            touch-action: pan-y;
+            padding-bottom: 24px;
+        }
+
+        .history-chips {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            padding: 2px 0;
+            -webkit-overflow-scrolling: touch;
+            flex-shrink: 0;
+        }
+
+        .history-chips::-webkit-scrollbar {
+            display: none;
+        }
+
+        .round-chip {
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #FFFFFF;
+            border: 1px solid var(--ios-card-border);
+            color: var(--ios-secondary-label);
+            cursor: pointer;
+            white-space: nowrap;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .round-chip.active {
+            background: #007AFF;
+            color: #FFFFFF;
+            border-color: #007AFF;
+        }
+
+        /* Modal Sheets (iOS Native Bottom Sheets) */
+        .sheet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 10000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease;
+        }
+
+        .sheet-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sheet-container {
+            background: #FFFFFF;
+            border-radius: 20px 20px 0 0;
+            padding: 12px 16px max(24px, env(safe-area-inset-bottom)) 16px;
+            max-height: 88vh;
+            overflow-y: auto;
+            transform: translateY(100%);
+            transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .sheet-overlay.active .sheet-container {
+            transform: translateY(0);
+        }
+
+        .sheet-grabber {
+            width: 36px;
+            height: 4px;
+            background: #D1D1D6;
+            border-radius: 2px;
+            margin: 0 auto 4px auto;
+        }
+
+        .sheet-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sheet-title {
+            font-size: 1.12rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .btn-sheet-link {
+            background: none;
+            border: none;
+            color: var(--ios-primary);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* Form Styles */
+        .form-section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ios-secondary-label);
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin-bottom: 6px;
+        }
+
+        .ios-select {
+            width: 100%;
+            height: 38px;
+            background: #F2F2F7;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            padding: 0 10px;
+            font-size: 0.86rem;
+            color: var(--ios-label);
+            outline: none;
+        }
+
+        .ios-input-text {
+            width: 100%;
+            height: 40px;
+            background: #F2F2F7;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            padding: 0 12px;
+            font-size: 0.92rem;
+            color: var(--ios-label);
+            outline: none;
+        }
+
+        .ios-input-text:focus, .ios-select:focus {
+            border-color: #007AFF;
+            background: #FFFFFF;
+        }
+
+        .pairs-chip-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            min-height: 24px;
+        }
+
+        .pair-tag {
+            font-size: 0.76rem;
+            font-weight: 600;
+            padding: 4px 8px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .exact-tag {
+            background: rgba(88, 86, 214, 0.12);
+            color: #5856D6;
+        }
+
+        .fixed-tag {
+            background: rgba(52, 199, 89, 0.14);
+            color: #248A3D;
+        }
+
+        .forbid-tag {
+            background: rgba(255, 59, 48, 0.12);
+            color: #D70015;
+        }
+
+        .pair-delete {
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .pair-delete:hover {
+            opacity: 1;
+        }
+
+        .btn-sheet-action {
+            width: 100%;
+            height: 40px;
+            background: #F2F2F7;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 10px;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--ios-primary);
+            cursor: pointer;
+            margin-top: 6px;
+        }
+
+        .btn-sheet-action:active {
+            background: #E5E5EA;
+        }
+
+        .btn-sheet-cta {
+            width: 100%;
+            height: 44px;
+            background: #007AFF;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.94rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.25);
+        }
+
+        .btn-sheet-cta:active {
+            opacity: 0.9;
+        }
+
+        #render-canvas {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="toast" class="toast">Notifica</div>
+
+    <div class="app-container">
+
+        <!-- Top Navigation Bar -->
+        <div class="navbar">
+            <h1 class="nav-title">Banchi</h1>
+            <div class="nav-actions">
+                <!-- Eye Toggle Button -->
+                <button id="btn-toggle-eye" class="btn-nav-icon" onclick="toggleDiffVisibility()" title="Mostra/Nascondi Scarti">
+                    <svg id="eye-icon-svg" class="nav-svg-icon" viewBox="0 0 24 24">
+                        <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                    </svg>
+                </button>
+                <button id="btn-nav-vincoli" class="btn-nav-text" onclick="openVincoliSheet()">Vincoli</button>
+                <button class="btn-nav-text" onclick="openVotiSheet()">Voti</button>
+            </div>
+        </div>
+
+        <!-- Segmented Control: Piantina | Studenti | Storico -->
+        <div class="segmented-control">
+            <div id="segment-glider" class="segment-glider"></div>
+            <button id="seg-map" class="segment-item active" onclick="switchTab('tab-map', 0)">Piantina</button>
+            <button id="seg-studenti" class="segment-item" onclick="switchTab('tab-studenti', 1)">Studenti</button>
+            <button id="seg-storico" class="segment-item" onclick="switchTab('tab-storico', 2)">Storico</button>
+        </div>
+
+        <!-- Summary Stats Card -->
+        <div class="summary-card">
+            <span>Studenti: <span class="val" id="summary-student-count">23</span></span>
+            <span>Media Aula: <span class="val" id="lbl-class-avg">6.50</span></span>
+            <span>Disposizione: <span class="val" id="lbl-current-round">Turno 1</span></span>
+        </div>
+
+        <!-- View Content Area -->
+        <div class="view-content-area">
+
+            <!-- TAB 1: PIANTINA -->
+            <div id="tab-map" class="tab-pane active">
+                <div class="classroom-card">
+                    <div class="classroom-plan" id="live-classroom-plan">
+                        
+                        <!-- Fila C (Davanti) -->
+                        <div class="plan-row">
+                            <span class="row-label">C</span>
+                            <div class="blocks-container">
+                                <div class="desk-block block-2">
+                                    <div id="seat-c1" class="desk-unit" data-code="c1"></div>
+                                    <div id="seat-c2" class="desk-unit" data-code="c2"></div>
+                                </div>
+                                <span class="aisle-space"></span>
+                                <div class="desk-block block-2">
+                                    <div id="seat-c4" class="desk-unit" data-code="c4"></div>
+                                    <div id="seat-c5" class="desk-unit" data-code="c5"></div>
+                                </div>
+                                <span class="aisle-space"></span>
+                                <div class="desk-block block-3">
+                                    <div id="seat-c6" class="desk-unit" data-code="c6"></div>
+                                    <div id="seat-c7" class="desk-unit" data-code="c7"></div>
+                                    <div id="seat-c8" class="desk-unit" data-code="c8"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fila B (Centro) -->
+                        <div class="plan-row">
+                            <span class="row-label">B</span>
+                            <div class="blocks-container">
+                                <div class="desk-block block-2">
+                                    <div id="seat-b1" class="desk-unit" data-code="b1"></div>
+                                    <div id="seat-b2" class="desk-unit" data-code="b2"></div>
+                                </div>
+                                <span class="aisle-space"></span>
+                                <div class="desk-block block-3">
+                                    <div id="seat-b3" class="desk-unit" data-code="b3"></div>
+                                    <div id="seat-b4" class="desk-unit" data-code="b4"></div>
+                                    <div id="seat-b5" class="desk-unit" data-code="b5"></div>
+                                </div>
+                                <span class="aisle-space"></span>
+                                <div class="desk-block block-3">
+                                    <div id="seat-b6" class="desk-unit" data-code="b6"></div>
+                                    <div id="seat-b7" class="desk-unit" data-code="b7"></div>
+                                    <div id="seat-b8" class="desk-unit" data-code="b8"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fila A (Fondo) -->
+                        <div class="plan-row">
+                            <span class="row-label">A</span>
+                            <div class="blocks-container">
+                                <div class="desk-block block-2">
+                                    <div id="seat-a1" class="desk-unit" data-code="a1"></div>
+                                    <div id="seat-a2" class="desk-unit" data-code="a2"></div>
+                                </div>
+                                <span class="aisle-space"></span>
+                                <div class="desk-block block-3">
+                                    <div id="seat-a3" class="desk-unit" data-code="a3"></div>
+                                    <div id="seat-a4" class="desk-unit" data-code="a4"></div>
+                                    <div id="seat-a5" class="desk-unit" data-code="a5"></div>
+                                </div>
+                                <span class="aisle-space"></span>
+                                <div class="desk-block block-3">
+                                    <div id="seat-a6" class="desk-unit" data-code="a6"></div>
+                                    <div id="seat-a7" class="desk-unit" data-code="a7"></div>
+                                    <div id="seat-a8" class="desk-unit" data-code="a8"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Hero Action Area -->
+                <div class="hero-action-container">
+                    <button id="btn-hero-calcola" class="btn-hero-primary" onclick="calcolaDisposizione()">
+                        <svg class="hero-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                        </svg>
+                        <span id="lbl-hero-calcola">Calcola Nuova Disposizione</span>
+                    </button>
+
+                    <div class="secondary-action-row">
+                        <button class="btn-action-secondary" onclick="saveAndNextRound()">
+                            <svg class="action-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                                <polyline points="17 21 17 13 7 13 7 21"/>
+                                <polyline points="7 3 7 8 15 8"/>
+                            </svg>
+                            <span>Salva Turno</span>
+                        </button>
+                        <button class="btn-action-secondary" onclick="generateAndSaveClassroomImage()">
+                            <svg class="action-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                <circle cx="12" cy="13" r="4"/>
+                            </svg>
+                            <span>Esporta Foto</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: STUDENTI -->
+            <div id="tab-studenti" class="tab-pane">
+                <div class="studenti-top-card">
+                    <div class="studenti-header-row">
+                        <div class="studenti-title-col">
+                            <h2>Studenti della Classe</h2>
+                            <span id="studenti-count-lbl">23 Studenti</span>
+                        </div>
+                        <button class="btn-add-pill" onclick="openAddStudentModal()">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            <span>Aggiungi</span>
+                        </button>
+                    </div>
+
+                    <div class="ios-search-bar">
+                        <svg class="search-icon-svg" viewBox="0 0 24 24">
+                            <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 14z"/>
+                        </svg>
+                        <input type="text" id="student-search-input" class="search-input" placeholder="Cerca studente..." oninput="filterStudentsList()">
+                        <button id="search-clear-btn" class="search-clear-btn" onclick="clearStudentSearch()">&times;</button>
+                    </div>
+                </div>
+
+                <div class="inset-list" id="students-list-container">
+                    <!-- Injected via JS -->
+                </div>
+            </div>
+
+            <!-- TAB 3: STORICO -->
+            <div id="tab-storico" class="tab-pane">
+                <div class="history-chips" id="history-round-chips"></div>
+
+                <div id="history-empty-message" style="display:none; background:#FFFFFF; border:1px solid var(--ios-card-border); border-radius:14px; padding:22px 14px; text-align:center; color:var(--ios-secondary-label); font-size:0.86rem; box-shadow:var(--ios-card-shadow);">
+                    Nessun turno archiviato nello storico.<br>Tocca "Salva Turno" nella piantina per archiviare il primo turno.
+                </div>
+
+                <div id="history-content-container" style="display:none; flex-direction:column; gap:10px; width:100%;">
+                    <div class="classroom-card" style="min-height: 240px;">
+                        <div style="width:100%; display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; padding:0 4px;">
+                            <span style="font-size:0.82rem; font-weight:700;" id="history-view-title">Turno 1</span>
+                            <span style="font-size:0.75rem; color:var(--ios-secondary-label);" id="history-view-date"></span>
+                        </div>
+                        <div class="classroom-plan" id="history-classroom-plan"></div>
+                    </div>
+
+                    <div class="secondary-action-row">
+                        <button class="btn-action-secondary" onclick="generateAndSaveHistoryImage()">
+                            <svg class="action-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                                <circle cx="12" cy="13" r="4"/>
+                            </svg>
+                            <span>Esporta Foto</span>
+                        </button>
+                        <button class="btn-action-secondary" style="color:var(--ios-danger);" onclick="deleteSelectedHistoryRound()">
+                            <svg class="action-btn-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                            <span>Elimina Turno</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- SHEET: VINCOLI DI POSIZIONE -->
+    <div id="sheet-vincoli" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-vincoli')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div class="sheet-title">Vincoli di Posizione</div>
+                <button class="btn-sheet-link" onclick="closeVincoliSheet()">Fine</button>
+            </div>
+
+            <!-- 1. Posto Fisso / Banco Esatto -->
+            <div>
+                <div class="form-section-title">Posto Fisso (Banco Esatto)</div>
+                <div id="exact-seats-list" class="pairs-chip-wrap" style="margin-bottom:8px;"></div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                    <select id="sel-exact-student" class="ios-select"></select>
+                    <select id="sel-exact-seat" class="ios-select"></select>
+                    <button class="btn-sheet-action" onclick="addExactSeat()">Assegna Posto Fisso</button>
+                </div>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--ios-separator);">
+
+            <!-- 2. Coppie Fisse -->
+            <div>
+                <div class="form-section-title">Coppie Fisse (Stesso blocco di banchi)</div>
+                <div id="fixed-pairs-list" class="pairs-chip-wrap" style="margin-bottom:8px;"></div>
+                <div style="display:flex; gap:6px;">
+                    <select id="sel-fixed-1" class="ios-select"></select>
+                    <select id="sel-fixed-2" class="ios-select"></select>
+                </div>
+                <button class="btn-sheet-action" onclick="addFixedPair()">Aggiungi Coppia Fissa</button>
+            </div>
+
+            <hr style="border:none; border-top:1px solid var(--ios-separator);">
+
+            <!-- 3. Coppie Separate -->
+            <div>
+                <div class="form-section-title">Coppie Separate (Mai nello stesso blocco)</div>
+                <div id="forbidden-pairs-list" class="pairs-chip-wrap" style="margin-bottom:8px;"></div>
+                <div style="display:flex; gap:6px;">
+                    <select id="sel-forbid-1" class="ios-select"></select>
+                    <select id="sel-forbid-2" class="ios-select"></select>
+                </div>
+                <button class="btn-sheet-action" onclick="addForbiddenPair()">Aggiungi Coppia Separata</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHEET: AGGIUNGI STUDENTE -->
+    <div id="sheet-add-student" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-add-student')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div class="sheet-title">Nuovo Studente</div>
+                <button class="btn-sheet-link" onclick="closeAddStudentModal()">Annulla</button>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <div>
+                    <label style="font-size:0.78rem; font-weight:600; color:var(--ios-secondary-label); margin-bottom:4px; display:block;">Nome Studente</label>
+                    <input type="text" id="input-new-student-name" class="ios-input-text" placeholder="Es. Marco Rossi" maxlength="24">
+                </div>
+
+                <div>
+                    <label style="font-size:0.78rem; font-weight:600; color:var(--ios-secondary-label); margin-bottom:4px; display:block;">Media Iniziale</label>
+                    <input type="number" id="input-new-student-mean" class="ios-input-text" step="0.1" min="1" max="10" value="6.50">
+                    <span style="font-size:0.72rem; color:var(--ios-secondary-label); margin-top:2px; display:block;">Preimpostata sulla media di classe (6.50)</span>
+                </div>
+
+                <button class="btn-sheet-cta" onclick="submitAddStudent()">Aggiungi alla Classe</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHEET: MODIFICA STUDENTE -->
+    <div id="sheet-edit-student" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-edit-student')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div class="sheet-title">Modifica Studente</div>
+                <button class="btn-sheet-link" onclick="closeEditStudentModal()">Annulla</button>
+            </div>
+
+            <input type="hidden" id="edit-student-id">
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <div>
+                    <label style="font-size:0.78rem; font-weight:600; color:var(--ios-secondary-label); margin-bottom:4px; display:block;">Nome Studente</label>
+                    <input type="text" id="input-edit-student-name" class="ios-input-text" placeholder="Nome" maxlength="24">
+                </div>
+
+                <div>
+                    <label style="font-size:0.78rem; font-weight:600; color:var(--ios-secondary-label); margin-bottom:4px; display:block;">Media Storica Attuale</label>
+                    <input type="number" id="input-edit-student-mean" class="ios-input-text" step="0.01" min="1" max="10">
+                    <span style="font-size:0.72rem; color:var(--ios-secondary-label); margin-top:2px; display:block;">Modificando la media, la cronologia dei turni passati si allinea matematicamente.</span>
+                </div>
+
+                <button class="btn-sheet-cta" onclick="submitEditStudent()">Salva Modifiche</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHEET: VOTI BANCHI -->
+    <div id="sheet-voti" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-voti')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div>
+                    <div class="sheet-title">Punteggi Banchi</div>
+                    <span id="sheet-voti-avg-lbl" style="font-size:0.75rem; color:var(--ios-secondary-label);">Media Aula: 6.50</span>
+                </div>
+                <button class="btn-sheet-link" onclick="closeVotiSheet()">Fine</button>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px;" id="voti-rows-container">
+                <!-- Fila C -->
+                <div>
+                    <div class="form-section-title">Fila C (Davanti)</div>
+                    <div class="voti-grid" id="voti-grid-c" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:6px;"></div>
+                </div>
+
+                <!-- Fila B -->
+                <div>
+                    <div class="form-section-title">Fila B (Centro)</div>
+                    <div class="voti-grid" id="voti-grid-b" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:6px;"></div>
+                </div>
+
+                <!-- Fila A -->
+                <div>
+                    <div class="form-section-title">Fila A (Fondo)</div>
+                    <div class="voti-grid" id="voti-grid-a" style="display:grid; grid-template-columns:repeat(4, 1fr); gap:6px;"></div>
+                </div>
+            </div>
+
+            <button class="btn-sheet-action" style="color:var(--ios-danger);" onclick="resetDeskScoresToDefault()">Ripristina Punteggi Originali</button>
+        </div>
+    </div>
+
+    <!-- SHEET: ESPORTA IMMAGINE -->
+    <div id="sheet-image-save" class="sheet-overlay" onclick="handleOverlayClick(event, 'sheet-image-save')">
+        <div class="sheet-container" onclick="event.stopPropagation()">
+            <div class="sheet-grabber"></div>
+            
+            <div class="sheet-header">
+                <div class="sheet-title">Esporta Piantina</div>
+                <button class="btn-sheet-link" onclick="closeImageSaveSheet()">Fine</button>
+            </div>
+
+            <div style="background:#F2F2F7; border-radius:12px; padding:8px; display:flex; justify-content:center; align-items:center;">
+                <img id="img-preview-target" style="width:100%; max-height:280px; object-fit:contain; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.1);" alt="Anteprima">
+            </div>
+
+            <button class="btn-sheet-cta" onclick="triggerDirectDownloadImage()">Salva Immagine</button>
+        </div>
+    </div>
+
+    <canvas id="render-canvas"></canvas>
+
+    <script>
+        const DEFAULT_SEATS = [
+            // Fila C (Davanti)
+            { code: "c1", row: "c", block: "c_l", score: 6.5 },
+            { code: "c2", row: "c", block: "c_l", score: 4.0 },
+            { code: "c4", row: "c", block: "c_m", score: 3.0 },
+            { code: "c5", row: "c", block: "c_m", score: 3.0 },
+            { code: "c6", row: "c", block: "c_r", score: 3.5 },
+            { code: "c7", row: "c", block: "c_r", score: 4.0 },
+            { code: "c8", row: "c", block: "c_r", score: 6.0 },
+
+            // Fila B (Centro)
+            { code: "b1", row: "b", block: "b_l", score: 7.0 },
+            { code: "b2", row: "b", block: "b_l", score: 5.0 },
+            { code: "b3", row: "b", block: "b_m", score: 5.5 },
+            { code: "b4", row: "b", block: "b_m", score: 5.5 },
+            { code: "b5", row: "b", block: "b_m", score: 5.5 },
+            { code: "b6", row: "b", block: "b_r", score: 5.0 },
+            { code: "b7", row: "b", block: "b_r", score: 7.0 },
+            { code: "b8", row: "b", block: "b_r", score: 9.0 },
+
+            // Fila A (Fondo)
+            { code: "a1", row: "a", block: "a_l", score: 10.0 },
+            { code: "a2", row: "a", block: "a_l", score: 6.5 },
+            { code: "a3", row: "a", block: "a_m", score: 9.5 },
+            { code: "a4", row: "a", block: "a_m", score: 8.5 },
+            { code: "a5", row: "a", block: "a_m", score: 9.0 },
+            { code: "a6", row: "a", block: "a_r", score: 7.0 },
+            { code: "a7", row: "a", block: "a_r", score: 9.5 },
+            { code: "a8", row: "a", block: "a_r", score: 10.0 }
+        ];
+
+        let SEATS = JSON.parse(JSON.stringify(DEFAULT_SEATS));
+
+        const DEFAULT_STUDENT_NAMES = [
+            "Mario", "Valentina", "Gianluca", "Davide", "Leonardo", "Manuel", 
+            "Diletta", "Potti", "Riccardo", "Virgi", "Giulia", "Claudia", 
+            "Sofia", "Giada", "Camilla", "Diego", "Elena", "Margot", 
+            "Lina", "Gloria", "Alice", "Betta", "Sara"
+        ];
+
+        const SHORT_NAMES = {
+            "Valentina": "Vale",
+            "Leonardo": "Leo",
+            "Gianluca": "Gian",
+            "Davide": "Davi",
+            "Manuel": "Manu",
+            "Riccardo": "Ricky",
+            "Camilla": "Cami",
+            "Diletta": "Dile",
+            "Claudia": "Clau",
+            "Margot": "Margo",
+            "Alessandro": "Ale",
+            "Alessandra": "Ale",
+            "Federico": "Fede",
+            "Federica": "Fede",
+            "Francesco": "Fra",
+            "Francesca": "Fra",
+            "Gabriele": "Gabi",
+            "Tommaso": "Tommy",
+            "Vittoria": "Vitto",
+            "Beatrice": "Bea",
+            "Emanuele": "Ema",
+            "Mattia": "Matte",
+            "Matteo": "Matte"
+        };
+
+        function getDeskDisplayName(fullName) {
+            if (!fullName) return "";
+            if (SHORT_NAMES[fullName]) return SHORT_NAMES[fullName];
+            if (fullName.length > 5) {
+                return fullName.slice(0, 5);
+            }
+            return fullName;
+        }
+
+        function getClassAvg() {
+            const sum = SEATS.reduce((acc, s) => acc + s.score, 0);
+            return sum / SEATS.length;
+        }
+
+        const STORAGE_KEY = "banchi_ios_state_v11";
+
+        let AppState = {
+            currentRound: 1,
+            showDiffTags: true,
+            students: DEFAULT_STUDENT_NAMES.map((name, i) => ({
+                id: i + 1,
+                name: name,
+                customMean: 6.50,
+                history: []
+            })),
+            currentAssign: {},
+            historyRounds: [],
+            forbiddenPairs: [],
+            fixedPairs: [],
+            exactSeats: {},
+            customSeatScores: {},
+            selectedSeatCode: null,
+            historySelectedSeatCode: null,
+            viewingHistoryRound: null
+        };
+
+        let currentGeneratedImageDataUrl = null;
+
+        function saveStateToStorage() {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(AppState));
+            } catch (e) {
+                console.error("Storage save error:", e);
+            }
+        }
+
+        function loadStateFromStorage() {
+            try {
+                const saved = localStorage.getItem(STORAGE_KEY);
+                if (saved) {
+                    const parsed = JSON.parse(saved);
+                    if (parsed && Array.isArray(parsed.students) && parsed.students.length > 0) {
+                        AppState = parsed;
+                        if (AppState.showDiffTags === undefined) AppState.showDiffTags = true;
+                        if (!AppState.exactSeats) AppState.exactSeats = {};
+                        if (!AppState.fixedPairs) AppState.fixedPairs = [];
+                        if (!AppState.forbiddenPairs) AppState.forbiddenPairs = [];
+
+                        if (AppState.customSeatScores) {
+                            SEATS.forEach(s => {
+                                if (AppState.customSeatScores[s.code] !== undefined) {
+                                    s.score = AppState.customSeatScores[s.code];
+                                }
+                            });
+                        }
+                        return true;
+                    }
+                }
+            } catch (e) {
+                console.error("Storage load error:", e);
+            }
+            return false;
+        }
+
+        let toastTimeout = null;
+        function showToast(msg) {
+            const el = document.getElementById('toast');
+            el.textContent = msg;
+            el.classList.add('show');
+            if (toastTimeout) clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                el.classList.remove('show');
+            }, 1800);
+        }
+
+        function toggleDiffVisibility() {
+            AppState.showDiffTags = !AppState.showDiffTags;
+            saveStateToStorage();
+            updateEyeButtonState();
+            renderCurrentMap();
+            showToast(AppState.showDiffTags ? "Scarti visibili" : "Scarti nascosti");
+        }
+
+        function updateEyeButtonState() {
+            const btn = document.getElementById('btn-toggle-eye');
+            const svg = document.getElementById('eye-icon-svg');
+            if (!btn || !svg) return;
+
+            if (AppState.showDiffTags) {
+                document.body.classList.remove('hide-diff-tags');
+                btn.classList.add('active-toggle');
+                svg.innerHTML = '<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+            } else {
+                document.body.classList.add('hide-diff-tags');
+                btn.classList.remove('active-toggle');
+                svg.innerHTML = '<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.44-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>';
+            }
+        }
+
+        function getStudentEffectiveMean(st) {
+            if (st.history && st.history.length > 0) {
+                const sum = st.history.reduce((a, b) => a + b, 0);
+                return sum / st.history.length;
+            }
+            return (st.customMean !== undefined) ? st.customMean : 6.50;
+        }
+
+        function getScoreBadgeClass(diff) {
+            if (diff > 0.05) return 'diff-pos';
+            if (diff < -0.90) return 'diff-neg';
+            if (diff < -0.05) return 'diff-orange';
+            return 'diff-zero';
+        }
+
+        function syncStudentHistoriesFromRounds() {
+            AppState.students.forEach(st => {
+                st.history = [];
+            });
+
+            if (AppState.historyRounds && AppState.historyRounds.length > 0) {
+                AppState.historyRounds.forEach(rd => {
+                    if (rd.assign) {
+                        Object.keys(rd.assign).forEach(stId => {
+                            const seatCode = rd.assign[stId];
+                            const seatObj = SEATS.find(s => s.code === seatCode);
+                            const st = AppState.students.find(s => s.id == stId);
+                            if (st && seatObj) {
+                                st.history.push(seatObj.score);
+                            }
+                        });
+                    }
+                });
+            }
+        }
+
+        // Hungarian Algorithm (LAP)
+        function hungarian(matrix) {
+            const n = matrix.length;
+            const m = matrix[0].length;
+            const dim = Math.max(n, m);
+            
+            const cost = Array.from({ length: dim }, (_, i) => 
+                Array.from({ length: dim }, (_, j) => (i < n && j < m) ? matrix[i][j] : 1e9)
+            );
+            
+            const u = new Array(dim + 1).fill(0);
+            const v = new Array(dim + 1).fill(0);
+            const p = new Array(dim + 1).fill(0);
+            const way = new Array(dim + 1).fill(0);
+            
+            for (let i = 1; i <= dim; i++) {
+                p[0] = i;
+                let j0 = 0;
+                const minv = new Array(dim + 1).fill(Infinity);
+                const used = new Array(dim + 1).fill(false);
+                
+                do {
+                    used[j0] = true;
+                    const i0 = p[j0];
+                    let delta = Infinity;
+                    let j1 = 0;
+                    
+                    for (let j = 1; j <= dim; j++) {
+                        if (!used[j]) {
+                            const cur = cost[i0 - 1][j - 1] - u[i0] - v[j];
+                            if (cur < minv[j]) {
+                                minv[j] = cur;
+                                way[j] = j0;
+                            }
+                            if (minv[j] < delta) {
+                                delta = minv[j];
+                                j1 = j;
+                            }
+                        }
+                    }
+                    
+                    for (let j = 0; j <= dim; j++) {
+                        if (used[j]) {
+                            u[p[j]] += delta;
+                            v[j] -= delta;
+                        } else {
+                            minv[j] -= delta;
+                        }
+                    }
+                    j0 = j1;
+                } while (p[j0] !== 0);
+                
+                do {
+                    const j1 = way[j0];
+                    p[j0] = p[j1];
+                    j0 = j1;
+                } while (j0 !== 0);
+            }
+            
+            const result = new Array(n);
+            for (let j = 1; j <= dim; j++) {
+                if (p[j] > 0 && p[j] <= n) {
+                    result[p[j] - 1] = j - 1;
+                }
+            }
+            return result;
+        }
+
+        function calculateOptimalMatching() {
+            const n = AppState.students.length;
+            const m = SEATS.length;
+            const classAvg = getClassAvg();
+
+            const lastRoundRecord = (AppState.historyRounds && AppState.historyRounds.length > 0)
+                ? AppState.historyRounds[AppState.historyRounds.length - 1]
+                : null;
+
+            const exactSeats = AppState.exactSeats || {};
+
+            const costMatrix = [];
+
+            for (let i = 0; i < n; i++) {
+                const st = AppState.students[i];
+                const histMean = getStudentEffectiveMean(st);
+                const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+
+                const lastSeatCode = lastRoundRecord ? lastRoundRecord.assign[st.id] : null;
+                const lastSeatObj = lastSeatCode ? SEATS.find(s => s.code === lastSeatCode) : null;
+                const lastRow = lastSeatObj ? lastSeatObj.row : null;
+
+                let turnsSinceRowA = 99;
+                let turnsSinceRowC = 99;
+                if (AppState.historyRounds) {
+                    for (let rIdx = AppState.historyRounds.length - 1; rIdx >= 0; rIdx--) {
+                        const hSeat = AppState.historyRounds[rIdx].assign[st.id];
+                        const sObj = SEATS.find(x => x.code === hSeat);
+                        if (sObj) {
+                            if (sObj.row === 'a' && turnsSinceRowA === 99) turnsSinceRowA = AppState.historyRounds.length - rIdx;
+                            if (sObj.row === 'c' && turnsSinceRowC === 99) turnsSinceRowC = AppState.historyRounds.length - rIdx;
+                        }
+                    }
+                }
+
+                const exactSeatCode = exactSeats[st.id];
+
+                const row = [];
+                for (let j = 0; j < m; j++) {
+                    const seat = SEATS[j];
+
+                    if (exactSeatCode) {
+                        if (seat.code === exactSeatCode) {
+                            row.push(-1000000);
+                        } else {
+                            row.push(1000000);
+                        }
+                        continue;
+                    }
+
+                    const isSeatLockedByOther = Object.entries(exactSeats).some(([otherId, sCode]) => otherId != st.id && sCode === seat.code);
+                    if (isSeatLockedByOther) {
+                        row.push(1000000);
+                        continue;
+                    }
+
+                    const newMean = (histMean * len + seat.score) / (len + 1);
+                    let baseCost = Math.pow(newMean - classAvg, 2) * 100;
+
+                    if (lastSeatCode && seat.code === lastSeatCode) {
+                        baseCost += 220;
+                    } else if (lastRow && seat.row === lastRow) {
+                        baseCost += 35;
+                    }
+
+                    if (seat.row === 'a' && turnsSinceRowA > 1) {
+                        baseCost -= Math.min(turnsSinceRowA * 1.5, 6);
+                    }
+                    if (seat.row === 'c' && turnsSinceRowC === 1) {
+                        baseCost += 30;
+                    }
+
+                    row.push(baseCost);
+                }
+                costMatrix.push(row);
+            }
+
+            const dim = Math.max(n, m);
+            for (let i = n; i < dim; i++) {
+                const dummyRow = [];
+                for (let j = 0; j < m; j++) {
+                    dummyRow.push(Math.pow(SEATS[j].score - classAvg, 2) * 10);
+                }
+                costMatrix.push(dummyRow);
+            }
+
+            let rawAssign = hungarian(costMatrix);
+
+            function evaluateAssignmentCost(assign) {
+                let cost = 0;
+                for (let i = 0; i < n; i++) {
+                    if (assign[i] !== undefined && assign[i] < m) {
+                        cost += costMatrix[i][assign[i]];
+                    }
+                }
+
+                if (AppState.forbiddenPairs) {
+                    for (const [p1, p2] of AppState.forbiddenPairs) {
+                        const idx1 = AppState.students.findIndex(s => s.name === p1);
+                        const idx2 = AppState.students.findIndex(s => s.name === p2);
+                        if (idx1 !== -1 && idx2 !== -1 && assign[idx1] < m && assign[idx2] < m) {
+                            const seat1 = SEATS[assign[idx1]];
+                            const seat2 = SEATS[assign[idx2]];
+                            if (seat1 && seat2 && seat1.block === seat2.block) {
+                                cost += 200000;
+                            }
+                        }
+                    }
+                }
+
+                if (AppState.fixedPairs) {
+                    for (const [p1, p2] of AppState.fixedPairs) {
+                        const idx1 = AppState.students.findIndex(s => s.name === p1);
+                        const idx2 = AppState.students.findIndex(s => s.name === p2);
+                        if (idx1 !== -1 && idx2 !== -1 && assign[idx1] < m && assign[idx2] < m) {
+                            const seat1 = SEATS[assign[idx1]];
+                            const seat2 = SEATS[assign[idx2]];
+                            if (seat1 && seat2 && seat1.block !== seat2.block) {
+                                cost += 200000;
+                            }
+                        }
+                    }
+                }
+
+                return cost;
+            }
+
+            let currentCost = evaluateAssignmentCost(rawAssign);
+            for (let iter = 0; iter < 400; iter++) {
+                let improved = false;
+                for (let i = 0; i < n; i++) {
+                    if (exactSeats[AppState.students[i].id]) continue;
+
+                    for (let j = i + 1; j < dim; j++) {
+                        if (j < n && exactSeats[AppState.students[j].id]) continue;
+
+                        const temp = [...rawAssign];
+                        const tmp = temp[i];
+                        temp[i] = temp[j];
+                        temp[j] = tmp;
+
+                        const newCost = evaluateAssignmentCost(temp);
+                        if (newCost < currentCost - 1e-4) {
+                            rawAssign = temp;
+                            currentCost = newCost;
+                            improved = true;
+                        }
+                    }
+                }
+                if (!improved) break;
+            }
+
+            AppState.currentAssign = {};
+            for (let i = 0; i < n; i++) {
+                const seatIdx = rawAssign[i];
+                if (seatIdx !== undefined && seatIdx < m) {
+                    AppState.currentAssign[AppState.students[i].id] = SEATS[seatIdx].code;
+                }
+            }
+
+            saveStateToStorage();
+        }
+
+        let isCalculating = false;
+
+        function calcolaDisposizione() {
+            if (isCalculating) return;
+            isCalculating = true;
+
+            const heroBtn = document.getElementById('btn-hero-calcola');
+            const heroLbl = document.getElementById('lbl-hero-calcola');
+            if (heroBtn) heroBtn.classList.add('is-calculating');
+            if (heroLbl) heroLbl.textContent = 'Rimescolamento in corso...';
+
+            const deskEls = SEATS.map(s => ({
+                code: s.code,
+                el: document.getElementById(`seat-${s.code}`),
+                exactStudentId: Object.keys(AppState.exactSeats || {}).find(stId => AppState.exactSeats[stId] === s.code)
+            })).filter(item => item.el !== null);
+
+            deskEls.forEach(item => {
+                if (!item.exactStudentId) {
+                    item.el.classList.add('is-shuffling');
+                }
+            });
+
+            const studentNames = AppState.students.map(s => getDeskDisplayName(s.name));
+            const shuffleInterval = setInterval(() => {
+                deskEls.forEach(item => {
+                    if (!item.exactStudentId) {
+                        const nameEl = item.el.querySelector('.desk-name');
+                        if (nameEl && studentNames.length > 0) {
+                            nameEl.textContent = studentNames[Math.floor(Math.random() * studentNames.length)];
+                        }
+                        const diffEl = item.el.querySelector('.desk-diff');
+                        if (diffEl) {
+                            diffEl.textContent = '...';
+                        }
+                    }
+                });
+            }, 60);
+
+            calculateOptimalMatching();
+
+            setTimeout(() => {
+                clearInterval(shuffleInterval);
+
+                deskEls.forEach(item => {
+                    item.el.classList.remove('is-shuffling');
+                    item.el.classList.add('desk-reveal');
+                    setTimeout(() => {
+                        item.el.classList.remove('desk-reveal');
+                    }, 450);
+                });
+
+                if (heroBtn) heroBtn.classList.remove('is-calculating');
+                if (heroLbl) heroLbl.textContent = 'Calcola Nuova Disposizione';
+                isCalculating = false;
+
+                renderAll();
+                showToast("Nuova disposizione calcolata!");
+                if (navigator.vibrate) {
+                    try { navigator.vibrate([20, 35, 20]); } catch(e){}
+                }
+            }, 1050);
+        }
+
+        function renderAll() {
+            const classAvg = getClassAvg();
+            document.getElementById('lbl-class-avg').textContent = classAvg.toFixed(2);
+            document.getElementById('sheet-voti-avg-lbl').textContent = `Media Aula: ${classAvg.toFixed(2)}`;
+
+            updateEyeButtonState();
+            renderCurrentMap();
+            renderStudentiList();
+            renderHistoryTab();
+            renderVincoliDropdowns();
+            renderVotiGrids();
+        }
+
+        function renderCurrentMap() {
+            document.getElementById('lbl-current-round').textContent = `Turno ${AppState.currentRound}`;
+            const classAvg = getClassAvg();
+
+            SEATS.forEach(seat => {
+                const el = document.getElementById(`seat-${seat.code}`);
+                if (!el) return;
+
+                const stId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === seat.code);
+                const st = stId ? AppState.students.find(s => s.id == stId) : null;
+                const isSelected = AppState.selectedSeatCode === seat.code;
+
+                if (isSelected) el.classList.add('selected');
+                else el.classList.remove('selected');
+
+                const exactStudentId = Object.keys(AppState.exactSeats || {}).find(id => AppState.exactSeats[id] === seat.code);
+                const hasExactLock = Boolean(exactStudentId);
+
+                if (st) {
+                    el.classList.remove('desk-empty');
+                    const m = getStudentEffectiveMean(st);
+                    const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+                    const newMean = (m * len + seat.score) / (len + 1);
+                    const diff = newMean - classAvg;
+                    const diffClass = getScoreBadgeClass(diff);
+                    const diffSign = diff > 0.001 ? '+' : '';
+                    const displayName = getDeskDisplayName(st.name);
+
+                    el.innerHTML = `
+                        ${hasExactLock ? '<span class="exact-seat-tag">Fisso</span>' : ''}
+                        <div class="desk-name">${displayName}</div>
+                        <div class="desk-score-tag">${seat.score.toFixed(1)}</div>
+                        <div class="desk-diff ${diffClass}">${diffSign}${diff.toFixed(2)}</div>
+                    `;
+                } else {
+                    el.classList.add('desk-empty');
+                    el.innerHTML = `
+                        <div class="desk-name desk-empty-label">Libero</div>
+                        <div class="desk-score-tag">${seat.score.toFixed(1)}</div>
+                        <div class="desk-diff" style="color:var(--ios-secondary-label); opacity:0.6;">—</div>
+                    `;
+                }
+            });
+
+            const summaryCount = document.getElementById('summary-student-count');
+            if (summaryCount) {
+                summaryCount.textContent = AppState.students.length;
+            }
+        }
+
+        // Fluid Native Pointer Drag & Drop Engine (Zero Scroll Glitch)
+        let dragPointerId = null;
+        let dragOriginSeatCode = null;
+        let dragHoverSeatCode = null;
+        let dragFloatingEl = null;
+        let dragTouchStartX = 0;
+        let dragTouchStartY = 0;
+        let isDraggingActive = false;
+
+        function initDragAndDrop() {
+            const plan = document.getElementById('live-classroom-plan');
+            if (!plan) return;
+
+            plan.addEventListener('pointerdown', handleDeskPointerDown, { passive: false });
+            window.addEventListener('pointermove', handleDeskPointerMove, { passive: false });
+            window.addEventListener('pointerup', handleDeskPointerUp, { passive: false });
+            window.addEventListener('pointercancel', handleDeskPointerUp, { passive: false });
+        }
+
+        function handleDeskPointerDown(e) {
+            if (isCalculating) return;
+            const deskEl = e.target.closest('.desk-unit');
+            if (!deskEl) return;
+
+            const seatCode = deskEl.getAttribute('data-code');
+            if (!seatCode) return;
+
+            dragPointerId = e.pointerId;
+            dragOriginSeatCode = seatCode;
+            dragTouchStartX = e.clientX;
+            dragTouchStartY = e.clientY;
+            isDraggingActive = false;
+
+            deskEl.setPointerCapture(e.pointerId);
+        }
+
+        function startFloatingDrag(e, originDeskEl) {
+            const stId = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === dragOriginSeatCode);
+            const st = stId ? AppState.students.find(s => s.id == stId) : null;
+            const stName = st ? getDeskDisplayName(st.name) : "Libero";
+
+            const seatObj = SEATS.find(s => s.code === dragOriginSeatCode);
+            const scoreVal = seatObj ? seatObj.score.toFixed(1) : "";
+
+            isDraggingActive = true;
+            originDeskEl.classList.add('drag-origin-dimmed');
+
+            dragFloatingEl = document.createElement('div');
+            dragFloatingEl.className = 'floating-drag-desk';
+            dragFloatingEl.style.width = `${originDeskEl.offsetWidth}px`;
+            dragFloatingEl.style.height = `${originDeskEl.offsetHeight}px`;
+            dragFloatingEl.style.left = `${e.clientX}px`;
+            dragFloatingEl.style.top = `${e.clientY}px`;
+            dragFloatingEl.innerHTML = `
+                <div class="desk-name" style="font-weight:700;">${stName}</div>
+                <div class="desk-score-tag">${scoreVal}</div>
+                <div class="desk-diff diff-pos" style="font-size:0.58rem;">Sposta</div>
+            `;
+            document.body.appendChild(dragFloatingEl);
+
+            if (navigator.vibrate) {
+                try { navigator.vibrate(25); } catch(err){}
+            }
+        }
+
+        function handleDeskPointerMove(e) {
+            if (e.pointerId !== dragPointerId || !dragOriginSeatCode) return;
+
+            const dx = Math.abs(e.clientX - dragTouchStartX);
+            const dy = Math.abs(e.clientY - dragTouchStartY);
+
+            if (!isDraggingActive) {
+                if (dx > 4 || dy > 4) {
+                    const originEl = document.getElementById(`seat-${dragOriginSeatCode}`);
+                    if (originEl) {
+                        startFloatingDrag(e, originEl);
+                    }
+                }
+                return;
+            }
+
+            e.preventDefault();
+
+            if (dragFloatingEl) {
+                dragFloatingEl.style.left = `${e.clientX}px`;
+                dragFloatingEl.style.top = `${e.clientY}px`;
+            }
+
+            const elements = document.elementsFromPoint(e.clientX, e.clientY);
+            const targetDesk = elements.find(el => el.classList && el.classList.contains('desk-unit') && el !== dragFloatingEl);
+
+            document.querySelectorAll('.desk-unit.drag-hover-target').forEach(el => el.classList.remove('drag-hover-target'));
+
+            if (targetDesk) {
+                const targetCode = targetDesk.getAttribute('data-code');
+                if (targetCode && targetCode !== dragOriginSeatCode) {
+                    dragHoverSeatCode = targetCode;
+                    targetDesk.classList.add('drag-hover-target');
+                    return;
+                }
+            }
+            dragHoverSeatCode = null;
+        }
+
+        function handleDeskPointerUp(e) {
+            if (e.pointerId !== dragPointerId) return;
+
+            const wasDragging = isDraggingActive;
+            const fromCode = dragOriginSeatCode;
+            const toCode = dragHoverSeatCode;
+
+            if (dragFloatingEl) {
+                dragFloatingEl.remove();
+                dragFloatingEl = null;
+            }
+
+            document.querySelectorAll('.desk-unit').forEach(el => {
+                el.classList.remove('drag-origin-dimmed');
+                el.classList.remove('drag-hover-target');
+            });
+
+            isDraggingActive = false;
+            dragPointerId = null;
+            dragOriginSeatCode = null;
+            dragHoverSeatCode = null;
+
+            if (wasDragging && fromCode && toCode && fromCode !== toCode) {
+                executeLiveSwap(fromCode, toCode);
+            } else if (!wasDragging && fromCode) {
+                tapDesk(fromCode);
+            }
+        }
+
+        function executeLiveSwap(seatCode1, seatCode2) {
+            const st1Id = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === seatCode1);
+            const st2Id = Object.keys(AppState.currentAssign).find(id => AppState.currentAssign[id] === seatCode2);
+
+            if (!st1Id && !st2Id) return;
+
+            if (st1Id && st2Id) {
+                AppState.currentAssign[st1Id] = seatCode2;
+                AppState.currentAssign[st2Id] = seatCode1;
+            } else if (st1Id) {
+                AppState.currentAssign[st1Id] = seatCode2;
+            } else if (st2Id) {
+                AppState.currentAssign[st2Id] = seatCode1;
+            }
+
+            AppState.selectedSeatCode = null;
+            saveStateToStorage();
+            renderAll();
+            showToast(`Scambio effettuato: ${seatCode1.toUpperCase()} ↔ ${seatCode2.toUpperCase()}`);
+
+            const el1 = document.getElementById(`seat-${seatCode1}`);
+            const el2 = document.getElementById(`seat-${seatCode2}`);
+            if (el1) {
+                el1.classList.add('desk-reveal');
+                setTimeout(() => el1.classList.remove('desk-reveal'), 450);
+            }
+            if (el2) {
+                el2.classList.add('desk-reveal');
+                setTimeout(() => el2.classList.remove('desk-reveal'), 450);
+            }
+        }
+
+        function tapDesk(seatCode) {
+            if (!AppState.selectedSeatCode) {
+                AppState.selectedSeatCode = seatCode;
+                renderCurrentMap();
+                showToast(`Selezionato ${seatCode.toUpperCase()}. Tocca un altro banco per scambiare.`);
+            } else if (AppState.selectedSeatCode === seatCode) {
+                AppState.selectedSeatCode = null;
+                renderCurrentMap();
+            } else {
+                const prev = AppState.selectedSeatCode;
+                executeLiveSwap(prev, seatCode);
+            }
+        }
+
+        function saveAndNextRound() {
+            if (!AppState.historyRounds) AppState.historyRounds = [];
+
+            const roundRecord = {
+                round: AppState.currentRound,
+                date: new Date().toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' }),
+                assign: JSON.parse(JSON.stringify(AppState.currentAssign))
+            };
+
+            AppState.historyRounds.push(roundRecord);
+            AppState.currentRound += 1;
+
+            syncStudentHistoriesFromRounds();
+            saveStateToStorage();
+            renderAll();
+            showToast(`Turno archiviato! Ora sei al Turno ${AppState.currentRound}`);
+        }
+
+        // Student Management (Add, Edit, Delete)
+        function openAddStudentModal() {
+            document.getElementById('input-new-student-name').value = '';
+            document.getElementById('input-new-student-mean').value = getClassAvg().toFixed(2);
+            document.getElementById('sheet-add-student').classList.add('active');
+            setTimeout(() => {
+                document.getElementById('input-new-student-name').focus();
+            }, 300);
+        }
+
+        function closeAddStudentModal() {
+            document.getElementById('sheet-add-student').classList.remove('active');
+        }
+
+        function submitAddStudent() {
+            const nameInput = document.getElementById('input-new-student-name').value.trim();
+            const meanInput = parseFloat(document.getElementById('input-new-student-mean').value) || getClassAvg();
+
+            if (!nameInput) {
+                showToast("Inserisci un nome valido");
+                return;
+            }
+
+            if (AppState.students.some(s => s.name.toLowerCase() === nameInput.toLowerCase())) {
+                showToast("Esiste già uno studente con questo nome!");
+                return;
+            }
+
+            const newId = Date.now();
+            const newStudent = {
+                id: newId,
+                name: nameInput,
+                customMean: meanInput,
+                history: []
+            };
+
+            AppState.students.push(newStudent);
+
+            const assignedSeatCodes = Object.values(AppState.currentAssign);
+            const emptySeat = SEATS.find(s => !assignedSeatCodes.includes(s.code));
+            if (emptySeat) {
+                AppState.currentAssign[newId] = emptySeat.code;
+            }
+
+            saveStateToStorage();
+            closeAddStudentModal();
+            renderAll();
+            showToast(`${nameInput} aggiunto alla classe!`);
+        }
+
+        function openEditStudentModal(studentId) {
+            const st = AppState.students.find(s => s.id == studentId);
+            if (!st) return;
+
+            document.getElementById('edit-student-id').value = studentId;
+            document.getElementById('input-edit-student-name').value = st.name;
+            document.getElementById('input-edit-student-mean').value = getStudentEffectiveMean(st).toFixed(2);
+
+            document.getElementById('sheet-edit-student').classList.add('active');
+        }
+
+        function closeEditStudentModal() {
+            document.getElementById('sheet-edit-student').classList.remove('active');
+        }
+
+        function submitEditStudent() {
+            const studentId = document.getElementById('edit-student-id').value;
+            const newName = document.getElementById('input-edit-student-name').value.trim();
+            const newMean = parseFloat(document.getElementById('input-edit-student-mean').value);
+
+            const st = AppState.students.find(s => s.id == studentId);
+            if (!st || !newName) return;
+
+            const oldName = st.name;
+            st.name = newName;
+
+            if (!isNaN(newMean) && newMean >= 1 && newMean <= 10) {
+                updateStudentMeanRealHistory(st, newMean);
+            }
+
+            if (AppState.fixedPairs) {
+                AppState.fixedPairs.forEach(p => {
+                    if (p[0] === oldName) p[0] = newName;
+                    if (p[1] === oldName) p[1] = newName;
+                });
+            }
+            if (AppState.forbiddenPairs) {
+                AppState.forbiddenPairs.forEach(p => {
+                    if (p[0] === oldName) p[0] = newName;
+                    if (p[1] === oldName) p[1] = newName;
+                });
+            }
+
+            saveStateToStorage();
+            closeEditStudentModal();
+            renderAll();
+            showToast(`Studente aggiornato`);
+        }
+
+        function confirmDeleteStudent(studentId) {
+            const st = AppState.students.find(s => s.id == studentId);
+            if (!st) return;
+
+            if (AppState.students.length <= 1) {
+                showToast("Non puoi eliminare tutti gli studenti!");
+                return;
+            }
+
+            if (confirm(`Eliminare ${st.name} dalla classe?`)) {
+                const oldName = st.name;
+                AppState.students = AppState.students.filter(s => s.id != studentId);
+                delete AppState.currentAssign[studentId];
+
+                if (AppState.exactSeats && AppState.exactSeats[studentId]) {
+                    delete AppState.exactSeats[studentId];
+                }
+
+                if (AppState.fixedPairs) {
+                    AppState.fixedPairs = AppState.fixedPairs.filter(p => p[0] !== oldName && p[1] !== oldName);
+                }
+                if (AppState.forbiddenPairs) {
+                    AppState.forbiddenPairs = AppState.forbiddenPairs.filter(p => p[0] !== oldName && p[1] !== oldName);
+                }
+
+                saveStateToStorage();
+                renderAll();
+                showToast(`${oldName} eliminato`);
+            }
+        }
+
+        function updateStudentMeanRealHistory(st, targetMean) {
+            if (st.history && st.history.length > 0) {
+                const currentSum = st.history.reduce((a, b) => a + b, 0);
+                const currentMean = currentSum / st.history.length;
+                if (Math.abs(currentMean - targetMean) > 1e-4) {
+                    const ratio = targetMean / (currentMean || 1);
+                    st.history = st.history.map(v => Math.max(1, Math.min(10, v * ratio)));
+                }
+            } else {
+                st.customMean = targetMean;
+            }
+        }
+
+        // Render Studenti Tab
+        function renderStudentiList() {
+            const container = document.getElementById('students-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const countLbl = document.getElementById('studenti-count-lbl');
+            if (countLbl) {
+                countLbl.textContent = `${AppState.students.length} Studenti • Media Aula: ${getClassAvg().toFixed(2)}`;
+            }
+
+            const searchQuery = (document.getElementById('student-search-input')?.value || '').trim().toLowerCase();
+            const sorted = [...AppState.students].sort((a, b) => getStudentEffectiveMean(b) - getStudentEffectiveMean(a));
+            const classAvg = getClassAvg();
+
+            let visibleCount = 0;
+
+            sorted.forEach((st, rankIdx) => {
+                if (searchQuery && !st.name.toLowerCase().includes(searchQuery)) return;
+                visibleCount++;
+
+                const m = getStudentEffectiveMean(st);
+                const diff = m - classAvg;
+                const diffClass = getScoreBadgeClass(diff);
+                const diffSign = diff > 0.001 ? '+' : '';
+
+                const exactCode = (AppState.exactSeats && AppState.exactSeats[st.id]) ? AppState.exactSeats[st.id].toUpperCase() : null;
+
+                const row = document.createElement('div');
+                row.className = 'student-row';
+                row.innerHTML = `
+                    <div class="st-rank">#${rankIdx + 1}</div>
+                    <div class="st-info">
+                        <div class="st-name-line">
+                            <span class="st-name">${st.name}</span>
+                            ${exactCode ? `<span class="st-exact-tag">Fisso: ${exactCode}</span>` : ''}
+                        </div>
+                        <div class="st-stats-line">
+                            <span>Media: <strong class="st-mean-bold">${m.toFixed(2)}</strong></span>
+                            <span class="desk-diff ${diffClass}">${diffSign}${diff.toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <div class="st-actions">
+                        <button class="btn-st-tool" title="Modifica" onclick="openEditStudentModal(${st.id})">
+                            <svg class="tool-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </button>
+                        <button class="btn-st-tool tool-danger" title="Elimina" onclick="confirmDeleteStudent(${st.id})">
+                            <svg class="tool-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            if (visibleCount === 0) {
+                container.innerHTML = `
+                    <div style="padding: 24px; text-align: center; color: var(--ios-secondary-label); font-size: 0.86rem;">
+                        Nessuno studente trovato per "${searchQuery}"
+                    </div>
+                `;
+            }
+        }
+
+        function filterStudentsList() {
+            const input = document.getElementById('student-search-input');
+            const clearBtn = document.getElementById('search-clear-btn');
+            if (clearBtn) {
+                if (input.value.length > 0) clearBtn.classList.add('visible');
+                else clearBtn.classList.remove('visible');
+            }
+            renderStudentiList();
+        }
+
+        function clearStudentSearch() {
+            const input = document.getElementById('student-search-input');
+            if (input) input.value = '';
+            filterStudentsList();
+        }
+
+        // Vincoli Sheet Management
+        function openVincoliSheet() {
+            renderVincoliDropdowns();
+            renderVincoliChips();
+            document.getElementById('sheet-vincoli').classList.add('active');
+        }
+
+        function closeVincoliSheet() {
+            document.getElementById('sheet-vincoli').classList.remove('active');
+        }
+
+        function renderVincoliDropdowns() {
+            // Exact Student
+            const selExactStudent = document.getElementById('sel-exact-student');
+            if (selExactStudent) {
+                selExactStudent.innerHTML = '';
+                AppState.students.forEach(st => {
+                    const opt = document.createElement('option');
+                    opt.value = st.id;
+                    opt.textContent = st.name;
+                    selExactStudent.appendChild(opt);
+                });
+            }
+
+            // Exact Seat
+            const selExactSeat = document.getElementById('sel-exact-seat');
+            if (selExactSeat) {
+                selExactSeat.innerHTML = '';
+                SEATS.forEach(s => {
+                    const opt = document.createElement('option');
+                    opt.value = s.code;
+                    const rLabel = s.row === 'c' ? 'Fila C (Davanti)' : (s.row === 'b' ? 'Fila B (Centro)' : 'Fila A (Fondo)');
+                    opt.textContent = `${s.code.toUpperCase()} — ${rLabel} (Voto ${s.score.toFixed(1)})`;
+                    selExactSeat.appendChild(opt);
+                });
+            }
+
+            // Pairs
+            const pairSelects = ['sel-fixed-1', 'sel-fixed-2', 'sel-forbid-1', 'sel-forbid-2'];
+            pairSelects.forEach(sId => {
+                const el = document.getElementById(sId);
+                if (!el) return;
+                const cur = el.value;
+                el.innerHTML = '';
+                AppState.students.forEach(st => {
+                    const opt = document.createElement('option');
+                    opt.value = st.name;
+                    opt.textContent = st.name;
+                    el.appendChild(opt);
+                });
+                if (cur) el.value = cur;
+            });
+
+            renderVincoliChips();
+        }
+
+        function renderVincoliChips() {
+            // Exact seats
+            const exactList = document.getElementById('exact-seats-list');
+            if (exactList) {
+                exactList.innerHTML = '';
+                const exactKeys = Object.keys(AppState.exactSeats || {});
+                if (exactKeys.length === 0) {
+                    exactList.innerHTML = '<span style="font-size:0.75rem; color:var(--ios-secondary-label);">Nessun banco fisso impostato</span>';
+                } else {
+                    exactKeys.forEach(stId => {
+                        const st = AppState.students.find(s => s.id == stId);
+                        const seatCode = AppState.exactSeats[stId];
+                        const seatObj = SEATS.find(s => s.code === seatCode);
+                        if (st && seatObj) {
+                            const chip = document.createElement('span');
+                            chip.className = 'pair-tag exact-tag';
+                            chip.innerHTML = `${st.name} ➔ ${seatCode.toUpperCase()} (${seatObj.row.toUpperCase()}) <span class="pair-delete" onclick="removeExactSeat('${stId}')">&times;</span>`;
+                            exactList.appendChild(chip);
+                        }
+                    });
+                }
+            }
+
+            // Fixed pairs
+            const fixedList = document.getElementById('fixed-pairs-list');
+            if (fixedList) {
+                fixedList.innerHTML = '';
+                if (!AppState.fixedPairs || AppState.fixedPairs.length === 0) {
+                    fixedList.innerHTML = '<span style="font-size:0.75rem; color:var(--ios-secondary-label);">Nessuna coppia fissa</span>';
+                } else {
+                    AppState.fixedPairs.forEach((pair, idx) => {
+                        const chip = document.createElement('span');
+                        chip.className = 'pair-tag fixed-tag';
+                        chip.innerHTML = `${pair[0]} & ${pair[1]} <span class="pair-delete" onclick="removeFixedPair(${idx})">&times;</span>`;
+                        fixedList.appendChild(chip);
+                    });
+                }
+            }
+
+            // Forbidden pairs
+            const forbidList = document.getElementById('forbidden-pairs-list');
+            if (forbidList) {
+                forbidList.innerHTML = '';
+                if (!AppState.forbiddenPairs || AppState.forbiddenPairs.length === 0) {
+                    forbidList.innerHTML = '<span style="font-size:0.75rem; color:var(--ios-secondary-label);">Nessuna coppia separata</span>';
+                } else {
+                    AppState.forbiddenPairs.forEach((pair, idx) => {
+                        const chip = document.createElement('span');
+                        chip.className = 'pair-tag forbid-tag';
+                        chip.innerHTML = `${pair[0]} ≠ ${pair[1]} <span class="pair-delete" onclick="removeForbiddenPair(${idx})">&times;</span>`;
+                        forbidList.appendChild(chip);
+                    });
+                }
+            }
+
+            updateVincoliBadge();
+        }
+
+        function addExactSeat() {
+            const selSt = document.getElementById('sel-exact-student');
+            const selSeat = document.getElementById('sel-exact-seat');
+            if (!selSt || !selSeat) return;
+
+            const stId = selSt.value;
+            const seatCode = selSeat.value;
+
+            if (!AppState.exactSeats) AppState.exactSeats = {};
+
+            for (const [otherId, otherSeat] of Object.entries(AppState.exactSeats)) {
+                if (otherSeat === seatCode && otherId != stId) {
+                    delete AppState.exactSeats[otherId];
+                    break;
+                }
+            }
+
+            AppState.exactSeats[stId] = seatCode;
+            saveStateToStorage();
+            renderVincoliChips();
+            renderCurrentMap();
+            showToast("Banco fisso impostato!");
+        }
+
+        function removeExactSeat(stId) {
+            if (AppState.exactSeats && AppState.exactSeats[stId]) {
+                delete AppState.exactSeats[stId];
+                saveStateToStorage();
+                renderVincoliChips();
+                renderCurrentMap();
+                showToast("Vincolo rimosso");
+            }
+        }
+
+        function addFixedPair() {
+            const p1 = document.getElementById('sel-fixed-1').value;
+            const p2 = document.getElementById('sel-fixed-2').value;
+            if (p1 === p2) {
+                showToast("Seleziona due studenti diversi");
+                return;
+            }
+
+            if (!AppState.fixedPairs) AppState.fixedPairs = [];
+            const exists = AppState.fixedPairs.some(p => (p[0] === p1 && p[1] === p2) || (p[0] === p2 && p[1] === p1));
+            if (!exists) {
+                AppState.fixedPairs.push([p1, p2]);
+                saveStateToStorage();
+                renderVincoliChips();
+                showToast("Coppia fissa aggiunta");
+            }
+        }
+
+        function removeFixedPair(idx) {
+            if (AppState.fixedPairs) {
+                AppState.fixedPairs.splice(idx, 1);
+                saveStateToStorage();
+                renderVincoliChips();
+            }
+        }
+
+        function addForbiddenPair() {
+            const p1 = document.getElementById('sel-forbid-1').value;
+            const p2 = document.getElementById('sel-forbid-2').value;
+            if (p1 === p2) {
+                showToast("Seleziona due studenti diversi");
+                return;
+            }
+
+            if (!AppState.forbiddenPairs) AppState.forbiddenPairs = [];
+            const exists = AppState.forbiddenPairs.some(p => (p[0] === p1 && p[1] === p2) || (p[0] === p2 && p[1] === p1));
+            if (!exists) {
+                AppState.forbiddenPairs.push([p1, p2]);
+                saveStateToStorage();
+                renderVincoliChips();
+                showToast("Coppia separata aggiunta");
+            }
+        }
+
+        function removeForbiddenPair(idx) {
+            if (AppState.forbiddenPairs) {
+                AppState.forbiddenPairs.splice(idx, 1);
+                saveStateToStorage();
+                renderVincoliChips();
+            }
+        }
+
+        function updateVincoliBadge() {
+            const exactCount = Object.keys(AppState.exactSeats || {}).length;
+            const fixedCount = (AppState.fixedPairs || []).length;
+            const forbidCount = (AppState.forbiddenPairs || []).length;
+            const total = exactCount + fixedCount + forbidCount;
+
+            const btn = document.getElementById('btn-nav-vincoli');
+            if (btn) {
+                if (total > 0) {
+                    btn.innerHTML = `Vincoli <span class="nav-badge">${total}</span>`;
+                } else {
+                    btn.textContent = 'Vincoli';
+                }
+            }
+        }
+
+        // Voti Sheet
+        function openVotiSheet() {
+            renderVotiGrids();
+            document.getElementById('sheet-voti').classList.add('active');
+        }
+
+        function closeVotiSheet() {
+            document.getElementById('sheet-voti').classList.remove('active');
+        }
+
+        function renderVotiGrids() {
+            ['c', 'b', 'a'].forEach(r => {
+                const container = document.getElementById(`voti-grid-${r}`);
+                if (!container) return;
+                container.innerHTML = '';
+                const rowSeats = SEATS.filter(s => s.row === r);
+                rowSeats.forEach(s => {
+                    const box = document.createElement('div');
+                    box.style.cssText = 'background:#F2F2F7; border-radius:8px; padding:6px; display:flex; flex-direction:column; align-items:center; gap:2px;';
+                    box.innerHTML = `
+                        <span style="font-size:0.75rem; font-weight:700;">${s.code.toUpperCase()}</span>
+                        <input type="number" step="0.5" min="1" max="10" value="${s.score.toFixed(1)}" style="width:100%; text-align:center; font-size:0.85rem; font-weight:700; border:1px solid rgba(0,0,0,0.1); border-radius:6px; background:#FFFFFF; padding:2px;" onchange="updateDeskScore('${s.code}', this.value)">
+                    `;
+                    container.appendChild(box);
+                });
+            });
+        }
+
+        function updateDeskScore(code, val) {
+            const num = parseFloat(val);
+            if (isNaN(num)) return;
+            const sObj = SEATS.find(s => s.code === code);
+            if (sObj) {
+                sObj.score = num;
+                if (!AppState.customSeatScores) AppState.customSeatScores = {};
+                AppState.customSeatScores[code] = num;
+                syncStudentHistoriesFromRounds();
+                saveStateToStorage();
+                renderAll();
+            }
+        }
+
+        function resetDeskScoresToDefault() {
+            if (confirm("Ripristinare i voti originali dei banchi?")) {
+                SEATS = JSON.parse(JSON.stringify(DEFAULT_SEATS));
+                AppState.customSeatScores = {};
+                syncStudentHistoriesFromRounds();
+                saveStateToStorage();
+                renderAll();
+                showToast("Voti ripristinati");
+            }
+        }
+
+        // Storico Tab
+        function renderHistoryTab() {
+            const chipsContainer = document.getElementById('history-round-chips');
+            const emptyMsg = document.getElementById('history-empty-message');
+            const contentContainer = document.getElementById('history-content-container');
+
+            if (!chipsContainer || !emptyMsg || !contentContainer) return;
+
+            chipsContainer.innerHTML = '';
+
+            if (!AppState.historyRounds || AppState.historyRounds.length === 0) {
+                emptyMsg.style.display = 'block';
+                contentContainer.style.display = 'none';
+                return;
+            }
+
+            emptyMsg.style.display = 'none';
+            contentContainer.style.display = 'flex';
+
+            if (!AppState.viewingHistoryRound || !AppState.historyRounds.some(r => r.round === AppState.viewingHistoryRound)) {
+                AppState.viewingHistoryRound = AppState.historyRounds[AppState.historyRounds.length - 1].round;
+            }
+
+            AppState.historyRounds.forEach(rd => {
+                const chip = document.createElement('button');
+                chip.className = `round-chip ${rd.round === AppState.viewingHistoryRound ? 'active' : ''}`;
+                chip.textContent = `Turno ${rd.round}`;
+                chip.onclick = () => {
+                    AppState.viewingHistoryRound = rd.round;
+                    AppState.historySelectedSeatCode = null;
+                    renderHistoryTab();
+                };
+                chipsContainer.appendChild(chip);
+            });
+
+            const currentViewing = AppState.historyRounds.find(r => r.round === AppState.viewingHistoryRound);
+            if (!currentViewing) return;
+
+            document.getElementById('history-view-title').textContent = `Disposizione Turno ${currentViewing.round}`;
+            document.getElementById('history-view-date').textContent = currentViewing.date || '';
+
+            const planContainer = document.getElementById('history-classroom-plan');
+            if (planContainer) {
+                planContainer.innerHTML = `
+                    <div class="plan-row">
+                        <span class="row-label">C</span>
+                        <div class="blocks-container">
+                            <div class="desk-block block-2">
+                                ${renderHistoryDeskHTML('c1', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('c2', currentViewing.assign)}
+                            </div>
+                            <span class="aisle-space"></span>
+                            <div class="desk-block block-2">
+                                ${renderHistoryDeskHTML('c4', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('c5', currentViewing.assign)}
+                            </div>
+                            <span class="aisle-space"></span>
+                            <div class="desk-block block-3">
+                                ${renderHistoryDeskHTML('c6', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('c7', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('c8', currentViewing.assign)}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-row">
+                        <span class="row-label">B</span>
+                        <div class="blocks-container">
+                            <div class="desk-block block-2">
+                                ${renderHistoryDeskHTML('b1', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('b2', currentViewing.assign)}
+                            </div>
+                            <span class="aisle-space"></span>
+                            <div class="desk-block block-3">
+                                ${renderHistoryDeskHTML('b3', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('b4', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('b5', currentViewing.assign)}
+                            </div>
+                            <span class="aisle-space"></span>
+                            <div class="desk-block block-3">
+                                ${renderHistoryDeskHTML('b6', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('b7', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('b8', currentViewing.assign)}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="plan-row">
+                        <span class="row-label">A</span>
+                        <div class="blocks-container">
+                            <div class="desk-block block-2">
+                                ${renderHistoryDeskHTML('a1', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('a2', currentViewing.assign)}
+                            </div>
+                            <span class="aisle-space"></span>
+                            <div class="desk-block block-3">
+                                ${renderHistoryDeskHTML('a3', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('a4', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('a5', currentViewing.assign)}
+                            </div>
+                            <span class="aisle-space"></span>
+                            <div class="desk-block block-3">
+                                ${renderHistoryDeskHTML('a6', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('a7', currentViewing.assign)}
+                                ${renderHistoryDeskHTML('a8', currentViewing.assign)}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function renderHistoryDeskHTML(code, assign) {
+            const seat = SEATS.find(s => s.code === code);
+            const stId = assign ? Object.keys(assign).find(id => assign[id] === code) : null;
+            const st = stId ? AppState.students.find(s => s.id == stId) : null;
+            const isSelected = AppState.historySelectedSeatCode === code;
+            const name = st ? getDeskDisplayName(st.name) : "Libero";
+
+            return `
+                <div id="hist-seat-${code}" class="desk-unit ${isSelected ? 'selected' : ''}" data-code="${code}">
+                    <div class="desk-name">${name}</div>
+                    <div class="desk-score-tag">${seat.score.toFixed(1)}</div>
+                </div>
+            `;
+        }
+
+        function deleteSelectedHistoryRound() {
+            if (!AppState.viewingHistoryRound) return;
+            if (confirm(`Eliminare il Turno ${AppState.viewingHistoryRound} dallo storico?`)) {
+                AppState.historyRounds = AppState.historyRounds.filter(r => r.round !== AppState.viewingHistoryRound);
+                syncStudentHistoriesFromRounds();
+                AppState.viewingHistoryRound = null;
+                saveStateToStorage();
+                renderAll();
+                showToast("Turno eliminato dallo storico");
+            }
+        }
+
+        // Tab Navigation
+        function switchTab(tabId, index) {
+            document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.segment-item').forEach(el => el.classList.remove('active'));
+
+            const target = document.getElementById(tabId);
+            if (target) target.classList.add('active');
+
+            const glider = document.getElementById('segment-glider');
+            if (glider) {
+                glider.style.transform = `translateX(${index * 100}%)`;
+            }
+
+            if (tabId === 'tab-map') document.getElementById('seg-map').classList.add('active');
+            if (tabId === 'tab-studenti') document.getElementById('seg-studenti').classList.add('active');
+            if (tabId === 'tab-storico') document.getElementById('seg-storico').classList.add('active');
+        }
+
+        function handleOverlayClick(e, sheetId) {
+            if (e.target.id === sheetId) {
+                document.getElementById(sheetId).classList.remove('active');
+            }
+        }
+
+        // High Resolution Photo Canvas Export
+        function renderClassroomCanvas(assignMap, roundLabel, dateLabel) {
+            const canvas = document.getElementById('render-canvas');
+            const ctx = canvas.getContext('2d');
+
+            const width = 1200;
+            const height = 900;
+            canvas.width = width;
+            canvas.height = height;
+
+            ctx.fillStyle = '#F2F2F7';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.fillStyle = '#FFFFFF';
+            roundRect(ctx, 40, 40, width - 80, height - 80, 28, true, false);
+
+            ctx.fillStyle = '#1C1C1E';
+            ctx.font = 'bold 36px -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText('Disposizione Banchi Aula', 70, 105);
+
+            ctx.fillStyle = '#8E8E93';
+            ctx.font = '600 22px -apple-system, sans-serif';
+            ctx.fillText(`${roundLabel} • ${dateLabel}`, 70, 140);
+
+            const classAvg = getClassAvg();
+            ctx.textAlign = 'right';
+            ctx.fillText(`Media Aula: ${classAvg.toFixed(2)}`, width - 70, 105);
+
+            const rowDefs = [
+                {
+                    rowLabel: 'C (Davanti)',
+                    y: 220,
+                    blocks: [
+                        { codes: ['c1', 'c2'], x: 140 },
+                        { codes: ['c4', 'c5'], x: 490 },
+                        { codes: ['c6', 'c7', 'c8'], x: 790 }
+                    ]
+                },
+                {
+                    rowLabel: 'B (Centro)',
+                    y: 430,
+                    blocks: [
+                        { codes: ['b1', 'b2'], x: 140 },
+                        { codes: ['b3', 'b4', 'b5'], x: 440 },
+                        { codes: ['b6', 'b7', 'b8'], x: 790 }
+                    ]
+                },
+                {
+                    rowLabel: 'A (Fondo)',
+                    y: 640,
+                    blocks: [
+                        { codes: ['a1', 'a2'], x: 140 },
+                        { codes: ['a3', 'a4', 'a5'], x: 440 },
+                        { codes: ['a6', 'a7', 'a8'], x: 790 }
+                    ]
+                }
+            ];
+
+            const deskW = 100;
+            const deskH = 92;
+            const gap = 12;
+
+            rowDefs.forEach(r => {
+                ctx.fillStyle = '#8E8E93';
+                ctx.font = 'bold 20px -apple-system, sans-serif';
+                ctx.textAlign = 'left';
+                ctx.fillText(r.rowLabel, 70, r.y - 14);
+
+                r.blocks.forEach(blk => {
+                    blk.codes.forEach((code, idx) => {
+                        const x = blk.x + idx * (deskW + gap);
+                        const y = r.y;
+
+                        const seat = SEATS.find(s => s.code === code);
+                        const stId = Object.keys(assignMap).find(id => assignMap[id] === code);
+                        const st = stId ? AppState.students.find(s => s.id == stId) : null;
+
+                        ctx.fillStyle = '#F9F9FB';
+                        roundRect(ctx, x, y, deskW, deskH, 12, true, false);
+
+                        ctx.strokeStyle = 'rgba(0, 0, 0, 0.08)';
+                        ctx.lineWidth = 2;
+                        roundRect(ctx, x, y, deskW, deskH, 12, false, true);
+
+                        ctx.fillStyle = '#1C1C1E';
+                        ctx.font = 'bold 20px -apple-system, sans-serif';
+                        ctx.textAlign = 'center';
+                        const displayName = st ? getDeskDisplayName(st.name) : 'Libero';
+                        ctx.fillText(displayName, x + deskW / 2, y + 36);
+
+                        ctx.fillStyle = '#8E8E93';
+                        ctx.font = '600 14px -apple-system, sans-serif';
+                        ctx.fillText(`Voto: ${seat.score.toFixed(1)}`, x + deskW / 2, y + 60);
+
+                        if (st && AppState.showDiffTags) {
+                            const m = getStudentEffectiveMean(st);
+                            const len = (st.history && st.history.length > 0) ? st.history.length : 1;
+                            const newMean = (m * len + seat.score) / (len + 1);
+                            const diff = newMean - classAvg;
+                            const diffSign = diff > 0.001 ? '+' : '';
+
+                            if (diff > 0.05) ctx.fillStyle = '#248A3D';
+                            else if (diff < -0.90) ctx.fillStyle = '#D70015';
+                            else if (diff < -0.05) ctx.fillStyle = '#C97200';
+                            else ctx.fillStyle = '#8E8E93';
+
+                            ctx.font = 'bold 13px -apple-system, sans-serif';
+                            ctx.fillText(`${diffSign}${diff.toFixed(2)}`, x + deskW / 2, y + 80);
+                        }
+                    });
+                });
+            });
+
+            return canvas.toDataURL('image/png');
+        }
+
+        function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+            if (fill) ctx.fill();
+            if (stroke) ctx.stroke();
+        }
+
+        function generateAndSaveClassroomImage() {
+            const dataUrl = renderClassroomCanvas(AppState.currentAssign, `Turno ${AppState.currentRound}`, new Date().toLocaleDateString('it-IT'));
+            currentGeneratedImageDataUrl = dataUrl;
+            document.getElementById('img-preview-target').src = dataUrl;
+            document.getElementById('sheet-image-save').classList.add('active');
+        }
+
+        function generateAndSaveHistoryImage() {
+            const currentViewing = AppState.historyRounds.find(r => r.round === AppState.viewingHistoryRound);
+            if (!currentViewing) return;
+            const dataUrl = renderClassroomCanvas(currentViewing.assign, `Turno ${currentViewing.round}`, currentViewing.date || '');
+            currentGeneratedImageDataUrl = dataUrl;
+            document.getElementById('img-preview-target').src = dataUrl;
+            document.getElementById('sheet-image-save').classList.add('active');
+        }
+
+        function closeImageSaveSheet() {
+            document.getElementById('sheet-image-save').classList.remove('active');
+        }
+
+        function triggerDirectDownloadImage() {
+            if (!currentGeneratedImageDataUrl) return;
+            const a = document.createElement('a');
+            a.href = currentGeneratedImageDataUrl;
+            a.download = `piantina_classe_turno_${AppState.currentRound}.png`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast("Immagine salvata!");
+        }
+
+        // Initialize App on DOM Ready
+        document.addEventListener('DOMContentLoaded', () => {
+            const loaded = loadStateFromStorage();
+            if (!loaded || Object.keys(AppState.currentAssign).length === 0) {
+                calculateOptimalMatching();
+            }
+            renderAll();
+            initDragAndDrop();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5215c548ababac1',t:'MTc5MzI2ODMxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
